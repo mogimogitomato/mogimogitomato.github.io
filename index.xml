@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ツナ缶同盟</title>
+    <link>https%EF%BC%9A//mogimogitomato.github.io//</link>
+    <description>Recent content on ツナ缶同盟</description>
+    <generator>Hugo - gohugo.io</generator>
+    <language>en</language>
+    <contact></contact>
+    <copyright>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2018</copyright>
+    
+        <atom:link href="https%EF%BC%9A//mogimogitomato.github.io//index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Metaltov</title>
+      <link>https%EF%BC%9A//mogimogitomato.github.io//post/20190104_02/</link>
+      <pubDate>Fri, 04 Jan 2019 23:33:54 +0900</pubDate>
+      <author>YK</author>
+      <guid>https%EF%BC%9A//mogimogitomato.github.io//post/20190104_02/</guid>
+      <description></description>
+      
+      <content>&lt;figure&gt;
+    &lt;img src=&#34;https%EF%BC%9A//mogimogitomato.github.io//images/20190104/Metaltov.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;※Original transcription by Eric Schmidt 
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/43pbfibIbJM&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
+      <title>Hugoで生成したサイトにGoogle Analyticsのトラッキングをgtag.jsで設定する</title>
+      <link>https%EF%BC%9A//mogimogitomato.github.io//post/20190104/</link>
+      <pubDate>Fri, 04 Jan 2019 18:32:41 +0900</pubDate>
+      <author>YK</author>
+      <guid>https%EF%BC%9A//mogimogitomato.github.io//post/20190104/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;あらすじ&#34;&gt;あらすじ&lt;/h3&gt;
+
+&lt;p&gt;「Hugoで生成したサイトを公開したぞ〜！よぉし次はGoogle Analytics設定しよう！！」と思った&lt;br /&gt;
+↓&lt;br /&gt;
+rootディレクトリのconfig.tomlにある「googleAnalytics = &amp;ldquo;&amp;ldquo;」にトラッキングIDを設定すればおk！というのを見てやってみる&lt;br /&gt;
+↓&lt;br /&gt;
+確かにhtmlにトラッキングコードが追加されてる凄い！！ウッでも方式がanalytics.jsだ..！！&lt;br /&gt;
+(せっかくなら最新の&lt;a href=&#34;https://www.snbi.jp/detail/14&#34; target=&#34;_blank&#34;&gt;gtag.js&lt;/a&gt;を設定したい)&lt;br /&gt;
+↓&lt;br /&gt;
+そもどの様にトラッキングコードが追加されるかを確認しつつ、gtag.jsで設定する→本記事の趣旨&lt;/p&gt;
+
+&lt;h3 id=&#34;オチを先に&#34;&gt;オチを先に&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;ウッでも方式がanalytics.jsだ..！！&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Hugoで提供しているテンプレートがanalytics.jsだから、というのが根本的な理由でした。&lt;br /&gt;
+この件は既にIssuesでやり取りされていて(&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4479&#34; target=&#34;_blank&#34;&gt;Update the internal GA template #4479&lt;/a&gt;)、&lt;br /&gt;
+Hugoのv0.55の&lt;a href=&#34;https://github.com/gohugoio/hugo/milestone/87&#34; target=&#34;_blank&#34;&gt;マイルストーン&lt;/a&gt;で以下が含まれていたので今後テンプレート側が変更されそうです。&lt;br /&gt;
+(&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4327&#34; target=&#34;_blank&#34;&gt;Update Google Analytics internal template to new style(gtag.js) #4327&lt;/a&gt;)&lt;br /&gt;
+本記事では自前で内部テンプレートを作成する手法を記載していますが、&lt;br /&gt;
+今後変更に併せ公式のテンプレートを使用した方が良さそうです。&lt;/p&gt;
+
+&lt;h3 id=&#34;どの様にトラッキングコードが追加されるか&#34;&gt;どの様にトラッキングコードが追加されるか&lt;/h3&gt;
+
+&lt;p&gt;Hugoの&lt;a href=&#34;https://gohugo.io/templates/internal/#google-analytics&#34; target=&#34;_blank&#34;&gt;公式リファレンス&lt;/a&gt;では、大まかに「設定ファイルにトラッキングIDを指定した後_internal/配下のテンプレートを含められるよ！」と記載があり、これを各themeが実装している様でした。&lt;br /&gt;
+前述の様にテンプレートがanalytics.jsのため、themeフォルダ内に自前でgtag.js版のhtmlを用意しそちらを読み込ませる様にします。&lt;/p&gt;
+
+&lt;h3 id=&#34;gtag-jsで設定する&#34;&gt;gtag.jsで設定する&lt;/h3&gt;
+
+&lt;p&gt;forkしたthemeに対し以下の変更を加えました。(変更内容はthemeによって異なると思いますが、参考になれば..)&lt;br /&gt;
+&lt;a href=&#34;https://github.com/mogimogitomato/kiss/commit/88158ed079f8ddb6062fa5a8868321558cdcfab5&#34; target=&#34;_blank&#34;&gt;https://github.com/mogimogitomato/kiss/commit/88158ed079f8ddb6062fa5a8868321558cdcfab5&lt;/a&gt;&lt;br /&gt;
+変更に当たっては、以下の記事を参考にしました。&lt;br /&gt;
+&lt;a href=&#34;https://maku77.github.io/hugo/settings/google-analytics.html&#34; target=&#34;_blank&#34;&gt;Google アナリティクス用のトラッキングコードを埋め込む&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;gtag.jsのトラッキングコードはheadタグの直下に配置する必要があり、Hugoのテンプレートが変更されたら&lt;br /&gt;
+themeも対応する必要があるところが多そうです。&lt;br /&gt;
+軽微ではありますが、Hugoのアップデートに伴って更新しつつプルリク出せるといいな..&lt;/p&gt;
+
+&lt;hr /&gt;
+</content>
+      
+    </item>
+    
+    <item>
+      <title>Hugoでブログ開設</title>
+      <link>https%EF%BC%9A//mogimogitomato.github.io//post/20190101/</link>
+      <pubDate>Tue, 01 Jan 2019 16:31:56 +0900</pubDate>
+      <author>YK</author>
+      <guid>https%EF%BC%9A//mogimogitomato.github.io//post/20190101/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;経緯&#34;&gt;経緯&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;アウトプットちゃんとしたいが、プログラミングネタなら&lt;br /&gt;
+Qiitaに書けばいいと思うしそれ以外ならはてなブログがある。&lt;br /&gt;
+けれどどちらも更新できていない..&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;という情けない逡巡があり、、気ままに好きなことを投稿できる&lt;br /&gt;
+個人ブログ形式でまずは始めよう！と考えて始めました。&lt;/p&gt;
+
+&lt;h3 id=&#34;方式&#34;&gt;方式&lt;/h3&gt;
+
+&lt;p&gt;Hugoで作成してます。&lt;br /&gt;
+themeはシンプルさに惹かれて&lt;a href=&#34;https://themes.gohugo.io/kiss/&#34; target=&#34;_blank&#34;&gt;こちら&lt;/a&gt;を選択しました。&lt;br /&gt;
+※小ネタですが、ソーシャルリンク(右上のアイコン)にSoundcloudを追加したかったため&lt;br /&gt;
+  デフォルトの構成に以下を追記しています。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;rootディレクトリ直下のconfig.toml&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml:config.toml&#34; data-lang=&#34;toml:config.toml&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;social&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;soundcloud&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;アカウント名&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;social&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;platforms&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;soundcloud&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;themes/kiss配下のdata/theme.toml&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml:theme.toml&#34; data-lang=&#34;toml:theme.toml&#34;&gt;&lt;span class=&#34;nx&#34;&gt;soundcloud&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;https://soundcloud.com/&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;themes/kiss配下の/layouts/partials/svg/icons.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;    {{ else if eq &amp;#34;soundcloud&amp;#34; . }}
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;polyline&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;points&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;9 17 9 5 21 3 21 15&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;kissはアイコンに&lt;a href=&#34;https://feathericons.com/&#34; target=&#34;_blank&#34;&gt;FeatherIcons&lt;/a&gt;を採用していて、種類が豊富なので他の追加も出来そうです。&lt;br /&gt;
+全体的に、初見でも思い立ってから公開までスピーディーに進めることができました。&lt;/p&gt;
+
+&lt;h3 id=&#34;今後&#34;&gt;今後&lt;/h3&gt;
+
+&lt;p&gt;当面以下をコンテンツに据えようと思っています。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;プログラミング関係の知見や小ネタや学習の成果&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;趣味の音楽関係の記事(レビュー、アナライズ、Sonic Pi etc)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;日常の何か(大体飼い猫たちとの暮らしについてになるはず..)&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;最後に&#34;&gt;最後に&lt;/h3&gt;
+
+&lt;p&gt;あけましておめでとうございます！&lt;/p&gt;
+</content>
+      
+    </item>
+    
+  </channel>
+</rss>

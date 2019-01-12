@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ツナ缶同盟</title>
+    <link>https://blog.pumpkinpumpkin.tk/</link>
+    <description>Recent content on ツナ缶同盟</description>
+    <generator>Hugo - gohugo.io</generator>
+    <language>en</language>
+    <contact></contact>
+    <copyright>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2018</copyright>
+    
+        <atom:link href="https://blog.pumpkinpumpkin.tk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>お気持ち</title>
+      <link>https://blog.pumpkinpumpkin.tk/post/20181231/</link>
+      <pubDate>Mon, 31 Dec 2018 13:15:33 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://blog.pumpkinpumpkin.tk/post/20181231/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;経緯&#34;&gt;経緯&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;アウトプットちゃんとしたいが、プログラミングネタなら&lt;br /&gt;
+Qiitaに書けばいいと思うしそれ以外ならはてなブログがある。&lt;br /&gt;
+けれどどちらも更新できていない..&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;という情けない逡巡があり、、気ままに好きなことを投稿できる&lt;br /&gt;
+個人ブログ形式でまずは始めよう！と考えて始めました。&lt;/p&gt;
+
+&lt;h3 id=&#34;方式&#34;&gt;方式&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.nijohando.jp/post/building-custom-domain-blog-with-hugo-aws/&#34; target=&#34;_blank&#34;&gt;こちら&lt;/a&gt;の記事を参考にほぼそのままの流れで作成しています。&lt;br /&gt;
+hugoだとコマンド一発でローカル環境を立ち上げられ、更新も即時反映されるので&lt;br /&gt;
+導入から公開までが非常にお手軽です。&lt;br /&gt;
+themeはシンプルさに惹かれて&lt;a href=&#34;https://themes.gohugo.io/kiss/&#34; target=&#34;_blank&#34;&gt;こちら&lt;/a&gt;を選択しました。&lt;br /&gt;
+※小ネタですが、ソーシャルリンク(右上のアイコン)にSoundcloudを追加したかったため&lt;br /&gt;
+  デフォルトの構成に以下を追記しています。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;rootディレクトリ直下のconfig.toml&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml:config.toml&#34; data-lang=&#34;toml:config.toml&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;social&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;soundcloud&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;アカウント名&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;social&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;platforms&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;soundcloud&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;themes/kiss配下のdata/theme.toml&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml:theme.toml&#34; data-lang=&#34;toml:theme.toml&#34;&gt;&lt;span class=&#34;nx&#34;&gt;soundcloud&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;https://soundcloud.com/&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;themes/kiss配下の/layouts/partials/svg/icons.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;    {{ else if eq &amp;#34;soundcloud&amp;#34; . }}
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;polyline&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;points&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;9 17 9 5 21 3 21 15&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;kissはアイコンに&lt;a href=&#34;https://feathericons.com/&#34; target=&#34;_blank&#34;&gt;FeatherIcons&lt;/a&gt;を採用していて、種類が豊富なので他の追加も出来そうです。&lt;/p&gt;
+
+&lt;h3 id=&#34;今後&#34;&gt;今後&lt;/h3&gt;
+
+&lt;p&gt;当面以下をコンテンツに据えようと思っています。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;プログラミング関係の知見や小ネタや学習の成果&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;趣味の音楽関係の記事(レビュー、アナライズ、Sonic Pi etc)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;日常の何か(大体飼い猫たちとの暮らしについてになるはず..)&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;血迷って途中から低温で肉塊を茹で出すかもしれませんが、やっていく気持ち&lt;/p&gt;
+</content>
+      
+    </item>
+    
+  </channel>
+</rss>
