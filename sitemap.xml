@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mogimogitomato.github.io/post/20190114/</loc>
+    <lastmod>2019-01-14T15:42:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mogimogitomato.github.io/post/20190104_02/</loc>
     <lastmod>2019-01-04T23:33:54+09:00</lastmod>
   </url>
@@ -37,7 +42,7 @@
   
   <url>
     <loc>https://mogimogitomato.github.io/post/</loc>
-    <lastmod>2019-01-04T23:33:54+09:00</lastmod>
+    <lastmod>2019-01-14T15:42:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -49,7 +54,13 @@
   
   <url>
     <loc>https://mogimogitomato.github.io/</loc>
-    <lastmod>2019-01-04T23:33:54+09:00</lastmod>
+    <lastmod>2019-01-14T15:42:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/tags/%E6%8A%80%E8%A1%93%E6%9B%B8/</loc>
+    <lastmod>2019-01-14T15:42:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -7,10 +7,38 @@
     <generator>Hugo - gohugo.io</generator>
     <language>en</language>
     <contact></contact>
-    <copyright>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2018</copyright>
+    <copyright>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2019</copyright>
     
         <atom:link href="https://mogimogitomato.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wizard zinesが面白い</title>
+      <link>https://mogimogitomato.github.io/post/20190114/</link>
+      <pubDate>Mon, 14 Jan 2019 15:42:00 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20190114/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;Twitter経由で面白いサイトを知りました。&lt;br /&gt;
+Julia Evans(&lt;a href=&#34;https://twitter.com/b0rk&#34; target=&#34;_blank&#34;&gt;@b0rk&lt;/a&gt;)さんがまとめている
+&lt;a href=&#34;https://wizardzines.com/&#34; target=&#34;_blank&#34;&gt; Wizard zines &lt;/a&gt;というサイトで、&lt;br /&gt;
+開発現場における知っ得情報がpdfにまとめられています。&lt;br /&gt;
+(カラーは有償、モノクロは無償)&lt;/p&gt;
+
+&lt;p&gt;有償版の方はまだ読めてないですが、システムの状態解析手法(perfマジヤバい)や&lt;br /&gt;
+ネットワークについて、初学者への心得など幅広く取り上げられていてどれもためになります。&lt;br /&gt;
+ZINEの体裁を取っているのが特徴で、開発関係の記事というと多くは&lt;br /&gt;
+文章 + コード + ターミナルなど実際の画面 で完結するものが多いと思うんですが&lt;br /&gt;
+こちらのZINEでは棒人間(！)や手書きの文章で丁寧な解説がされています。&lt;/p&gt;
+
+&lt;p&gt;テーマごとに表紙があって手書き解説があって..という小冊子の技術本は&lt;br /&gt;
+気持ちも盛り上がるしとっつきやすく、読んでいて理解も早まる感があります。&lt;/p&gt;
+
+&lt;p&gt;技術書典が大盛況な昨今、Web上のZINE頒布も増えていくのかな、と思ったり。&lt;/p&gt;
+</content>
+      
+    </item>
     
     <item>
       <title>Metaltov</title>
@@ -61,7 +89,7 @@ rootディレクトリのconfig.tomlにある「googleAnalytics = &amp;ldquo;&am
 
 &lt;p&gt;Hugoで提供しているテンプレートがanalytics.jsだから、というのが根本的な理由でした。&lt;br /&gt;
 この件は既にIssuesでやり取りされていて(&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4479&#34; target=&#34;_blank&#34;&gt;Update the internal GA template #4479&lt;/a&gt;)、&lt;br /&gt;
-Hugoのv0.55の&lt;a href=&#34;https://github.com/gohugoio/hugo/milestone/87&#34; target=&#34;_blank&#34;&gt;マイルストーン&lt;/a&gt;で以下が含まれていたので今後テンプレート側が変更されそうです。&lt;br /&gt;
+Hugoのv0.55の&lt;a href=&#34;https://github.com/gohugoio/hugo/milestone/87&#34; target=&#34;_blank&#34;&gt;マイルストーン&lt;/a&gt;でテンプレートをgtag.jsに変更するissueが含まれているので今後変更されそうです。&lt;br /&gt;
 (&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4327&#34; target=&#34;_blank&#34;&gt;Update Google Analytics internal template to new style(gtag.js) #4327&lt;/a&gt;)&lt;br /&gt;
 本記事では自前で内部テンプレートを作成する手法を記載していますが、&lt;br /&gt;
 今後変更に併せ公式のテンプレートを使用した方が良さそうです。&lt;/p&gt;

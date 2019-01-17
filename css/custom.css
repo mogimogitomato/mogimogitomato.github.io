@@ -1,5 +1,5 @@
 .code, .highlight pre, code, pre code {
-  font-family: "inconsolata", Menlo, Monaco, "Courier New",
+  font-family: 'Fira Mono', 'Inconsolata', Menlo, Monaco, 'Courier New',
   monospace;  font-size: 1.2rem;
   background-color: #2e3440;
   color: #d8dee9;
