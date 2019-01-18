@@ -288,8 +288,8 @@ button,
 input,
 select,
 textarea {
-  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro",
-    "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+  font-family: "ヒラギノ角ゴ Pro", "メイリオ", "游ゴシック", YuGothic, 
+    "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
 }
 code,
 pre {
