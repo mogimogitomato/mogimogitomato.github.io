@@ -288,8 +288,8 @@ button,
 input,
 select,
 textarea {
-  font-family: "ヒラギノ角ゴ Pro", "メイリオ", "游ゴシック",　
-  "Hiragino Kaku Gothic Pro", Meiryo, YuGothic,　sans-serif;
+  font-family: YakuHanJP, "メイリオ", "游ゴシック", "ヒラギノ角ゴ Pro",
+  Meiryo, YuGothic, "Hiragino Kaku Gothic Pro", sans-serif;
 }
 code,
 pre {
@@ -5568,7 +5568,7 @@ html {
 }
 .content h1:not(:first-child),
 .content h2:not(:first-child),
-.content h3:not(:first-child),
+.content h3,
 .content h4:not(:first-child),
 .content h5:not(:first-child),
 .content h6:not(:first-child),
