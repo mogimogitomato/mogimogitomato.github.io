@@ -11,6 +11,29 @@
   color: #bf616a;
   text-decoration: none;
 }
+.title a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.title a::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .1011s;
+}
+.title a:hoover {
+  border-bottom: 0px;
+}
+.title a:hover::after {
+  transform: scale(1, 1);
+}
 .highlight { color: #e5e9f0; background-color: #2e3440; }
 .highlight .c { color: #616e88; } /* Comment */
 .highlight .err, .highlight .g { color: #586e75; } /* Error */

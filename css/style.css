@@ -288,8 +288,8 @@ button,
 input,
 select,
 textarea {
-  font-family: "ヒラギノ角ゴ Pro", "メイリオ", "游ゴシック", YuGothic, 
-    "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+  font-family: "ヒラギノ角ゴ Pro", "メイリオ", "游ゴシック",　
+  "Hiragino Kaku Gothic Pro", Meiryo, YuGothic,　sans-serif;
 }
 code,
 pre {
@@ -2063,10 +2063,6 @@ a.box:active {
 .title em,
 .title span {
   font-weight: 300;
-}
-.subtitle a:hover,
-.title a:hover {
-  border-bottom: 1px solid;
 }
 .subtitle strong,
 .title strong {
