@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Music on ツナ缶同盟</title>
+    <link>https://mogimogitomato.github.io/categories/music/</link>
+    <description>Recent content in Music on ツナ缶同盟</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
+    <lastBuildDate>Sun, 20 Jan 2019 17:58:25 +0900</lastBuildDate>
+    
+	<atom:link href="https://mogimogitomato.github.io/categories/music/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>私的フィメールフォーク選</title>
+      <link>https://mogimogitomato.github.io/post/20190120/</link>
+      <pubDate>Sun, 20 Jan 2019 17:58:25 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20190120/</guid>
+      <description>20代の前半はフリージャズか一部のアニソンを集中的に聴き漁って生きていたんですが、 20代の後半を迎えた今は女性のギター弾き語り曲をたくさん聴</description>
+    </item>
+    
+    <item>
+      <title>Metaltov</title>
+      <link>https://mogimogitomato.github.io/post/20190104_02/</link>
+      <pubDate>Fri, 04 Jan 2019 23:33:54 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20190104_02/</guid>
+      <description>  ※Original transcription by Eric Schmidt   </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -28,6 +28,23 @@
   </url>
   
   <url>
+    <loc>https://mogimogitomato.github.io/archives/2019-01/</loc>
+    <lastmod>2019-01-20T17:58:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/</loc>
+    <lastmod>2019-01-20T17:58:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mogimogitomato.github.io/tags/hugo/</loc>
     <lastmod>2019-01-04T18:32:41+09:00</lastmod>
     <priority>0</priority>
@@ -46,7 +63,25 @@
   </url>
   
   <url>
+    <loc>https://mogimogitomato.github.io/categories/music/</loc>
+    <lastmod>2019-01-20T17:58:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mogimogitomato.github.io/post/</loc>
+    <lastmod>2019-01-20T17:58:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/categories/programming/</loc>
+    <lastmod>2019-01-14T15:42:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/tags/review/</loc>
     <lastmod>2019-01-20T17:58:25+09:00</lastmod>
     <priority>0</priority>
   </url>

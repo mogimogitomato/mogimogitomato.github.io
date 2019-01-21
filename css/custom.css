@@ -26,13 +26,24 @@
   background: #333;
   transform: scale(0, 1);
   transform-origin: left top;
-  transition: transform .1011s;
+  transition: transform .4s;
 }
 .title a:hoover {
-  border-bottom: 0px;
+  border-bottom: none;
 }
 .title a:hover::after {
   transform: scale(1, 1);
+}
+.nav-left h2 {
+  display: inline-block;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.nav-left h2:hover {
+    transform: translateY(-3px);
+    color: lighten(#03c, 15%);
 }
 .highlight { color: #e5e9f0; background-color: #2e3440; }
 .highlight .c { color: #616e88; } /* Comment */
