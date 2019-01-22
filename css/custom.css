@@ -48,8 +48,8 @@
 .highlight { color: #e5e9f0; background-color: #2e3440; }
 .highlight .c { color: #616e88; } /* Comment */
 .highlight .err, .highlight .g { color: #586e75; } /* Error */
-.highlight .k { color: 1#a3be8c; } /* Keyword */
-.highlight .l, .highlight .n { color: #586e75; }
+.highlight .k { color: #a3be8c; } /* Keyword */
+.highlight .l, .highlight .n { color: #88c0d0; }
 .highlight .o { color: #d8dee9; }
 .highlight .p { color: #d8dee9; }
 .highlight .cm { color: #616e88; } /* Comment.Multiline */
