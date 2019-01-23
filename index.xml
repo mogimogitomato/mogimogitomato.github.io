@@ -13,6 +13,69 @@
     
     
     <item>
+      <title>Clapping Music 三本締め編</title>
+      <link>https://mogimogitomato.github.io/post/20190123/</link>
+      <pubDate>Wed, 23 Jan 2019 07:51:08 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20190123/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;飲み会の終わりに行われる日本の奇習、三本締め。&lt;br /&gt;
+由来も何も分からず周りに合わせて手拍子を打ちながら、こう思った事はないだろうか。&lt;br /&gt;
+「あぁ.. Clapping Musicがやりたい&amp;hellip;」&lt;br /&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/lzkOFJMI5i8&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;余裕っすよ！やってやりましょうよ！！！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Sonic Piで以下を実行します。&lt;br /&gt;
+clap_arrayは三本締めのパターンの配列で、&lt;br /&gt;
+perc_snapは要素を先頭から順に繰り返し=通常の三本締めパターンを打ち、&lt;br /&gt;
+perc_snap2は8周するごとに次の要素を先頭にします。&lt;br /&gt;
+この動作を配列の要素数 + 1回繰り返し、最後は慣例に倣って&lt;br /&gt;
+拍手で終了します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-rb&#34; data-lang=&#34;rb&#34;&gt;&lt;span class=&#34;n&#34;&gt;use_bpm&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;load_sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;load_sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap2&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;clap_array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clap_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cycle&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;
+  &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;beat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clap_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;beat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;pan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clap_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cycle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;beat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;sx&#34;&gt;% length] &lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Cycle: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cycle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; Reps: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reps&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; Beat: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;beat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+
+&lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;rand&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap2&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;rand&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;SoundCloudに実行結果を上げました。&lt;/p&gt;
+
+&lt;iframe width=&#34;100%&#34; height=&#34;300&#34; scrolling=&#34;no&#34; frameborder=&#34;no&#34; allow=&#34;autoplay&#34; src=&#34;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/563430843&amp;color=%239cc4a4&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;今から練習して新学期に差をつけよう！！！&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>私的フィメールフォーク選</title>
       <link>https://mogimogitomato.github.io/post/20190120/</link>
       <pubDate>Sun, 20 Jan 2019 17:58:25 +0900</pubDate>

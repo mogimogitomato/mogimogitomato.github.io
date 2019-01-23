@@ -16,10 +16,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Clapping Music 三三七拍子編 | ツナ缶同盟</title>
+<title>Clapping Music 三本締め編 | ツナ缶同盟</title>
 
-<meta property='og:title' content='Clapping Music 三三七拍子編 - ツナ缶同盟'>
-<meta property='og:description' content='飲み会の終わりに行われる日本の奇習、三三七拍子。 由来も何も分からず周りに合わせて拍子を打ちながら、こう思った事はないだろうか。 「あぁ.. Clapping M'>
+<meta property='og:title' content='Clapping Music 三本締め編 - ツナ缶同盟'>
+<meta property='og:description' content='飲み会の終わりに行われる日本の奇習、三本締め。 由来も何も分からず周りに合わせて手拍子を打ちながら、こう思った事はないだろうか。 「あぁ.. Clapping M'>
 <meta property='og:url' content='https://mogimogitomato.github.io/post/20190123/'>
 <meta property='og:site_name' content='ツナ缶同盟'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Sonic Pi'><meta property='article:published_time' content='2019-01-23T07:51:08&#43;09:00'/><meta property='article:modified_time' content='2019-01-23T07:51:08&#43;09:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@freefish22'><meta name='twitter:creator' content='@freefish22'>
@@ -112,21 +112,26 @@
       
     </div>
     <h2 class="subtitle is-6">January 23, 2019</h2>
-    <h1 class="title">Clapping Music 三三七拍子編</h1>
+    <h1 class="title">Clapping Music 三本締め編</h1>
     
     <div class="content">
-      <p>飲み会の終わりに行われる日本の奇習、三三七拍子。<br />
-由来も何も分からず周りに合わせて拍子を打ちながら、こう思った事はないだろうか。<br />
-「あぁ.. Clapping Musicがやりたい&hellip;」</p>
+      <p>飲み会の終わりに行われる日本の奇習、三本締め。<br />
+由来も何も分からず周りに合わせて手拍子を打ちながら、こう思った事はないだろうか。<br />
+「あぁ.. Clapping Musicがやりたい&hellip;」<br />
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/lzkOFJMI5i8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
 
 <p>余裕っすよ！やってやりましょうよ！！！</p>
 
 <hr />
 
 <p>Sonic Piで以下を実行します。<br />
-clap_arrayは三三七拍子のパターンの配列で、<br />
-perc_snapは通常の三三七拍子を繰り返し、<br />
-perc_snap2は4周するごとに次の要素を先頭にします。<br />
+clap_arrayは三本締めのパターンの配列で、<br />
+perc_snapは要素を先頭から順に繰り返し=通常の三本締めパターンを打ち、<br />
+perc_snap2は8周するごとに次の要素を先頭にします。<br />
 この動作を配列の要素数 + 1回繰り返し、最後は慣例に倣って<br />
 拍手で終了します。</p>
 <div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">use_bpm</span> <span class="mi">300</span>
@@ -138,11 +143,11 @@ perc_snap2は4周するごとに次の要素を先頭にします。<br />
 <span class="n">length</span> <span class="o">=</span> <span class="n">clap_array</span><span class="o">.</span><span class="n">length</span>
 
 <span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
-  <span class="mi">4</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+  <span class="mi">8</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
     <span class="n">length</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">beat</span><span class="o">|</span>
       <span class="n">sample</span> <span class="ss">:perc_snap</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span> <span class="o">-</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="n">beat</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
       <span class="n">sample</span> <span class="ss">:perc_snap2</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span>  <span class="mi">0</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="p">(</span><span class="n">cycle</span> <span class="o">+</span> <span class="n">beat</span><span class="p">)</span> <span class="sx">% length] </span> <span class="o">==</span> <span class="mi">1</span>
-      <span class="nb">puts</span> <span class="s2">&#34;Cycle: </span><span class="si">#{</span><span class="n">cycle</span><span class="si">}</span><span class="s2"> Beat: </span><span class="si">#{</span><span class="n">beat</span><span class="si">}</span><span class="s2">&#34;</span>
+      <span class="nb">puts</span> <span class="s2">&#34;Cycle: </span><span class="si">#{</span><span class="n">cycle</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> Reps: </span><span class="si">#{</span><span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> Beat: </span><span class="si">#{</span><span class="n">beat</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&#34;</span>
       <span class="nb">sleep</span> <span class="mi">1</span>
     <span class="k">end</span>
   <span class="k">end</span>
@@ -158,7 +163,7 @@ perc_snap2は4周するごとに次の要素を先頭にします。<br />
 <span class="k">end</span></code></pre></div>
 <p>SoundCloudに実行結果を上げました。</p>
 
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/563139507&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/563430843&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 
 <p>今から練習して新学期に差をつけよう！！！</p>
 
