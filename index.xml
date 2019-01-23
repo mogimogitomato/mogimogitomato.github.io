@@ -58,7 +58,7 @@ perc_snap2は8周するごとに次の要素を先頭にします。&lt;br /&gt;
   &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
 
-&lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
 
 &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
   &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap&lt;/span&gt;
