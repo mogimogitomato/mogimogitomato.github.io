@@ -39,7 +39,7 @@ perc_snapは要素を先頭から順に繰り返し=通常の三本締めパタ�
 perc_snap2は8周するごとに次の要素を先頭にします。&lt;br /&gt;
 この動作を配列の要素数 + 1回繰り返し、最後は慣例に倣って&lt;br /&gt;
 拍手で終了します。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-rb&#34; data-lang=&#34;rb&#34;&gt;&lt;span class=&#34;n&#34;&gt;use_bpm&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-rb&#34; data-lang=&#34;rb&#34;&gt;&lt;span class=&#34;n&#34;&gt;use_bpm&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;400&lt;/span&gt;
 
 &lt;span class=&#34;n&#34;&gt;load_sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;load_sample&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:perc_snap2&lt;/span&gt;
