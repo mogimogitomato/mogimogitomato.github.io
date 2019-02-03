@@ -1,8 +1,8 @@
 {
   "name": "ツナ缶同盟",
   "short_name": "tuna-can-union",
-  "theme_color": "#95cfb7",
-  "background_color": "#95cfb7",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
