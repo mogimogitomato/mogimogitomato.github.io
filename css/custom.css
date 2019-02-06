@@ -37,16 +37,13 @@
   box-shadow: inset 0 0 0 2px #fff;
 }
 .sns_button + .sns_button {
-  margin: 0 0 0 12px;
+  margin: 0 0 0 16px;
 }
 .twitter:hover a {
   color: #1B95E0;
 }
 .facebook:hover a {
   color: #3B5999;
-}
-.google:hover a {
-  color: #dd4b39;
 }
 .instagram:hover a {
   color: #2b5c84;
