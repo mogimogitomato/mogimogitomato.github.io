@@ -133,8 +133,8 @@
 便利ですが、愛する駿河屋では商品単位でしか通知を受け取ることができず、駿河屋の登録履歴にない<br />
 新規入荷した商品の有無は都度検索してチェックする必要がありました。<br />
 先日<a href="https://github.com/GoogleChrome/puppeteer" target="_blank">puppeteer</a>(Chromiumのヘッドレスブラウザを実行するためのnodeライブラリ)を知り、<br />
-このライブラリを使って検索行為を自動化して商品情報を取得できるか試行してみました。<br />
-※尚、概要やセットアップ手順などの詳細はリンクの公式サイトをご参照下さい。</p>
+検索行為を自動化して商品情報を取得できるか試してみました。<br />
+※puppeteerの概要やセットアップ手順などの詳細はリンクの公式サイトを参照下さい。</p>
 
 <h2 id="結果">結果</h2>
 
@@ -150,8 +150,10 @@
   <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">TARGET_URL</span><span class="p">)</span>
   <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;input[name=search_word]&#39;</span><span class="p">,</span> <span class="nx">search_word</span><span class="p">)</span>
   <span class="k">const</span> <span class="nx">searchElement</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[id=btn]&#39;</span><span class="p">)</span>
-  <span class="kr">await</span> <span class="nx">searchElement</span><span class="p">.</span><span class="nx">click</span><span class="p">()</span>
-  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">waitForNavigation</span><span class="p">()</span>
+  <span class="kr">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+    <span class="nx">page</span><span class="p">.</span><span class="nx">waitForNavigation</span><span class="p">({</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s2">&#34;domcontentloaded&#34;</span><span class="p">}),</span>
+    <span class="nx">searchElement</span><span class="p">.</span><span class="nx">click</span><span class="p">()</span>
+  <span class="p">])</span>
   <span class="k">const</span> <span class="nx">scrapingData</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="k">const</span> <span class="nx">dataList</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">const</span> <span class="nx">itemList</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div.item&#34;</span><span class="p">))</span>
