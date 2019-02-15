@@ -84,7 +84,7 @@
   transform-origin: left top;
   transition: transform .4s;
 }
-.title a:hoover {
+.title a:hover {
   border-bottom: none;
 }
 .title a:hover::after {
@@ -100,6 +100,9 @@
 .nav-left h2:hover {
     transform: translateY(-3px);
     color: lighten(#03c, 15%);
+}
+.content::selection {
+  background-color: #f5e51b;
 }
 .highlight { color: #e5e9f0; background-color: #2e3440; }
 .highlight .c { color: #616e88; } /* Comment */
