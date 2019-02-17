@@ -125,7 +125,7 @@
 </div>
 
 </br>
-以下本題です。</p>
+<p>以下本題です。</p></p>
 
 <h2 id="動機">動機</h2>
 
@@ -147,7 +147,7 @@
 <span class="kr">async</span> <span class="kd">function</span> <span class="nx">getScrapingData</span><span class="p">(</span><span class="nx">search_word</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span><span class="nx">headless</span><span class="o">:</span><span class="kc">true</span><span class="p">})</span>
   <span class="k">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>
-  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">TARGET_URL</span><span class="p">)</span>
+  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">TARGET_URL</span><span class="p">,</span> <span class="p">{</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s1">&#39;networkidle2&#39;</span><span class="p">})</span>
   <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;input[name=search_word]&#39;</span><span class="p">,</span> <span class="nx">search_word</span><span class="p">)</span>
   <span class="k">const</span> <span class="nx">searchElement</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[id=btn]&#39;</span><span class="p">)</span>
   <span class="kr">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
