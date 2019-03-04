@@ -451,7 +451,7 @@ rootディレクトリのconfig.tomlにある「googleAnalytics = &amp;ldquo;&am
 
 &lt;p&gt;Hugoで提供しているテンプレートがanalytics.jsだから、というのが根本的な理由でした。&lt;br /&gt;
 この件は既にIssuesでやり取りされていて(&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4479&#34; target=&#34;_blank&#34;&gt;Update the internal GA template #4479&lt;/a&gt;)、&lt;br /&gt;
-Hugoのv0.55の&lt;a href=&#34;https://github.com/gohugoio/hugo/milestone/87&#34; target=&#34;_blank&#34;&gt;マイルストーン&lt;/a&gt;でテンプレートをgtag.jsに変更するissueが含まれているので今後変更されそうです。&lt;br /&gt;
+Hugoの&lt;a href=&#34;https://github.com/gohugoio/hugo/milestone/90&#34; target=&#34;_blank&#34;&gt;v0.56のマイルストーン&lt;/a&gt;でテンプレートをgtag.jsに変更するissueが含まれているので今後変更されそうです。
 (&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4327&#34; target=&#34;_blank&#34;&gt;Update Google Analytics internal template to new style(gtag.js) #4327&lt;/a&gt;)&lt;br /&gt;
 本記事では自前で内部テンプレートを作成する手法を記載していますが、&lt;br /&gt;
 今後変更に併せ公式のテンプレートを使用した方が良さそうです。&lt;/p&gt;

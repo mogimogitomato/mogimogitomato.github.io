@@ -101,9 +101,6 @@
     transform: translateY(-3px);
     color: lighten(#03c, 15%);
 }
-.content::selection {
-  background-color: #f5e51b;
-}
 .highlight { color: #e5e9f0; background-color: #2e3440; }
 .highlight .c { color: #616e88; } /* Comment */
 .highlight .err, .highlight .g { color: #586e75; } /* Error */
