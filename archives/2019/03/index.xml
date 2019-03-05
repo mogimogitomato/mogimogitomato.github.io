@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sonic Pi on ツナ缶同盟</title>
-    <link>https://mogimogitomato.github.io/tags/sonic-pi/</link>
-    <description>Recent content in Sonic Pi on ツナ缶同盟</description>
+    <title>2019/03 on ツナ缶同盟</title>
+    <link>https://mogimogitomato.github.io/archives/2019/03/</link>
+    <description>Recent content in 2019/03 on ツナ缶同盟</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
     <lastBuildDate>Wed, 06 Mar 2019 01:21:36 +0900</lastBuildDate>
     
-	<atom:link href="https://mogimogitomato.github.io/tags/sonic-pi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mogimogitomato.github.io/archives/2019/03/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://mogimogitomato.github.io/post/20190306/</guid>
       <description>Hey Joe !?!?!?!?!?!?!? DC/PRGのHey Joe打ち込んでみましたァ〜〜〜 !?!?!?!?!?!?!?!?!?!?!?!?!?!? やってみましょう。 やる Sonic Piで以下を実行します。 ##| _ _ _ ##| | | | | ___ _ _ | | ___ ___</description>
-    </item>
-    
-    <item>
-      <title>Clapping Music 三本締め編</title>
-      <link>https://mogimogitomato.github.io/post/20190123/</link>
-      <pubDate>Wed, 23 Jan 2019 07:51:08 +0900</pubDate>
-      
-      <guid>https://mogimogitomato.github.io/post/20190123/</guid>
-      <description>飲み会の終わりに行われる日本の奇習、三本締め。 由来も何も分からず周りに合わせて手拍子を打ちながら、こう思った事はないだろうか。 「あぁ.. Clapping M</description>
     </item>
     
   </channel>
