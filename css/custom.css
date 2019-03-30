@@ -1,5 +1,6 @@
 .sns_parent p {
   font-family: 'Bad Script', cursive;
+  font-display: swap;
   font-size: 24px;
   margin-bottom: 10px;
 }
