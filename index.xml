@@ -12,6 +12,32 @@
     
     
     <item>
+      <title>VSCodeでdiffを取る</title>
+      <link>https://mogimogitomato.github.io/post/20190509/</link>
+      <pubDate>Thu, 09 May 2019 00:03:12 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20190509/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;地味な内容だけれど今まで知らず、よく使いそうなのでメモ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;目的&lt;br /&gt;
+開いているフォルダ内のファイルA, ファイルBを比較したい&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;手順&lt;br /&gt;
+VSCodeの左ペインからファイルAを選択し右クリック&lt;br /&gt;
+→[比較対象の選択]をクリック&lt;br /&gt;
+ファイルBを選択し右クリック&lt;br /&gt;
+→[選択項目と比較]をクリック&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;→コード編集エリアに選択したファイルの比較結果が表示される。&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>コードで感じるHey Joe</title>
       <link>https://mogimogitomato.github.io/post/20190306/</link>
       <pubDate>Wed, 06 Mar 2019 01:21:36 +0900</pubDate>

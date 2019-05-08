@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
-    <lastBuildDate>Wed, 06 Mar 2019 01:21:36 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 09 May 2019 00:03:12 +0900</lastBuildDate>
     
 	<atom:link href="https://mogimogitomato.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>VSCodeでdiffを取る</title>
+      <link>https://mogimogitomato.github.io/post/20190509/</link>
+      <pubDate>Thu, 09 May 2019 00:03:12 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20190509/</guid>
+      <description>地味な内容だけれど今まで知らず、よく使いそうなのでメモ。 目的 開いているフォルダ内のファイルA, ファイルBを比較したい 手順 VSCodeの左ペイ</description>
+    </item>
     
     <item>
       <title>コードで感じるHey Joe</title>

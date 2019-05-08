@@ -3,6 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mogimogitomato.github.io/categories/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/post/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/categories/programming/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/tags/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/tags/vscode/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/post/20190509/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/</loc>
+    <lastmod>2019-05-09T00:03:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mogimogitomato.github.io/archives/2019/03/</loc>
     <lastmod>2019-03-06T01:21:36+09:00</lastmod>
     <priority>0</priority>
@@ -15,25 +56,7 @@
   </url>
   
   <url>
-    <loc>https://mogimogitomato.github.io/categories/</loc>
-    <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/categories/music/</loc>
-    <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/post/</loc>
-    <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/categories/programming/</loc>
     <lastmod>2019-03-06T01:21:36+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -45,20 +68,8 @@
   </url>
   
   <url>
-    <loc>https://mogimogitomato.github.io/tags/</loc>
-    <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/post/20190306/</loc>
     <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/</loc>
-    <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
