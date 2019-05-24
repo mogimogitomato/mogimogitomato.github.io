@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
-    <lastBuildDate>Thu, 09 May 2019 00:03:12 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 23:11:33 +0900</lastBuildDate>
     
 	<atom:link href="https://mogimogitomato.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git logから特定コミットの出力を抑止する</title>
+      <link>https://mogimogitomato.github.io/post/20190524/</link>
+      <pubDate>Fri, 24 May 2019 23:11:33 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20190524/</guid>
+      <description>PHPでの開発中に製造工程の追加行数、削除行数を一覧化する必要が出たので、 以下の要領でファイル単位での各行数とその合計数を出力しました。 #!/bin/bash ##</description>
+    </item>
     
     <item>
       <title>VSCodeでdiffを取る</title>

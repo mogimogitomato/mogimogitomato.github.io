@@ -12,6 +12,53 @@
     
     
     <item>
+      <title>git logから特定コミットの出力を抑止する</title>
+      <link>https://mogimogitomato.github.io/post/20190524/</link>
+      <pubDate>Fri, 24 May 2019 23:11:33 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20190524/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;PHPでの開発中に製造工程の追加行数、削除行数を一覧化する必要が出たので、&lt;br /&gt;
+以下の要領でファイル単位での各行数とその合計数を出力しました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## ライブラリやFW、テストコードは除外し、phpファイルの一覧をフルパスで取得&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;file_list&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;find . -type d &lt;span class=&#34;se&#34;&gt;\(&lt;/span&gt; -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;vendor&amp;#39;&lt;/span&gt; -o -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;tests&amp;#39;&lt;/span&gt; -o -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;system&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\)&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;           -prune -o -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.php&amp;#39;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## phpファイル単位でgit logを出力&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; file in &lt;span class=&#34;nv&#34;&gt;$file_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+  &lt;span class=&#34;nv&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;git log --numstat --pretty&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%H&amp;#34;&lt;/span&gt; --no-merges &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;NF==3 {plus+=$1; minus+=$2} \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;               END {printf(&amp;#34;%d (+%d, -%d)\n&amp;#34;, plus+minus, plus, minus)}&amp;#39;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; :&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;けれど、途中コードフォーマットの修正を何回か行っており、それらのコミットについては&lt;br /&gt;
+カウント対象から除外したかったので思案。&lt;/p&gt;
+
+&lt;p&gt;gitの公式リファレンスを見ると、&lt;code&gt;git log&lt;/code&gt;のオプションで&lt;code&gt;--invert-grep&lt;/code&gt;というのが指定できる様。&lt;br /&gt;
+&lt;a href=&#34;https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep&#34; target=&#34;_blank&#34;&gt;https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;--grep=&amp;lt;pattern&amp;gt;&lt;/code&gt;オプションで指定したパターンにlogメッセージが一致しないコミットに出力を制限する、との事。&lt;br /&gt;
+コミット時のメッセージに対応タスクのIDを含むルールとしていたので、以下で取り直し無事特定コミットを&lt;br /&gt;
+行数カウントから除外する事ができました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## ライブラリやFW、テストコードは除外し、phpファイルの一覧をフルパスで取得&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;file_list&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;find . -type d &lt;span class=&#34;se&#34;&gt;\(&lt;/span&gt; -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;vendor&amp;#39;&lt;/span&gt; -o -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;tests&amp;#39;&lt;/span&gt; -o -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;system&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\)&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;           -prune -o -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.php&amp;#39;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## phpファイル単位でgit logを出力&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; file in &lt;span class=&#34;nv&#34;&gt;$file_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+  &lt;span class=&#34;nv&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;git log --invert-grep --grep&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;タスクID&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;                  --numstat --pretty&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%H&amp;#34;&lt;/span&gt; --no-merges &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;NF==3 {plus+=$1; minus+=$2} \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;               END {printf(&amp;#34;%d (+%d, -%d)\n&amp;#34;, plus+minus, plus, minus)}&amp;#39;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$file&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; :&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+      
+    </item>
+    
+    <item>
       <title>VSCodeでdiffを取る</title>
       <link>https://mogimogitomato.github.io/post/20190509/</link>
       <pubDate>Thu, 09 May 2019 00:03:12 +0900</pubDate>
