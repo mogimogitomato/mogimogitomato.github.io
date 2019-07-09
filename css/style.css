@@ -291,6 +291,7 @@ textarea {
   font-family: YakuHanJP, "メイリオ", "游ゴシック", "ヒラギノ角ゴ Pro",
   Meiryo, YuGothic, "Hiragino Kaku Gothic Pro", sans-serif;
   font-feature-settings : "palt";
+  font-display: swap;
 }
 code,
 pre {
