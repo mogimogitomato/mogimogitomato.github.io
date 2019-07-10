@@ -12,6 +12,67 @@
     
     
     <item>
+      <title>さよならjhat</title>
+      <link>https://mogimogitomato.github.io/post/20190710/</link>
+      <pubDate>Wed, 10 Jul 2019 10:29:48 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20190710/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;jhatコマンドを叩いたところ、そんなもの無いと言われた&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ jhat
+Unable to locate an executable at &amp;quot;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin/jhat&amp;quot; (-1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;無い..&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls -l &amp;quot;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin&amp;quot;
+.rwxr-xr-x@  22k user  2 4 17:23 jaotc
+.rwxr-xr-x@  18k user  2 4 17:23 jar
+.rwxr-xr-x@  18k user  2 4 17:23 jarsigner
+.rwxr-xr-x@  18k user  2 4 17:23 java
+.rwxr-xr-x@  18k user  2 4 17:23 javac
+.rwxr-xr-x@  18k user  2 4 17:23 javadoc
+.rwxr-xr-x@  18k user  2 4 17:23 javap
+.rwxr-xr-x@  18k user  2 4 17:23 jcmd
+.rwxr-xr-x@  18k user  2 4 17:23 jconsole
+.rwxr-xr-x@  18k user  2 4 17:23 jdb
+.rwxr-xr-x@  18k user  2 4 17:23 jdeprscan
+.rwxr-xr-x@  18k user  2 4 17:23 jdeps
+.rwxr-xr-x@  18k user  2 4 17:23 jfr
+.rwxr-xr-x@  18k user  2 4 17:23 jhsdb
+.rwxr-xr-x@  18k user  2 4 17:23 jimage
+.rwxr-xr-x@  18k user  2 4 17:23 jinfo
+.rwxr-xr-x@  18k user  2 4 17:23 jjs
+.rwxr-xr-x@  18k user  2 4 17:23 jlink
+.rwxr-xr-x@  18k user  2 4 17:23 jmap
+.rwxr-xr-x@  18k user  2 4 17:23 jmod
+.rwxr-xr-x@  18k user  2 4 17:23 jps
+.rwxr-xr-x@  18k user  2 4 17:23 jrunscript
+.rwxr-xr-x@  18k user  2 4 17:23 jshell
+.rwxr-xr-x@  18k user  2 4 17:23 jstack
+.rwxr-xr-x@  18k user  2 4 17:23 jstat
+.rwxr-xr-x@  18k user  2 4 17:23 jstatd
+.rwxr-xr-x@  18k user  2 4 17:23 keytool
+.rwxr-xr-x@  18k user  2 4 17:23 pack200
+.rwxr-xr-x@  18k user  2 4 17:23 rmic
+.rwxr-xr-x@  18k user  2 4 17:23 rmid
+.rwxr-xr-x@  18k user  2 4 17:23 rmiregistry
+.rwxr-xr-x@  18k user  2 4 17:23 serialver
+.rwxr-xr-x@ 103k user  2 4 17:23 unpack200
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どうやら以下で変更が入って、Java SE 9以降は削除されてるっぽい.&lt;br /&gt;
+&lt;a href=&#34;https://bugs.openjdk.java.net/browse/JDK-8059039&#34; target=&#34;_blank&#34;&gt;https://bugs.openjdk.java.net/browse/JDK-8059039&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これからはMATを使うのがよさそうです.&lt;br /&gt;
+&lt;a href=&#34;http://www.eclipse.org/mat/&#34; target=&#34;_blank&#34;&gt;http://www.eclipse.org/mat/&lt;/a&gt;&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>git logから特定コミットの出力を抑止する</title>
       <link>https://mogimogitomato.github.io/post/20190524/</link>
       <pubDate>Fri, 24 May 2019 23:11:33 +0900</pubDate>

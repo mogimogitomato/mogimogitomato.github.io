@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
-    <lastBuildDate>Fri, 24 May 2019 23:11:33 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jul 2019 10:29:48 +0900</lastBuildDate>
     
 	<atom:link href="https://mogimogitomato.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java</title>
+      <link>https://mogimogitomato.github.io/tags/java/</link>
+      <pubDate>Wed, 10 Jul 2019 10:29:48 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/tags/java/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>git</title>

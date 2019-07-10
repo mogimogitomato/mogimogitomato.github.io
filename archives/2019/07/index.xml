@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2019/07 on ツナ缶同盟</title>
+    <link>https://mogimogitomato.github.io/archives/2019/07/</link>
+    <description>Recent content in 2019/07 on ツナ缶同盟</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
+    <lastBuildDate>Wed, 10 Jul 2019 10:29:48 +0900</lastBuildDate>
+    
+	<atom:link href="https://mogimogitomato.github.io/archives/2019/07/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>さよならjhat</title>
+      <link>https://mogimogitomato.github.io/post/20190710/</link>
+      <pubDate>Wed, 10 Jul 2019 10:29:48 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20190710/</guid>
+      <description>jhatコマンドを叩いたところ、そんなもの無いと言われた $ jhat Unable to locate an executable at &amp;quot;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin/jhat&amp;quot; (-1) 無い.. $ ls -l &amp;quot;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin&amp;quot; .rwxr-xr-x@ 22k user 2 4 17:23 jaotc .rwxr-xr-x@ 18k user 2 4 17:23 jar .rwxr-xr-x@ 18k user 2 4 17:23 jarsigner .rwxr-xr-x@ 18k user</description>
+    </item>
+    
+  </channel>
+</rss>
