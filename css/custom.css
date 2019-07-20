@@ -204,7 +204,6 @@
 .aa-dropdown-menu {
   background-color: #fff;
   border: 1px solid rgba(228, 228, 228, 0.6);
-  border-top-width: 1px;
   width: 300px;
   margin-top: 10px;
   font-size: 14px;
@@ -213,7 +212,6 @@
 }
 .aa-suggestion {
   padding: 12px;
-  border-top: 1px solid rgba(228, 228, 228, 0.6);
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
@@ -229,6 +227,9 @@
 }
 .aa-suggestion:hover, .aa-suggestion.aa-cursor {
     background-color: rgba(241, 241, 241, 0.35);
+}
+.aa-suggestion + .aa-suggestion {
+  border-top: 1px solid rgba(228, 228, 228, 0.6);
 }
 .aa-suggestion > span:first-child {
     color: #333;
