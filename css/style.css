@@ -4379,7 +4379,6 @@ a.nav-item.is-tab.is-active {
   background-color: #fff;
   display: flex;
   position: relative;
-  z-index: 2;
 }
 .panel-heading,
 .tabs.is-boxed a:hover,

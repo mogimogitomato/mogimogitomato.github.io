@@ -167,6 +167,12 @@
   position: relative;
   width: 280px;
 }
+@media (max-width: 769px) {
+  #aa-input-desktop-container{display: none;}
+}
+@media (min-width: 770px) {
+  #aa-input-mobile-container{display: none;}
+}
 .aa-input-container span,.aa-input-container input {
     width: inherit;
 }
