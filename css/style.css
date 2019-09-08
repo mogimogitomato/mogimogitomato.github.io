@@ -6796,6 +6796,7 @@ code {
 }
 
 .content p>code,
+.content li>code,
 .content>code {
   font-size: 90%;
   padding: 2px 4px;
