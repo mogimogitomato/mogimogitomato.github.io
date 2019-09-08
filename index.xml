@@ -12,6 +12,135 @@
     
     
     <item>
+      <title>ORCΛとSonic Piで変態エフェクターを作ろう</title>
+      <link>https://mogimogitomato.github.io/post/20190909/</link>
+      <pubDate>Mon, 09 Sep 2019 03:25:26 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20190909/</guid>
+      <description></description>
+      
+      <content>
+
+&lt;h3 id=&#34;動機&#34;&gt;動機&lt;/h3&gt;
+
+&lt;p&gt;ブティック系エフェクターが好きで、&lt;a href=&#34;https://gizmo-music.com/&#34; target=&#34;_blank&#34;&gt;ギズモ屋さん&lt;/a&gt;や&lt;a href=&#34;https://www.youtube.com/channel/UCarxZ8bKjfFzUOgN5LjYOhQ&#34; target=&#34;_blank&#34;&gt;knobs&lt;/a&gt;等で個性的で美しい音色のエフェクトペダルが紹介されるたびに胸躍らせてしまうのですが、1つ1つがそれなりのお値段なので物欲のままにあれこれ買い揃えるのは厳しい(というか1個買うのも結構ハードルが..)でもそれっぽい音は鳴らしたい！！という気持ちがありました。&lt;br /&gt;
+一方、Sonic Piのv3.1.0から &lt;code&gt;live_audio&lt;/code&gt; という関数が導入され、オーディオインターフェースからの入力をSonic Pi上でシンセとして扱うことができる様になりました。これでSonic Pi上からエフェクトをかけられる！！&lt;br /&gt;
+また、&lt;a href=&#34;https://github.com/hundredrabbits/Orca&#34; target=&#34;_blank&#34;&gt;ORCΛ&lt;/a&gt;というElectron製でMIDIやOSCなどの信号をSonic Piなど外部に簡単に飛ばせるツールがあることを最近知りました。これで任意のタイミングでランダムに信号を飛ばせる！！&lt;/p&gt;
+
+&lt;p&gt;ブティック系エフェクターの中で個人的に特に好きなのが、エフェクトに対するパラメータのランダマイズ機構を持っているものだったりします(本記事タイトルの&lt;strong&gt;変態&lt;/strong&gt;に相当)。&lt;br /&gt;
+ORCΛとSonic Piを使ってパラメータをランダマイズした空間系エフェクトをかけつつ、好みの音像を作れるか試行した際の手順をまとめたのが本記事です。&lt;/p&gt;
+
+&lt;h3 id=&#34;環境&#34;&gt;環境&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mac OS X Mojave 10.14.6&lt;/li&gt;
+&lt;li&gt;Sonic Pi 3.1.0&lt;/li&gt;
+&lt;li&gt;ORCΛ 0.1.0&lt;/li&gt;
+&lt;li&gt;エレキギター(任意. 検証時はフェンダージャパンのテレキャスターを使用)&lt;/li&gt;
+&lt;li&gt;オーディオインターフェース(任意. 検証時はFOCUSRITEのScarlett 2i2 G2を使用)&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;※ORCΛの詳しい説明やORCΛとSonic Piのインストール/連携手順等については、以下の記事でまとめて下さっている方がいたのであらかじめご参照下さい。本記事での同様の記載は割愛します。&lt;br /&gt;
+&lt;a href=&#34;https://qiita.com/donbeumai/items/a22198cef709b019e0be&#34; target=&#34;_blank&#34;&gt;ライブコーディングツール「ORCΛ」と「SonicPi」の連携（備忘録、初心者向け）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;オーディオインターフェースを接続後、 &lt;code&gt;システム環境設定→サウンド&lt;/code&gt; から入力を接続したオーディオインターフェースに指定すれば準備はOKです。&lt;/p&gt;
+
+&lt;h3 id=&#34;orcλ&#34;&gt;ORCΛ&lt;/h3&gt;
+
+&lt;p&gt;エフェクトのパラメータをランダマイズするにあたって、ORCΛから任意のランダムな信号を送り&lt;br /&gt;
+Sonic Pi側で信号を受けてエフェクトのパラメータにセットする構成としました。&lt;/p&gt;
+
+&lt;p&gt;ORCΛ側で以下の様に信号を飛ばします。&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://mogimogitomato.github.io/images/20190909/orca_sample.gif&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;/br&gt;
+ORCΛでは大文字の英単語と特定の記号がそれぞれコマンドになっています。&lt;br /&gt;
+&lt;code&gt;*&lt;/code&gt; はbangと呼ばれる信号の発火を行うコマンドで、 &lt;code&gt;=&lt;/code&gt; で繋いだ値を送付します。&lt;br /&gt;
+上記では、 &lt;code&gt;D(delay)&lt;/code&gt; コマンド(左右の引数を元にbangを行うタイミングを制御する)と&lt;br /&gt;
+&lt;code&gt;R(random)&lt;/code&gt; コマンド(左右の引数の範囲内の値をランダムに下部に出力する)を使用し&lt;br /&gt;
+vと命名した配列にランダム値を格納した状態で1frame毎に信号を飛ばしています。&lt;/p&gt;
+
+&lt;h3 id=&#34;sonic-pi&#34;&gt;Sonic Pi&lt;/h3&gt;
+
+&lt;p&gt;Sonic Piを立ち上げた状態で、右側Cueの部分にORCΛから送られた信号が確認できます。&lt;br /&gt;
+以下でSonic Pi側で送られた信号をエフェクトのパラメータに指定し、オーディオインターフェースからの入力に&lt;br /&gt;
+エフェクトをかけます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-rb&#34; data-lang=&#34;rb&#34;&gt;&lt;span class=&#34;nb&#34;&gt;require&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;bigdecimal&amp;#39;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;use_bpm&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;120&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;live_loop&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:bizzare_effect&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;use_real_time&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sync&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/osc/v&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;delayTime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;reverbDepth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;delayTime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;BigDecimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delayTime&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to_s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;floor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to_f&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;delayTime: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delayTime&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;reverbDepth: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reverbDepth&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;# delay&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;with_fx&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:echo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;amp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;decay&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;phase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;delayTime&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;# reverb&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;with_fx&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:reverb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;amp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;room&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reverbDepth&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+      &lt;span class=&#34;c1&#34;&gt;# reverse用に録音&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;with_fx&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:record&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;buffer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:buff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;live_audio&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:guitar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;sleep&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;# reverse&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:buff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;rate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delayTime&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;sustain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;  &lt;span class=&#34;ss&#34;&gt;amp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;beat_stretch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;threshold&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;use_real_time&lt;/code&gt; で、Sonic Piのデフォルトのレイテンシ設定を無効にしておきます。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v = sync &amp;quot;/osc/v&amp;quot;&lt;/code&gt; で、ORCΛから送られたOSC信号の配列を変数に格納します。&lt;br /&gt;
+取得した配列のうち0番目の要素をdelayの間隔、2番目の要素をreverbの深さとして持っておきます。&lt;br /&gt;
+また、この際整数そのままだとパラメータとして大きいので少数値に変換しています。&lt;br /&gt;
+(変換時、delayTimeで何故か端数が出たのでBigDecimalで切り上げをかませています..)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;with_fx&lt;/code&gt; の部分でそれぞれのエフェクトのパラメータに変数をセットします。&lt;br /&gt;
+ここで同時に、後述するSample再生に使用する入力の録音を &lt;code&gt;record&lt;/code&gt; で行います。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;live_audio :guitar, input: 1&lt;/code&gt; でオーディオインターフェースからの入力を取得します。&lt;br /&gt;
+guitarの部分の名称は任意です。 &lt;code&gt;input: 1&lt;/code&gt; はオーディオインターフェースの入力設定になります。今回はmono入力としています。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sleep 0.2&lt;/code&gt; の間隔でループ処理が行われ、上記のエフェクトが更新されます。また、次のsleep後に &lt;code&gt;record&lt;/code&gt; で録音した入力のreverse再生を行います。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sample buffer[:buff,8], rate: -delayTime * 3, sustain: 3,  amp: 1.0, beat_stretch: 4, threshold: 90&lt;/code&gt;&lt;br /&gt;
+録音の再生は &lt;code&gt;sample&lt;/code&gt; で行い、この際 &lt;code&gt;rate&lt;/code&gt; に渡す値にマイナスを付与する事でreverse再生となります。再生する時間はdelayTimeを流用し、乗算しつつ可変値としています。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;このコードを実行する事で、入力音の加工と再生が行われます。&lt;/p&gt;
+
+&lt;h3 id=&#34;結果&#34;&gt;結果&lt;/h3&gt;
+
+&lt;p&gt;実際に鳴らした結果がこちらです。&lt;br /&gt;
+&lt;iframe width=&#34;100%&#34; height=&#34;300&#34; scrolling=&#34;no&#34; frameborder=&#34;no&#34; allow=&#34;autoplay&#34; src=&#34;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/644127069&amp;color=%239cc4a4&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true&#34;&gt;&lt;/iframe&gt;
+やったぜ。&lt;/p&gt;
+
+&lt;h3 id=&#34;所感&#34;&gt;所感&lt;/h3&gt;
+
+&lt;p&gt;見えている課題として、delayの間隔が変更されるタイミングでクリップノイズの様な細かいノイズが乗る場合があります..(ダメじゃないか)&lt;br /&gt;
+演奏形態がノイズミュージックであったり、他の楽器と合わせたライブ演奏時の出音ではそこまで気にならないかもしれませんが個人録音ではやはり気になるかも。内部で何が起こっているかはSuperColiderの実行ログを当たれば分かる気がしますが、追いかける必要はありそうです。(素直に&lt;a href=&#34;https://www.soundhouse.co.jp/products/detail/item/242655/&#34; target=&#34;_blank&#34;&gt;POSSESSED&lt;/a&gt;買うか.. いや&amp;hellip;)&lt;br /&gt;
+一方、reverse再生は再成長を可変とした場合も綺麗になってくれました。(主観ですが)一般的なエフェクターだと固定長のreverseであったりloopと合わさる場合が多く、原音を維持したまま動的に長さや録音を変えつつコールアンドレスポンスの様に再生するには頑張りが必要な印象です。今回その点が簡単に出来たことは収穫でした。&lt;br /&gt;
+また、エフェクトを自分の好きな様にかけられること自体に可能性を感じました。LiveCodingというとコード内で入出力が完結するミニマル/テクノ系の演奏のイメージが強いですが、楽器演奏者からしても新しい音作りに応用できそうです。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://sonic-pi.net/tutorial.html#removing-latency&#34; target=&#34;_blank&#34;&gt;https://sonic-pi.net/tutorial.html#removing-latency&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;https://sonic-pi.net/tutorial.html#stereo-input&#34; target=&#34;_blank&#34;&gt;https://sonic-pi.net/tutorial.html#stereo-input&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>さよならjhat</title>
       <link>https://mogimogitomato.github.io/post/20190710/</link>
       <pubDate>Wed, 10 Jul 2019 10:29:48 +0900</pubDate>
