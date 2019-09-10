@@ -224,6 +224,7 @@ vと命名した配列にランダム値を格納した状態で1frame毎に信�
   <span class="n">sampleLength</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">10</span>
   <span class="n">reverbDepth</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">50</span>
   <span class="n">delayTime</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">delayTime</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+  <span class="n">sampleLength</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">sampleLength</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
   <span class="nb">puts</span> <span class="s2">&#34;delayTime: </span><span class="si">#{</span><span class="n">delayTime</span><span class="si">}</span><span class="s2">&#34;</span>
   <span class="nb">puts</span> <span class="s2">&#34;sampleLength: </span><span class="si">#{</span><span class="n">sampleLength</span><span class="si">}</span><span class="s2">&#34;</span>
   <span class="nb">puts</span> <span class="s2">&#34;reverbDepth: </span><span class="si">#{</span><span class="n">reverbDepth</span><span class="si">}</span><span class="s2">&#34;</span>
@@ -247,7 +248,7 @@ vと命名した配列にランダム値を格納した状態で1frame毎に信�
 <li><code>v = sync &quot;/osc/v&quot;</code> で、ORCΛから送られたOSC信号の配列を変数に格納します。<br />
 取得した配列のうち0番目の要素をdelayの間隔と後述するSample再生の長さ、2番目の要素をreverbの深さとして持っておきます。<br />
 また、この際整数そのままだとパラメータとして大きいので小数値に変換しています。<br />
-(変換時、delayTimeで何故か端数が出たのでBigDecimalで切り上げをかませています..)<br /></li>
+(変換時、delayTime, sampleLengthで何故か端数が出たのでBigDecimalで切り上げをかませています..)<br /></li>
 <li><code>with_fx</code> の部分でそれぞれのエフェクトのパラメータに変数をセットします。<br />
 ここで同時に、Sample再生に使用する入力の録音を <code>record</code> で行います。<br /></li>
 <li><code>live_audio :guitar, input: 1</code> でオーディオインターフェースからの入力を取得します。<br />
