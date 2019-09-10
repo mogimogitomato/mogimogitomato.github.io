@@ -221,9 +221,11 @@ vと命名した配列にランダム値を格納した状態で1frame毎に信�
   <span class="n">use_real_time</span>
   <span class="n">v</span> <span class="o">=</span> <span class="n">sync</span> <span class="s2">&#34;/osc/v&#34;</span>
   <span class="n">delayTime</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">10</span>
+  <span class="n">sampleLength</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">10</span>
   <span class="n">reverbDepth</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">50</span>
   <span class="n">delayTime</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">delayTime</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
   <span class="nb">puts</span> <span class="s2">&#34;delayTime: </span><span class="si">#{</span><span class="n">delayTime</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="nb">puts</span> <span class="s2">&#34;sampleLength: </span><span class="si">#{</span><span class="n">sampleLength</span><span class="si">}</span><span class="s2">&#34;</span>
   <span class="nb">puts</span> <span class="s2">&#34;reverbDepth: </span><span class="si">#{</span><span class="n">reverbDepth</span><span class="si">}</span><span class="s2">&#34;</span>
   <span class="c1"># delay</span>
   <span class="n">with_fx</span> <span class="ss">:echo</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">decay</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="ss">phase</span><span class="p">:</span> <span class="n">delayTime</span> <span class="k">do</span>
@@ -238,21 +240,21 @@ vと命名した配列にランダム値を格納した状態で1frame毎に信�
   <span class="k">end</span>
   <span class="nb">sleep</span> <span class="mi">6</span>
   <span class="c1"># reverse</span>
-  <span class="n">sample</span> <span class="n">buffer</span><span class="o">[</span><span class="ss">:buff</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="o">-</span><span class="n">delayTime</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">sustain</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">beat_stretch</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="ss">threshold</span><span class="p">:</span> <span class="mi">90</span>
+  <span class="n">sample</span> <span class="n">buffer</span><span class="o">[</span><span class="ss">:buff</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="o">-</span><span class="n">sampleLength</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">sustain</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">beat_stretch</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="ss">threshold</span><span class="p">:</span> <span class="mi">90</span>
 <span class="k">end</span></code></pre></div>
 <ul>
 <li><code>use_real_time</code> で、Sonic Piのデフォルトのレイテンシ設定を無効にしておきます。<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup><br /></li>
 <li><code>v = sync &quot;/osc/v&quot;</code> で、ORCΛから送られたOSC信号の配列を変数に格納します。<br />
-取得した配列のうち0番目の要素をdelayの間隔、2番目の要素をreverbの深さとして持っておきます。<br />
-また、この際整数そのままだとパラメータとして大きいので少数値に変換しています。<br />
+取得した配列のうち0番目の要素をdelayの間隔と後述するSample再生の長さ、2番目の要素をreverbの深さとして持っておきます。<br />
+また、この際整数そのままだとパラメータとして大きいので小数値に変換しています。<br />
 (変換時、delayTimeで何故か端数が出たのでBigDecimalで切り上げをかませています..)<br /></li>
 <li><code>with_fx</code> の部分でそれぞれのエフェクトのパラメータに変数をセットします。<br />
-ここで同時に、後述するSample再生に使用する入力の録音を <code>record</code> で行います。<br /></li>
+ここで同時に、Sample再生に使用する入力の録音を <code>record</code> で行います。<br /></li>
 <li><code>live_audio :guitar, input: 1</code> でオーディオインターフェースからの入力を取得します。<br />
 guitarの部分の名称は任意です。 <code>input: 1</code> はオーディオインターフェースの入力設定になります。今回はmono入力としています。<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup><br /></li>
 <li><code>sleep 0.2</code> の間隔でループ処理が行われ、上記のエフェクトが更新されます。また、次のsleep後に <code>record</code> で録音した入力のreverse再生を行います。<br /></li>
-<li><code>sample buffer[:buff,8], rate: -delayTime * 3, sustain: 3,  amp: 1.0, beat_stretch: 4, threshold: 90</code><br />
-録音の再生は <code>sample</code> で行い、この際 <code>rate</code> に渡す値にマイナスを付与する事でreverse再生となります。再生する時間はdelayTimeを流用し、乗算しつつ可変値としています。</li>
+<li><code>sample buffer[:buff,8], rate: -sampleLength * 3, sustain: 3,  amp: 1.0, beat_stretch: 4, threshold: 90</code><br />
+録音の再生は <code>sample</code> で行い、この際 <code>rate</code> に負数を渡す事でreverse再生となります。sampleLengthを負数で設定します。<br /></li>
 </ul>
 
 <p>このコードを実行する事で、入力音の加工と再生が行われます。</p>
@@ -267,8 +269,8 @@ guitarの部分の名称は任意です。 <code>input: 1</code> はオーディ
 
 <p>見えている課題として、delayの間隔が変更されるタイミングでクリップノイズの様な細かいノイズが乗る場合があります..(ダメじゃないか)<br />
 演奏形態がノイズミュージックであったり、他の楽器と合わせたライブ演奏時の出音ではそこまで気にならないかもしれませんが個人録音ではやはり気になるかも。内部で何が起こっているかはSuperColiderの実行ログを当たれば分かる気がしますが、追いかける必要はありそうです。(素直に<a href="https://www.soundhouse.co.jp/products/detail/item/242655/" target="_blank">POSSESSED</a>買うか.. いや&hellip;)<br />
-一方、reverse再生は再成長を可変とした場合も綺麗になってくれました。(主観ですが)一般的なエフェクターだと固定長のreverseであったりloopと合わさる場合が多く、原音を維持したまま動的に長さや録音を変えつつコールアンドレスポンスの様に再生するには頑張りが必要な印象です。今回その点が簡単に出来たことは収穫でした。<br />
-また、エフェクトを自分の好きな様にかけられること自体に可能性を感じました。LiveCodingというとコード内で入出力が完結するミニマル/テクノ系の演奏のイメージが強いですが、楽器演奏者からしても新しい音作りに応用できそうです。</p>
+一方、reverse再生は再生する長さを可変とした場合も綺麗になってくれました。(主観ですが)一般的なエフェクターだと固定長のreverseであったりloopと合わさる場合が多く、原音を維持したまま動的に長さや録音を変えつつコールアンドレスポンスの様に再生するには頑張りが必要な印象です。今回その点が簡単に出来たことは収穫でした。<br />
+また、エフェクトを自分の好きな様にかけられること自体に可能性を感じました。LiveCodingというとIDE上で自前で生成したシンセを使用するミニマル/テクノ系の演奏のイメージが強いですが、楽器演奏者からしても新しい音作りに応用できそうです。</p>
 <div class="footnotes">
 
 <hr />
