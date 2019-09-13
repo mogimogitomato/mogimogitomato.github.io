@@ -67,9 +67,17 @@
   color: #bf616a;
   text-decoration: none;
 }
+article {
+  font-size: 0;
+}
+.subtitle+.title {
+  margin-top: -15px;
+}
+.title {
+  display: inline-block;
+}
 .title a {
   position: relative;
-  display: inline-block;
   text-decoration: none;
 }
 .title a::after {
