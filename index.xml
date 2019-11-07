@@ -24,7 +24,7 @@
 &lt;h3 id=&#34;動機&#34;&gt;動機&lt;/h3&gt;
 
 &lt;p&gt;ブティック系エフェクターが好きで、&lt;a href=&#34;https://gizmo-music.com/&#34; target=&#34;_blank&#34;&gt;ギズモ屋さん&lt;/a&gt;や&lt;a href=&#34;https://www.youtube.com/channel/UCarxZ8bKjfFzUOgN5LjYOhQ&#34; target=&#34;_blank&#34;&gt;knobs&lt;/a&gt;等で個性的で美しい音色のエフェクトペダルが紹介されるたびに胸躍らせてしまうのですが、1つ1つがそれなりのお値段なので物欲のままにあれこれ買い揃えるのは厳しい(というか1個買うのも結構ハードルが..)でもそれっぽい音は鳴らしたい！！という気持ちがありました。&lt;br /&gt;
-一方、Sonic Piのv3.1.0から &lt;code&gt;live_audio&lt;/code&gt; という関数が導入され、オーディオインターフェースからの入力をSonic Pi上でシンセとして扱うことができる様になりました。これでSonic Pi上からエフェクトをかけられる！！&lt;br /&gt;
+一方、Sonic Piのv3.0から &lt;code&gt;live_audio&lt;/code&gt; という関数が導入され、オーディオインターフェースからの入力をSonic Pi上でシンセとして扱うことができる様になりました。これでSonic Pi上からエフェクトをかけられる！！&lt;br /&gt;
 また、&lt;a href=&#34;https://github.com/hundredrabbits/Orca&#34; target=&#34;_blank&#34;&gt;ORCΛ&lt;/a&gt;というElectron製でMIDIやOSCなどの信号をSonic Piなど外部に簡単に飛ばせるツールがあることを最近知りました。これで任意のタイミングでランダムに信号を飛ばせる！！&lt;/p&gt;
 
 &lt;p&gt;ブティック系エフェクターの中で個人的に特に好きなのが、エフェクトに対するパラメータのランダマイズ機構を持っているものだったりします(本記事タイトルの&lt;strong&gt;変態&lt;/strong&gt;に相当)。&lt;br /&gt;
