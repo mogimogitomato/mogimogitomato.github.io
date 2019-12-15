@@ -182,8 +182,8 @@
   {{ end }}
 {{ end }}
 <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></code></pre></div>
-<p>Hugoではデフォルトで<code>tags</code>と<code>categories</code>のTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br />
-<a href="https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules" target="_blank">hugo-layouts-lookup-rules</a>より、<code>section</code>、<code>taxonomy</code>および<code>taxonomyTerm</code>タイプの値が<code>.Section</code>で取得できます。このため、<code>.Site.Taxonomies</code> のkeyが<code>.Section</code>と同じかを判定し大分類を特定します。<br />
+<p>HugoではデフォルトでtagsとcategoriesのTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br />
+<a href="https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules" target="_blank">hugo-layouts-lookup-rules</a>より、section、taxonomyおよびtaxonomyTermタイプの値が<code>.Section</code>で取得できます。このため、<code>.Site.Taxonomies</code> のkeyが<code>.Section</code>と同じかを判定し大分類を特定します。<br />
 次に、分類項目のkeyと表示項目名(それぞれurlizeして形式を揃える)を双方が同じ値か判定し、合致した場合に分類項目が持つ件数を取得しています。</p>
 
       
