@@ -12,6 +12,44 @@
     
     
     <item>
+      <title>Taxonomyのリストに件数表示を追加する</title>
+      <link>https://mogimogitomato.github.io/post/20191215/</link>
+      <pubDate>Sun, 15 Dec 2019 03:03:29 +0900</pubDate>
+      <author>YK</author>
+      <guid>https://mogimogitomato.github.io/post/20191215/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;HugoのTaxonomyを使うと投稿記事を分類することができますが、Taxonomyをリスト表示した際に&lt;br /&gt;
+分類ごとの記事件数もカウントして表示したい！と思った時に、その機能が本ブログで使っているthemeに&lt;br /&gt;
+無かったので自作しました。&lt;/p&gt;
+
+&lt;p&gt;config.tomlに表示切替のフラグを追加し、&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml:config.toml&#34; data-lang=&#34;toml:config.toml&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;taxonomiesCount&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;# Add taxonomies count&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;表示が有効の場合、項目の横に対象の分類の件数を表示する処理を加えます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}
+{{if .Site.Params.Info.taxonomiesCount}}
+{{ $title := urlize .Title }}
+  {{ range $taxonomy_name, $taxonomy := .Site.Taxonomies }}
+    {{ if eq $.Section $taxonomy_name}}
+      {{ range $key, $value := $taxonomy }}
+        {{ $term := urlize $key }}
+        {{ if eq $title $term }}
+          ({{ $value.Count }})
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hugoではデフォルトで &lt;code&gt;tags&lt;/code&gt; と &lt;code&gt;categories&lt;/code&gt; のTaxonomyが定義されていて、&lt;code&gt;.Site.Taxonomies.tags&lt;/code&gt;の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。&lt;br /&gt;
+&lt;a href=&#34;https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules&#34; target=&#34;_blank&#34;&gt;hugo-layouts-lookup-rules&lt;/a&gt;より、 &lt;code&gt;section&lt;/code&gt; 、 &lt;code&gt;taxonomy&lt;/code&gt; および &lt;code&gt;taxonomyTerm&lt;/code&gt; タイプの値が &lt;code&gt;.Section&lt;/code&gt; で取得できます。このため、 &lt;code&gt;.Site.Taxonomies&lt;/code&gt; のkeyが &lt;code&gt;.Section&lt;/code&gt; と同じかを判定し大分類を特定します。&lt;br /&gt;
+次に、分類項目のkeyと表示項目名(それぞれurlizeして形式を揃える)を双方が同じ値か判定し、合致した場合に分類項目が持つ件数を取得しています。&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>ORCΛとSonic Piで変態エフェクターを作ろう</title>
       <link>https://mogimogitomato.github.io/post/20190909/</link>
       <pubDate>Mon, 09 Sep 2019 03:25:26 +0900</pubDate>

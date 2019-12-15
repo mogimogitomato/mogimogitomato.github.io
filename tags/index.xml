@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt; 2019</copyright>
-    <lastBuildDate>Mon, 09 Sep 2019 03:25:26 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Dec 2019 03:03:29 +0900</lastBuildDate>
     
 	<atom:link href="https://mogimogitomato.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://mogimogitomato.github.io/tags/hugo/</link>
+      <pubDate>Sun, 15 Dec 2019 03:03:29 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ORCΛ</title>
@@ -99,15 +108,6 @@
       <pubDate>Fri, 04 Jan 2019 23:33:54 +0900</pubDate>
       
       <guid>https://mogimogitomato.github.io/tags/leadsheet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>https://mogimogitomato.github.io/tags/hugo/</link>
-      <pubDate>Fri, 04 Jan 2019 18:32:41 +0900</pubDate>
-      
-      <guid>https://mogimogitomato.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
