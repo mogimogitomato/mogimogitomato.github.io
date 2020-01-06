@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,10 +143,10 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
-    
     
     <article>
       <div class="subtitle tags is-6 is-pulled-right">
@@ -158,12 +158,8 @@
 
         
       </div>
-      <h2 class="subtitle is-6">January 14, 2019</h2>
-      <h1 class="title">
-        <a href="https://mogimogitomato.github.io/post/20190114/">Wizard zinesが面白い
-        
-        
-        </a></h1>
+      <h2 class="subtitle is-6 date">January 14, 2019</h2>
+      <h1 class="title"><a href="https://mogimogitomato.github.io/post/20190114/">Wizard zinesが面白い</a></h1>
       <div class="content">
         Twitter経由で面白いサイトを知りました。 Julia Evans(@b0rk)さんがまとめている Wizard zines というサイトで、 開発現場における知っ得情報がp
         
@@ -210,5 +206,4 @@
 
 </body>
 </html>
-
 

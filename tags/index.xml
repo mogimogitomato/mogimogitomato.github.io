@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on ツナ缶同盟</title>
@@ -18,6 +18,15 @@
       <pubDate>Sun, 15 Dec 2019 03:03:29 +0900</pubDate>
       
       <guid>https://mogimogitomato.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://mogimogitomato.github.io/tags/vim/</link>
+      <pubDate>Sun, 15 Dec 2019 03:03:29 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/tags/vim/</guid>
       <description></description>
     </item>
     

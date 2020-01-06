@@ -19,7 +19,7 @@
 <title>puppeteerで駿河屋の商品情報を取得する | ツナ缶同盟</title>
 
 <meta property='og:title' content='puppeteerで駿河屋の商品情報を取得する - ツナ缶同盟'>
-<meta property='og:description' content='本日のBGM 以下本題です。 動機 中古の商品を探す際、メル◯リの様に指定の検索条件に対して入荷があった場合に通知を受け取れると 便利ですが、愛する'>
+<meta property='og:description' content='動機 中古の商品を探す際、メル◯リの様に指定の検索条件に対して入荷があった場合に通知を受け取れると 便利ですが、愛する駿河屋では商品単位でしか通'>
 <meta property='og:url' content='https://mogimogitomato.github.io/post/20190214/'>
 <meta property='og:site_name' content='ツナ缶同盟'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://mogimogitomato.github.io/images/icons/icon-192x192.png'><meta property='article:published_time' content='2019-02-14T01:39:16&#43;09:00'/><meta property='article:modified_time' content='2019-02-14T01:39:16&#43;09:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@freefish22'><meta name='twitter:creator' content='@freefish22'>
@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,55 +160,41 @@
     <h1 class="title">puppeteerで駿河屋の商品情報を取得する</h1>
     
     <div class="content">
-      
-
-<p></br>
-<p style="text-align:center;">本日のBGM</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/2ae8ClqproY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-</br>
-<p>以下本題です。</p></p>
-
-<h2 id="動機">動機</h2>
-
-<p>中古の商品を探す際、メル◯リの様に指定の検索条件に対して入荷があった場合に通知を受け取れると<br />
-便利ですが、愛する駿河屋では商品単位でしか通知を受け取ることができず、駿河屋の登録履歴にない<br />
-新規入荷した商品の有無は都度検索してチェックする必要がありました。<br />
-先日<a href="https://github.com/GoogleChrome/puppeteer" target="_blank">puppeteer</a>(Chromiumのヘッドレスブラウザを実行するためのnodeライブラリ)を知り、<br />
-検索行為を自動化して商品情報を取得できるか試してみました。<br />
+      <!-- raw HTML omitted -->
+<h2 id="heading">動機</h2>
+<p>中古の商品を探す際、メル◯リの様に指定の検索条件に対して入荷があった場合に通知を受け取れると<br>
+便利ですが、愛する駿河屋では商品単位でしか通知を受け取ることができず、駿河屋の登録履歴にない<br>
+新規入荷した商品の有無は都度検索してチェックする必要がありました。<br>
+先日<a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>(Chromiumのヘッドレスブラウザを実行するためのnodeライブラリ)を知り、<br>
+検索行為を自動化して商品情報を取得できるか試してみました。<br>
 ※puppeteerの概要やセットアップ手順などの詳細はリンクの公式サイトを参照下さい。</p>
-
-<h2 id="結果">結果</h2>
-
-<p>結論だけ、書く。<br />
+<h2 id="heading-1">結果</h2>
+<p>結論だけ、書く。<br>
 以下のスクリプトを作成しました。</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;puppeteer&#39;</span><span class="p">);</span>
-<span class="k">const</span> <span class="nx">TARGET_URL</span> <span class="o">=</span> <span class="s1">&#39;https://www.suruga-ya.jp/&#39;</span><span class="p">;</span>
-<span class="k">const</span> <span class="nx">SEARCH_WORDS</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;puppeteer&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">TARGET_URL</span> <span class="o">=</span> <span class="s1">&#39;https://www.suruga-ya.jp/&#39;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">SEARCH_WORDS</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">;</span>
 
-<span class="kr">async</span> <span class="kd">function</span> <span class="nx">getScrapingData</span><span class="p">(</span><span class="nx">search_word</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span><span class="nx">headless</span><span class="o">:</span><span class="kc">true</span><span class="p">})</span>
-  <span class="k">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>
-  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">TARGET_URL</span><span class="p">,</span> <span class="p">{</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s1">&#39;networkidle2&#39;</span><span class="p">})</span>
-  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;input[name=search_word]&#39;</span><span class="p">,</span> <span class="nx">search_word</span><span class="p">)</span>
-  <span class="k">const</span> <span class="nx">searchElement</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[id=btn]&#39;</span><span class="p">)</span>
-  <span class="kr">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
-    <span class="nx">page</span><span class="p">.</span><span class="nx">waitForNavigation</span><span class="p">({</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s2">&#34;domcontentloaded&#34;</span><span class="p">}),</span>
-    <span class="nx">searchElement</span><span class="p">.</span><span class="nx">click</span><span class="p">()</span>
-  <span class="p">])</span>
-  <span class="k">const</span> <span class="nx">scrapingData</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="nx">dataList</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">const</span> <span class="nx">itemList</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div.item&#34;</span><span class="p">))</span>
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">getScrapingData</span><span class="p">(</span><span class="nx">search_word</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">(</span><span class="p">{</span><span class="nx">headless</span><span class="o">:</span><span class="kc">true</span><span class="p">}</span><span class="p">)</span>
+  <span class="kr">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">(</span><span class="p">)</span>
+  <span class="nx">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">TARGET_URL</span><span class="p">,</span> <span class="p">{</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s1">&#39;networkidle2&#39;</span><span class="p">}</span><span class="p">)</span>
+  <span class="nx">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="s1">&#39;input[name=search_word]&#39;</span><span class="p">,</span> <span class="nx">search_word</span><span class="p">)</span>
+  <span class="kr">const</span> <span class="nx">searchElement</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[id=btn]&#39;</span><span class="p">)</span>
+  <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="p">[</span>
+    <span class="nx">page</span><span class="p">.</span><span class="nx">waitForNavigation</span><span class="p">(</span><span class="p">{</span><span class="nx">waitUntil</span><span class="o">:</span> <span class="s2">&#34;domcontentloaded&#34;</span><span class="p">}</span><span class="p">)</span><span class="p">,</span>
+    <span class="nx">searchElement</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="p">)</span>
+  <span class="p">]</span><span class="p">)</span>
+  <span class="kr">const</span> <span class="nx">scrapingData</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="p">(</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">dataList</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span>
+    <span class="kr">const</span> <span class="nx">itemList</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;div.item&#34;</span><span class="p">)</span><span class="p">)</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">itemList</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">item</span> <span class="o">=</span> <span class="nx">itemList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">children</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">children</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="kd">let</span> <span class="nx">item</span> <span class="o">=</span> <span class="nx">itemList</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
       <span class="c1">// 商品価格はタイムセールなどで子要素が可変になるため判定
-</span><span class="c1"></span>      <span class="kd">let</span> <span class="nx">priceList</span> <span class="o">=</span> <span class="nx">itemList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">children</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span class="c1"></span>      <span class="kd">let</span> <span class="nx">priceList</span> <span class="o">=</span> <span class="nx">itemList</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
       <span class="kd">let</span> <span class="nx">price</span> <span class="o">=</span> <span class="kc">null</span>
       <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">priceList</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">priceList</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">className</span> <span class="o">==</span> <span class="s2">&#34;price_teika&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">priceList</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span><span class="p">.</span><span class="nx">className</span> <span class="o">==</span> <span class="s2">&#34;price_teika&#34;</span><span class="p">)</span> <span class="p">{</span>
           <span class="nx">price</span> <span class="o">=</span> <span class="nx">priceList</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
           <span class="k">break</span>
         <span class="p">}</span>
@@ -220,24 +207,19 @@
       <span class="nx">dataList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">dataList</span>
-  <span class="p">})</span>
-  <span class="k">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">({[</span><span class="nx">search_word</span><span class="p">]</span><span class="o">:</span> <span class="nx">scrapingData</span><span class="p">})</span>
-  <span class="k">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&#34; &#34;</span><span class="p">)</span>
-  <span class="kr">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+  <span class="p">}</span><span class="p">)</span>
+  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[</span><span class="p">]</span>
+  <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="p">{</span><span class="p">[</span><span class="nx">search_word</span><span class="p">]</span><span class="o">:</span> <span class="nx">scrapingData</span><span class="p">}</span><span class="p">)</span>
+  <span class="kr">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&#34; &#34;</span><span class="p">)</span>
+  <span class="nx">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="p">)</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nx">getScrapingData</span><span class="p">(</span><span class="nx">SEARCH_WORDS</span><span class="p">)</span>
-</code></pre></div>
-<p>実行してみる</p>
-
+</code></pre></div><p>実行してみる</p>
 <pre><code>~/Desktop/puppeteer via ⬢ v10.7.0
 ➜ node surugaya_search.js marisada
-</code></pre>
-
-<p>取れた！！</p>
-
+</code></pre><p>取れた！！</p>
 <pre><code>~/Desktop/puppeteer via ⬢ v10.7.0 took 2s
 ➜ node surugaya_search.js marisada
 [
@@ -251,18 +233,13 @@
   ]
  }
 ]
-</code></pre>
-
-<h2 id="todo">TODO</h2>
-
+</code></pre><h2 id="todo">TODO</h2>
 <ul>
-<li>現状の作りだと引数を1つしか渡せないので、検索条件1件の結果しか受けられない。<br />
-複数の検索条件を渡した場合それぞれ非同期で検索し、待ち合わせてまとめて結果が返る様にしたい。<br /></li>
-<li>前回実行結果を保持して、実行時に取得結果と比較して差分を検知した場合メール等で通知を送れる様にしたい。<br /></li>
+<li>現状の作りだと引数を1つしか渡せないので、検索条件1件の結果しか受けられない。<br>
+複数の検索条件を渡した場合それぞれ非同期で検索し、待ち合わせてまとめて結果が返る様にしたい。</li>
+<li>前回実行結果を保持して、実行時に取得結果と比較して差分を検知した場合メール等で通知を送れる様にしたい。</li>
 </ul>
-
-<h2 id="結び">結び</h2>
-
+<h2 id="heading-2">結び</h2>
 <p>puppeteer便利！</p>
 
       

@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,56 +160,44 @@
     <h1 class="title">Hugoでブログ開設</h1>
     
     <div class="content">
-      
-
-<h3 id="経緯">経緯</h3>
-
-<p><em>アウトプットちゃんとしたいが、プログラミングネタなら<br />
-Qiitaに書けばいいと思うしそれ以外ならはてなブログがある。<br />
+      <h3 id="heading">経緯</h3>
+<p><em>アウトプットちゃんとしたいが、プログラミングネタなら<br>
+Qiitaに書けばいいと思うしそれ以外ならはてなブログがある。<br>
 けれどどちらも更新できていない..</em></p>
-
-<p>という情けない逡巡があり、、気ままに好きなことを投稿できる<br />
+<p>という情けない逡巡があり、、気ままに好きなことを投稿できる<br>
 個人ブログ形式でまずは始めよう！と考えて始めました。</p>
-
-<h3 id="方式">方式</h3>
-
-<p>Hugoで作成してます。<br />
-themeはシンプルさに惹かれて<a href="https://themes.gohugo.io/kiss/" target="_blank">こちら</a>を選択しました。<br />
-※小ネタですが、ソーシャルリンク(右上のアイコン)にSoundcloudを追加したかったため<br />
-  デフォルトの構成に以下を追記しています。</p>
-
+<h3 id="heading-1">方式</h3>
+<p>Hugoで作成してます。<br>
+themeはシンプルさに惹かれて<a href="https://themes.gohugo.io/kiss/">こちら</a>を選択しました。<br>
+※小ネタですが、ソーシャルリンク(右上のアイコン)にSoundcloudを追加したかったため<br>
+デフォルトの構成に以下を追記しています。</p>
 <ul>
-<li>rootディレクトリ直下のconfig.toml<br /></li>
+<li>rootディレクトリ直下のconfig.toml</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">social</span><span class="p">]</span>
 <span class="nx">soundcloud</span> <span class="p">=</span> <span class="s2">&#34;アカウント名&#34;</span>
 <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">social</span><span class="p">.</span><span class="nx">config</span><span class="p">]</span>
-<span class="nx">platforms</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;soundcloud&#34;</span><span class="p">]</span></code></pre></div>
-<ul>
-<li>themes/kiss配下のdata/theme.toml<br /></li>
+<span class="nx">platforms</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;soundcloud&#34;</span><span class="p">]</span>
+</code></pre></div><ul>
+<li>themes/kiss配下のdata/theme.toml</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-toml:theme.toml" data-lang="toml:theme.toml"><span class="nx">soundcloud</span> <span class="p">=</span> <span class="s1">&#39;https://soundcloud.com/&#39;</span></code></pre></div>
-<ul>
+<div class="highlight"><pre class="chroma"><code class="language-toml:theme.toml" data-lang="toml:theme.toml"><span class="nx">soundcloud</span> <span class="p">=</span> <span class="s1">&#39;https://soundcloud.com/&#39;</span>
+</code></pre></div><ul>
 <li>themes/kiss配下の/layouts/partials/svg/icons.html</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">    {{ else if eq &#34;soundcloud&#34; . }}
-    <span class="p">&lt;</span><span class="nt">path</span> <span class="na">d</span><span class="o">=</span><span class="s">&#34;M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z&#34;</span><span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">polyline</span> <span class="na">points</span><span class="o">=</span><span class="s">&#34;9 17 9 5 21 3 21 15&#34;</span><span class="p">/&gt;</span></code></pre></div>
-<p>kissはアイコンに<a href="https://feathericons.com/" target="_blank">FeatherIcons</a>を採用していて、種類が豊富なので他の追加も出来そうです。<br />
+    <span class="p">&lt;</span><span class="nt">path</span> <span class="na">d</span><span class="o">=</span><span class="s">&#34;M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z&#34;</span><span class="p">/</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">polyline</span> <span class="na">points</span><span class="o">=</span><span class="s">&#34;9 17 9 5 21 3 21 15&#34;</span><span class="p">/</span><span class="p">&gt;</span>
+</code></pre></div><p>kissはアイコンに<a href="https://feathericons.com/">FeatherIcons</a>を採用していて、種類が豊富なので他の追加も出来そうです。<br>
 全体的に、初見でも思い立ってから公開までスピーディーに進めることができました。</p>
-
-<h3 id="今後">今後</h3>
-
+<h3 id="heading-2">今後</h3>
 <p>当面以下をコンテンツに据えようと思っています。</p>
-
 <ul>
-<li>プログラミング関係の知見や小ネタや学習の成果<br /></li>
-<li>趣味の音楽関係の記事(レビュー、アナライズ、Sonic Pi etc)<br /></li>
-<li>日常の何か(大体飼い猫たちとの暮らしについてになるはず..)<br /></li>
+<li>プログラミング関係の知見や小ネタや学習の成果</li>
+<li>趣味の音楽関係の記事(レビュー、アナライズ、Sonic Pi etc)</li>
+<li>日常の何か(大体飼い猫たちとの暮らしについてになるはず..)</li>
 </ul>
-
-<h3 id="最後に">最後に</h3>
-
+<h3 id="heading-3">最後に</h3>
 <p>あけましておめでとうございます！</p>
 
       

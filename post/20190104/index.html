@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,49 +160,36 @@
     <h1 class="title">Hugoで生成したサイトにGoogle Analyticsのトラッキングをgtag.jsで設定する</h1>
     
     <div class="content">
-      
-
-<h3 id="あらすじ">あらすじ</h3>
-
-<p>「Hugoで生成したサイトを公開したぞ〜！よぉし次はGoogle Analytics設定しよう！！」と思った<br />
-↓<br />
-rootディレクトリのconfig.tomlにある「googleAnalytics = &ldquo;&ldquo;」にトラッキングIDを設定すればおk！というのを見てやってみる<br />
-↓<br />
-確かにhtmlにトラッキングコードが追加されてる凄い！！ウッでも方式がanalytics.jsだ..！！<br />
-(せっかくなら最新の<a href="https://www.snbi.jp/detail/14" target="_blank">gtag.js</a>を設定したい)<br />
-↓<br />
+      <h3 id="heading">あらすじ</h3>
+<p>「Hugoで生成したサイトを公開したぞ〜！よぉし次はGoogle Analytics設定しよう！！」と思った<br>
+↓<br>
+rootディレクトリのconfig.tomlにある「googleAnalytics = &ldquo;&quot;」にトラッキングIDを設定すればおk！というのを見てやってみる<br>
+↓<br>
+確かにhtmlにトラッキングコードが追加されてる凄い！！ウッでも方式がanalytics.jsだ..！！<br>
+(せっかくなら最新の<a href="https://www.snbi.jp/detail/14">gtag.js</a>を設定したい)<br>
+↓<br>
 そもどの様にトラッキングコードが追加されるかを確認しつつ、gtag.jsで設定する→本記事の趣旨</p>
-
-<h3 id="オチを先に">オチを先に</h3>
-
+<h3 id="heading-1">オチを先に</h3>
 <p><em>ウッでも方式がanalytics.jsだ..！！</em></p>
-
-<p>Hugoで提供しているテンプレートがanalytics.jsだから、というのが根本的な理由でした。<br />
-この件は既にIssuesでやり取りされていて(<a href="https://github.com/gohugoio/hugo/issues/4479" target="_blank">Update the internal GA template #4479</a>)、<br />
-Hugoの<a href="https://github.com/gohugoio/hugo/milestone/90" target="_blank">v0.56のマイルストーン</a>でテンプレートをgtag.jsに変更するissueが含まれているので今後変更されそうです。
-(<a href="https://github.com/gohugoio/hugo/issues/4327" target="_blank">Update Google Analytics internal template to new style(gtag.js) #4327</a>)<br />
-本記事では自前で内部テンプレートを作成する手法を記載していますが、<br />
+<p>Hugoで提供しているテンプレートがanalytics.jsだから、というのが根本的な理由でした。<br>
+この件は既にIssuesでやり取りされていて(<a href="https://github.com/gohugoio/hugo/issues/4479">Update the internal GA template #4479</a>)、<br>
+Hugoの<a href="https://github.com/gohugoio/hugo/milestone/90">v0.56のマイルストーン</a>でテンプレートをgtag.jsに変更するissueが含まれているので今後変更されそうです。
+(<a href="https://github.com/gohugoio/hugo/issues/4327">Update Google Analytics internal template to new style(gtag.js) #4327</a>)<br>
+本記事では自前で内部テンプレートを作成する手法を記載していますが、<br>
 今後変更に併せ公式のテンプレートを使用した方が良さそうです。</p>
-
-<h3 id="どの様にトラッキングコードが追加されるか">どの様にトラッキングコードが追加されるか</h3>
-
-<p>Hugoの<a href="https://gohugo.io/templates/internal/#google-analytics" target="_blank">公式リファレンス</a>では、大まかに「設定ファイルにトラッキングIDを指定した後_internal/配下のテンプレートを含められるよ！」と記載があり、これを各themeが実装している様でした。<br />
+<h3 id="heading-2">どの様にトラッキングコードが追加されるか</h3>
+<p>Hugoの<a href="https://gohugo.io/templates/internal/#google-analytics">公式リファレンス</a>では、大まかに「設定ファイルにトラッキングIDを指定した後_internal/配下のテンプレートを含められるよ！」と記載があり、これを各themeが実装している様でした。<br>
 前述の様にテンプレートがanalytics.jsのため、themeフォルダ内に自前でgtag.js版のhtmlを用意しそちらを読み込ませる様にします。</p>
-
-<h3 id="gtag-jsで設定する">gtag.jsで設定する</h3>
-
-<p>forkしたthemeに対し以下の変更を加えました。(変更内容はthemeによって異なると思いますが、参考になれば..)<br />
-<a href="https://github.com/mogimogitomato/kiss/commit/88158ed079f8ddb6062fa5a8868321558cdcfab5" target="_blank">https://github.com/mogimogitomato/kiss/commit/88158ed079f8ddb6062fa5a8868321558cdcfab5</a><br />
-変更に当たっては、以下の記事を参考にしました。<br />
-<a href="https://maku77.github.io/hugo/settings/google-analytics.html" target="_blank">Google アナリティクス用のトラッキングコードを埋め込む</a></p>
-
-<h3 id="最後に">最後に</h3>
-
-<p>gtag.jsのトラッキングコードはheadタグの直下に配置する必要があり、Hugoのテンプレートが変更されたら<br />
-themeも対応する必要があるところが多そうです。<br />
+<h3 id="gtagjs">gtag.jsで設定する</h3>
+<p>forkしたthemeに対し以下の変更を加えました。(変更内容はthemeによって異なると思いますが、参考になれば..) <br>
+<a href="https://github.com/mogimogitomato/kiss/commit/88158ed079f8ddb6062fa5a8868321558cdcfab5">https://github.com/mogimogitomato/kiss/commit/88158ed079f8ddb6062fa5a8868321558cdcfab5</a><br>
+変更に当たっては、以下の記事を参考にしました。<br>
+<a href="https://maku77.github.io/hugo/settings/google-analytics.html">Google アナリティクス用のトラッキングコードを埋め込む</a></p>
+<h3 id="heading-3">最後に</h3>
+<p>gtag.jsのトラッキングコードはheadタグの直下に配置する必要があり、Hugoのテンプレートが変更されたら<br>
+themeも対応する必要があるところが多そうです。<br>
 軽微ではありますが、Hugoのアップデートに伴って更新しつつプルリク出せるといいな..</p>
-
-<hr />
+<hr>
 
       
       <div class="related">

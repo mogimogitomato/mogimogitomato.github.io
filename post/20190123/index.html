@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,56 +160,51 @@
     <h1 class="title">Clapping Music 三本締め編</h1>
     
     <div class="content">
-      <p>飲み会の終わりに行われる日本の奇習、三本締め。<br />
-由来も何も分からず周りに合わせて手拍子を打ちながら、こう思った事はないだろうか。<br />
-「あぁ.. Clapping Musicがやりたい&hellip;」<br />
+      <p>飲み会の終わりに行われる日本の奇習、三本締め。<br>
+由来も何も分からず周りに合わせて手拍子を打ちながら、こう思った事はないだろうか。<br>
+「あぁ.. Clapping Musicがやりたい&hellip;」<br>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/lzkOFJMI5i8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/lzkOFJMI5i8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 </p>
-
 <p>余裕っすよ！やってやりましょうよ！！！</p>
-
-<hr />
-
-<p>Sonic Piで以下を実行します。<br />
-clap_arrayは三本締めのパターンの配列で、<br />
-perc_snapは要素を先頭から順に繰り返し=通常の三本締めパターンを打ち、<br />
-perc_snap2は8周するごとに次の要素を先頭にします。<br />
-この動作を配列の要素数 + 1回繰り返し、最後は慣例に倣って<br />
+<hr>
+<p>Sonic Piで以下を実行します。<br>
+clap_arrayは三本締めのパターンの配列で、<br>
+perc_snapは要素を先頭から順に繰り返し=通常の三本締めパターンを打ち、<br>
+perc_snap2は8周するごとに次の要素を先頭にします。<br>
+この動作を配列の要素数 + 1回繰り返し、最後は慣例に倣って<br>
 拍手で終了します。</p>
 <div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">use_bpm</span> <span class="mi">400</span>
 
-<span class="n">load_sample</span> <span class="ss">:perc_snap</span>
+<span class="o"></span><span class="n">load_sample</span> <span class="ss">:perc_snap</span>
 <span class="n">load_sample</span> <span class="ss">:perc_snap2</span>
 
-<span class="n">clap_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span>
+<span class="n">clap_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="o">]</span>
 <span class="n">length</span> <span class="o">=</span> <span class="n">clap_array</span><span class="o">.</span><span class="n">length</span>
 
-<span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
-  <span class="mi">8</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">reps</span><span class="o">|</span>
+<span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="p">)</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
+  <span class="mi">8</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">reps</span><span class="o">|</span>
     <span class="n">length</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">beat</span><span class="o">|</span>
-      <span class="n">sample</span> <span class="ss">:perc_snap</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span> <span class="o">-</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="n">beat</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
-      <span class="n">sample</span> <span class="ss">:perc_snap2</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span>  <span class="mi">0</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="p">(</span><span class="n">cycle</span> <span class="o">+</span> <span class="n">beat</span><span class="p">)</span> <span class="sx">% length] </span> <span class="o">==</span> <span class="mi">1</span>
-      <span class="nb">puts</span> <span class="s2">&#34;Cycle: </span><span class="si">#{</span><span class="n">cycle</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> Reps: </span><span class="si">#{</span><span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> Beat: </span><span class="si">#{</span><span class="n">beat</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&#34;</span>
+      <span class="n">sample</span> <span class="ss">:perc_snap</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span> <span class="o">-</span><span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">5</span> <span class="o"></span><span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="n">beat</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+      <span class="o"></span><span class="n">sample</span> <span class="ss">:perc_snap2</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span>  <span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">5</span> <span class="o"></span><span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="p">(</span><span class="n">cycle</span> <span class="o">+</span> <span class="n">beat</span><span class="p">)</span> <span class="o">%</span> <span class="n">length</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+      <span class="o"></span><span class="nb">puts</span> <span class="s2">&#34;</span><span class="s2">Cycle: </span><span class="si">#{</span><span class="n">cycle</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="si">}</span><span class="s2"> Reps: </span><span class="si">#{</span><span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="si">}</span><span class="s2"> Beat: </span><span class="si">#{</span><span class="n">beat</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="si">}</span><span class="s2">&#34;</span>
       <span class="nb">sleep</span> <span class="mi">1</span>
-    <span class="k">end</span>
+    <span class="o"></span><span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
 <span class="nb">sleep</span> <span class="mi">1</span>
 
-<span class="k">for</span> <span class="n">num</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">50</span> <span class="k">do</span>
+<span class="o"></span><span class="k">for</span> <span class="n">num</span> <span class="k">in</span> <span class="mi">1</span><span class="o"></span><span class="o">..</span><span class="mi">50</span> <span class="o"></span><span class="k">do</span>
   <span class="n">sample</span> <span class="ss">:perc_snap</span>
-  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span>
+  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="o">..</span><span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">4</span><span class="o"></span><span class="p">)</span>
   <span class="n">sample</span> <span class="ss">:perc_snap2</span>
-  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span>
-<span class="k">end</span></code></pre></div>
-<p>SoundCloudに実行結果を上げました。</p>
-
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/563430843&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-
+  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="o">..</span><span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">4</span><span class="o"></span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div><p>SoundCloudに実行結果を上げました。</p>
+<!-- raw HTML omitted -->
 <p>今から練習して新学期に差をつけよう！！！</p>
 
       

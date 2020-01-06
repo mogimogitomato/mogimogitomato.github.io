@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,15 +160,14 @@
     <h1 class="title">Taxonomyのリストに件数表示を追加する</h1>
     
     <div class="content">
-      <p>HugoのTaxonomyを使うと投稿記事を分類することができますが、Taxonomyをリスト表示した際に<br />
-分類ごとの記事件数もカウントして表示したい！と思った時に、その機能が本ブログで使っているthemeに<br />
+      <p>HugoのTaxonomyを使うと投稿記事を分類することができますが、Taxonomyをリスト表示した際に<br>
+分類ごとの記事件数もカウントして表示したい！と思った時に、その機能が本ブログで使っているthemeに<br>
 無かったので自作しました。</p>
-
 <p>config.tomlに表示切替のフラグを追加し、</p>
 <div class="highlight"><pre class="chroma"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">info</span><span class="p">]</span>
-<span class="nx">taxonomiesCount</span> <span class="p">=</span> <span class="kc">true</span> <span class="c"># Add taxonomies count</span></code></pre></div>
-<p>表示が有効の場合、項目の横に対象の分類の件数を表示する処理を加えます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>{{ .Title }}
+<span class="nx">taxonomiesCount</span> <span class="p">=</span> <span class="kc">true</span> <span class="c"># Add taxonomies count</span>
+</code></pre></div><p>表示が有効の場合、項目の横に対象の分類の件数を表示する処理を加えます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}
 {{if .Site.Params.Info.taxonomiesCount}}
 {{ $title := urlize .Title }}
   {{ range $taxonomy_name, $taxonomy := .Site.Taxonomies }}
@@ -181,9 +181,9 @@
     {{ end }}
   {{ end }}
 {{ end }}
-<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></code></pre></div>
-<p>HugoではデフォルトでtagsとcategoriesのTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br />
-<a href="https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules" target="_blank">hugo-layouts-lookup-rules</a>より、section、taxonomyおよびtaxonomyTermタイプの値が<code>.Section</code>で取得できます。このため、<code>.Site.Taxonomies</code> のkeyが<code>.Section</code>と同じかを判定し大分類を特定します。<br />
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div><p>HugoではデフォルトでtagsとcategoriesのTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br>
+<a href="https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules">hugo-layouts-lookup-rules</a>より、section、taxonomyおよびtaxonomyTermタイプの値が<code>.Section</code>で取得できます。このため、<code>.Site.Taxonomies</code> のkeyが<code>.Section</code>と同じかを判定し大分類を特定します。<br>
 次に、分類項目のkeyと表示項目名(それぞれurlizeして形式を揃える)を双方が同じ値か判定し、合致した場合に分類項目が持つ件数を取得しています。</p>
 
       

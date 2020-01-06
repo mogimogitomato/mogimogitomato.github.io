@@ -1,47 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/12/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/archives/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/categories/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/hugo/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/post/20200107/</loc>
+    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/post/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/categories/programming/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -50,27 +48,28 @@
   </url>
   
   <url>
+    <loc>https://mogimogitomato.github.io/tags/vim/</loc>
+    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mogimogitomato.github.io/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/9/</loc>
     <lastmod>2019-09-09T03:25:26+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/categories/music/</loc>
     <lastmod>2019-09-09T03:25:26+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/orc%CE%BB/</loc>
     <lastmod>2019-09-09T03:25:26+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -81,19 +80,16 @@
   <url>
     <loc>https://mogimogitomato.github.io/tags/sonic-pi/</loc>
     <lastmod>2019-09-09T03:25:26+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/07/</loc>
     <lastmod>2019-07-10T10:29:48+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/java/</loc>
     <lastmod>2019-07-10T10:29:48+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -104,13 +100,11 @@
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/05/</loc>
     <lastmod>2019-05-24T23:11:33+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/git/</loc>
     <lastmod>2019-05-24T23:11:33+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -121,7 +115,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/tags/vscode/</loc>
     <lastmod>2019-05-09T00:03:12+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -132,7 +125,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/03/</loc>
     <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -143,13 +135,11 @@
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/02/</loc>
     <lastmod>2019-02-14T01:39:16+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/puppeteer/</loc>
     <lastmod>2019-02-14T01:39:16+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -160,7 +150,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/archives/2019/01/</loc>
     <lastmod>2019-01-23T07:51:08+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -171,7 +160,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/tags/review/</loc>
     <lastmod>2019-01-20T17:58:25+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -187,19 +175,16 @@
   <url>
     <loc>https://mogimogitomato.github.io/tags/%E6%8A%80%E8%A1%93%E6%9B%B8/</loc>
     <lastmod>2019-01-14T15:42:00+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/johnzorn/</loc>
     <lastmod>2019-01-04T23:33:54+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/tags/leadsheet/</loc>
     <lastmod>2019-01-04T23:33:54+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

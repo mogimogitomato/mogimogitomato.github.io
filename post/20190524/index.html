@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,7 +160,7 @@
     <h1 class="title">git logから特定コミットの出力を抑止する</h1>
     
     <div class="content">
-      <p>PHPでの開発中に製造工程の追加行数、削除行数を一覧化する必要が出たので、<br />
+      <p>PHPでの開発中に製造工程の追加行数、削除行数を一覧化する必要が出たので、<br>
 以下の要領でファイル単位での各行数とその合計数を出力しました。</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
@@ -172,15 +173,13 @@
 </span><span class="se"></span>          awk <span class="s1">&#39;NF==3 {plus+=$1; minus+=$2} \
 </span><span class="s1">               END {printf(&#34;%d (+%d, -%d)\n&#34;, plus+minus, plus, minus)}&#39;</span><span class="sb">`</span>
   <span class="nb">echo</span> <span class="nv">$file</span><span class="s1">&#39; :&#39;</span><span class="nv">$result</span>
-<span class="k">done</span></code></pre></div>
-<p>けれど、途中コードフォーマットの修正を何回か行っており、それらのコミットについては<br />
+<span class="k">done</span>
+</code></pre></div><p>けれど、途中コードフォーマットの修正を何回か行っており、それらのコミットについては<br>
 カウント対象から除外したかったので思案。</p>
-
-<p>gitの公式リファレンスを見ると、<code>git log</code>のオプションで<code>--invert-grep</code>というのが指定できる様。<br />
-<a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep" target="_blank">https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep</a></p>
-
-<p><code>--grep=&lt;pattern&gt;</code>オプションで指定したパターンにlogメッセージが一致しないコミットに出力を制限する、との事。<br />
-コミット時のメッセージに対応タスクのIDを含むルールとしていたので、以下で取り直し無事特定コミットを<br />
+<p>gitの公式リファレンスを見ると、<code>git log</code>のオプションで<code>--invert-grep</code>というのが指定できる様。<br>
+<a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep">https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep</a></p>
+<p><code>--grep=&lt;pattern&gt;</code>オプションで指定したパターンにlogメッセージが一致しないコミットに出力を制限する、との事。<br>
+コミット時のメッセージに対応タスクのIDを含むルールとしていたので、以下で取り直し無事特定コミットを<br>
 行数カウントから除外する事ができました。</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
 </span><span class="cp"></span>
@@ -194,7 +193,8 @@
 </span><span class="se"></span>          awk <span class="s1">&#39;NF==3 {plus+=$1; minus+=$2} \
 </span><span class="s1">               END {printf(&#34;%d (+%d, -%d)\n&#34;, plus+minus, plus, minus)}&#39;</span><span class="sb">`</span>
   <span class="nb">echo</span> <span class="nv">$file</span><span class="s1">&#39; :&#39;</span><span class="nv">$result</span>
-<span class="k">done</span></code></pre></div>
+<span class="k">done</span>
+</code></pre></div>
       
       <div class="related">
 </div>

@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -163,126 +164,100 @@
     <h1 class="title">ORCΛとSonic Piで変態エフェクターを作ろう</h1>
     
     <div class="content">
-      
-
-<h3 id="動機">動機</h3>
-
-<p>ブティック系エフェクターが好きで、<a href="https://gizmo-music.com/" target="_blank">ギズモ屋さん</a>や<a href="https://www.youtube.com/channel/UCarxZ8bKjfFzUOgN5LjYOhQ" target="_blank">knobs</a>等で個性的で美しい音色のエフェクトペダルが紹介されるたびに胸躍らせてしまうのですが、1つ1つがそれなりのお値段なので物欲のままにあれこれ買い揃えるのは厳しい(というか1個買うのも結構ハードルが..)でもそれっぽい音は鳴らしたい！！という気持ちがありました。<br />
-一方、Sonic Piのv3.0から <code>live_audio</code> という関数が導入され、オーディオインターフェースからの入力をSonic Pi上でシンセとして扱うことができる様になりました。これでSonic Pi上からエフェクトをかけられる！！<br />
-また、<a href="https://github.com/hundredrabbits/Orca" target="_blank">ORCΛ</a>というElectron製でMIDIやOSCなどの信号をSonic Piなど外部に簡単に飛ばせるツールがあることを最近知りました。これで任意のタイミングでランダムに信号を飛ばせる！！</p>
-
-<p>ブティック系エフェクターの中で個人的に特に好きなのが、エフェクトに対するパラメータのランダマイズ機構を持っているものだったりします(本記事タイトルの<strong>変態</strong>に相当)。<br />
+      <h3 id="heading">動機</h3>
+<p>ブティック系エフェクターが好きで、<a href="https://gizmo-music.com/">ギズモ屋さん</a>や<a href="https://www.youtube.com/channel/UCarxZ8bKjfFzUOgN5LjYOhQ">knobs</a>等で個性的で美しい音色のエフェクトペダルが紹介されるたびに胸躍らせてしまうのですが、1つ1つがそれなりのお値段なので物欲のままにあれこれ買い揃えるのは厳しい(というか1個買うのも結構ハードルが..)でもそれっぽい音は鳴らしたい！！という気持ちがありました。<br>
+一方、Sonic Piのv3.0から <code>live_audio</code> という関数が導入され、オーディオインターフェースからの入力をSonic Pi上でシンセとして扱うことができる様になりました。これでSonic Pi上からエフェクトをかけられる！！<br>
+また、<a href="https://github.com/hundredrabbits/Orca">ORCΛ</a>というElectron製でMIDIやOSCなどの信号をSonic Piなど外部に簡単に飛ばせるツールがあることを最近知りました。これで任意のタイミングでランダムに信号を飛ばせる！！</p>
+<p>ブティック系エフェクターの中で個人的に特に好きなのが、エフェクトに対するパラメータのランダマイズ機構を持っているものだったりします(本記事タイトルの<strong>変態</strong>に相当)。<br>
 ORCΛとSonic Piを使ってパラメータをランダマイズした空間系エフェクトをかけつつ、好みの音像を作れるか試行した際の手順をまとめたのが本記事です。</p>
-
-<h3 id="環境">環境</h3>
-
+<h3 id="heading-1">環境</h3>
 <ul>
 <li>Mac OS X Mojave 10.14.6</li>
 <li>Sonic Pi 3.1.0</li>
 <li>ORCΛ 0.1.0</li>
 <li>エレキギター(任意. 検証時はフェンダージャパンのテレキャスターを使用)</li>
-<li>オーディオインターフェース(任意. 検証時はFOCUSRITEのScarlett 2i2 G2を使用)<br /></li>
+<li>オーディオインターフェース(任意. 検証時はFOCUSRITEのScarlett 2i2 G2を使用)</li>
 </ul>
-
-<p>※ORCΛの詳しい説明やORCΛとSonic Piのインストール/連携手順等については、以下の記事でまとめて下さっている方がいたのであらかじめご参照下さい。本記事での同様の記載は割愛します。<br />
-<a href="https://qiita.com/donbeumai/items/a22198cef709b019e0be" target="_blank">ライブコーディングツール「ORCΛ」と「SonicPi」の連携（備忘録、初心者向け）</a></p>
-
+<p>※ORCΛの詳しい説明やORCΛとSonic Piのインストール/連携手順等については、以下の記事でまとめて下さっている方がいたのであらかじめご参照下さい。本記事での同様の記載は割愛します。<br>
+<a href="https://qiita.com/donbeumai/items/a22198cef709b019e0be">ライブコーディングツール「ORCΛ」と「SonicPi」の連携（備忘録、初心者向け）</a></p>
 <p>オーディオインターフェースを接続後、 <code>システム環境設定→サウンド</code> から入力を接続したオーディオインターフェースに指定すれば準備はOKです。</p>
-
-<h3 id="orcλ">ORCΛ</h3>
-
-<p>エフェクトのパラメータをランダマイズするにあたって、ORCΛから任意のランダムな信号を送り<br />
+<h3 id="orc">ORCΛ</h3>
+<p>エフェクトのパラメータをランダマイズするにあたって、ORCΛから任意のランダムな信号を送り<br>
 Sonic Pi側で信号を受けてエフェクトのパラメータにセットする構成としました。</p>
-
 <p>ORCΛ側で以下の様に信号を飛ばします。</p>
-
 <figure>
     <img src="/images/20190909/orca_sample.gif"/> 
 </figure>
 
-
-<p></br>
-ORCΛでは大文字の英単語と特定の記号がそれぞれコマンドになっています。<br />
-<code>*</code> はbangと呼ばれる信号の発火を行うコマンドで、 <code>=</code> で繋いだ値を送付します。<br />
-上記では、 <code>D(delay)</code> コマンド(左右の引数を元にbangを行うタイミングを制御する)と<br />
-<code>R(random)</code> コマンド(左右の引数の範囲内の値をランダムに下部に出力する)を使用し<br />
-vと命名した配列にランダム値を格納した状態で1frame毎に信号を飛ばしています。</p>
-
+<!-- raw HTML omitted -->
 <h3 id="sonic-pi">Sonic Pi</h3>
-
-<p>Sonic Piを立ち上げた状態で、右側Cueの部分にORCΛから送られた信号が確認できます。<br />
-以下でSonic Pi側で送られた信号をエフェクトのパラメータに指定し、オーディオインターフェースからの入力に<br />
+<p>Sonic Piを立ち上げた状態で、右側Cueの部分にORCΛから送られた信号が確認できます。<br>
+以下でSonic Pi側で送られた信号をエフェクトのパラメータに指定し、オーディオインターフェースからの入力に<br>
 エフェクトをかけます。</p>
 <div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="nb">require</span> <span class="s1">&#39;bigdecimal&#39;</span>
 
 <span class="n">use_bpm</span> <span class="mi">120</span>
 
-<span class="n">live_loop</span> <span class="ss">:bizzare_effect</span> <span class="k">do</span>
+<span class="o"></span><span class="n">live_loop</span> <span class="ss">:bizzare_effect</span> <span class="k">do</span>
   <span class="n">use_real_time</span>
-  <span class="n">v</span> <span class="o">=</span> <span class="n">sync</span> <span class="s2">&#34;/osc/v&#34;</span>
-  <span class="n">delayTime</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">10</span>
-  <span class="n">sampleLength</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">10</span>
-  <span class="n">reverbDepth</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">50</span>
-  <span class="n">delayTime</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">delayTime</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
-  <span class="n">sampleLength</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">sampleLength</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
-  <span class="nb">puts</span> <span class="s2">&#34;delayTime: </span><span class="si">#{</span><span class="n">delayTime</span><span class="si">}</span><span class="s2">&#34;</span>
-  <span class="nb">puts</span> <span class="s2">&#34;sampleLength: </span><span class="si">#{</span><span class="n">sampleLength</span><span class="si">}</span><span class="s2">&#34;</span>
-  <span class="nb">puts</span> <span class="s2">&#34;reverbDepth: </span><span class="si">#{</span><span class="n">reverbDepth</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">sync</span> <span class="s2">&#34;</span><span class="s2">/osc/v</span><span class="s2">&#34;</span>
+  <span class="n">delayTime</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o"></span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">10</span>
+  <span class="o"></span><span class="n">sampleLength</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o"></span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">10</span>
+  <span class="o"></span><span class="n">reverbDepth</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o"></span><span class="o">]</span> <span class="o">*</span> <span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">50</span>
+  <span class="o"></span><span class="n">delayTime</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">delayTime</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="o"></span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+  <span class="n">sampleLength</span> <span class="o">=</span> <span class="no">BigDecimal</span><span class="p">(</span><span class="n">sampleLength</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="o"></span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+  <span class="nb">puts</span> <span class="s2">&#34;</span><span class="s2">delayTime: </span><span class="si">#{</span><span class="n">delayTime</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="nb">puts</span> <span class="s2">&#34;</span><span class="s2">sampleLength: </span><span class="si">#{</span><span class="n">sampleLength</span><span class="si">}</span><span class="s2">&#34;</span>
+  <span class="nb">puts</span> <span class="s2">&#34;</span><span class="s2">reverbDepth: </span><span class="si">#{</span><span class="n">reverbDepth</span><span class="si">}</span><span class="s2">&#34;</span>
   <span class="c1"># delay</span>
-  <span class="n">with_fx</span> <span class="ss">:echo</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">decay</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="ss">phase</span><span class="p">:</span> <span class="n">delayTime</span> <span class="k">do</span>
+  <span class="n">with_fx</span> <span class="ss">:echo</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="ss">decay</span><span class="p">:</span> <span class="mi">5</span><span class="o"></span><span class="p">,</span> <span class="ss">phase</span><span class="p">:</span> <span class="n">delayTime</span> <span class="k">do</span>
     <span class="c1"># reverb</span>
-    <span class="n">with_fx</span> <span class="ss">:reverb</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">room</span><span class="p">:</span> <span class="n">reverbDepth</span>  <span class="k">do</span>
+    <span class="n">with_fx</span> <span class="ss">:reverb</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="ss">room</span><span class="p">:</span> <span class="n">reverbDepth</span>  <span class="k">do</span>
       <span class="c1"># reverse用に録音</span>
-      <span class="n">with_fx</span> <span class="ss">:record</span><span class="p">,</span> <span class="ss">buffer</span><span class="p">:</span> <span class="n">buffer</span><span class="o">[</span><span class="ss">:buff</span><span class="p">,</span> <span class="mi">8</span><span class="o">]</span> <span class="k">do</span>
+      <span class="n">with_fx</span> <span class="ss">:record</span><span class="p">,</span> <span class="ss">buffer</span><span class="p">:</span> <span class="n">buffer</span><span class="o">[</span><span class="ss">:buff</span><span class="p">,</span> <span class="mi">8</span><span class="o"></span><span class="o">]</span> <span class="k">do</span>
         <span class="n">live_audio</span> <span class="ss">:guitar</span><span class="p">,</span> <span class="ss">input</span><span class="p">:</span> <span class="mi">1</span>
-      <span class="k">end</span>
+      <span class="o"></span><span class="k">end</span>
     <span class="k">end</span>
-    <span class="nb">sleep</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
-  <span class="k">end</span>
+    <span class="nb">sleep</span> <span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">2</span>
+  <span class="o"></span><span class="k">end</span>
   <span class="nb">sleep</span> <span class="mi">6</span>
-  <span class="c1"># reverse</span>
-  <span class="n">sample</span> <span class="n">buffer</span><span class="o">[</span><span class="ss">:buff</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="o">-</span><span class="n">sampleLength</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="ss">sustain</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">beat_stretch</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="ss">threshold</span><span class="p">:</span> <span class="mi">90</span>
-<span class="k">end</span></code></pre></div>
-<ul>
-<li><code>use_real_time</code> で、Sonic Piのデフォルトのレイテンシ設定を無効にしておきます。<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup><br /></li>
-<li><code>v = sync &quot;/osc/v&quot;</code> で、ORCΛから送られたOSC信号の配列を変数に格納します。<br />
-取得した配列のうち0番目の要素をdelayの間隔と後述するSample再生の長さ、2番目の要素をreverbの深さとして持っておきます。<br />
-また、この際整数そのままだとパラメータとして大きいので小数値に変換しています。<br />
-(変換時、delayTime, sampleLengthで何故か端数が出たのでBigDecimalで切り上げをかませています..)<br /></li>
-<li><code>with_fx</code> の部分でそれぞれのエフェクトのパラメータに変数をセットします。<br />
-ここで同時に、Sample再生に使用する入力の録音を <code>record</code> で行います。<br /></li>
-<li><code>live_audio :guitar, input: 1</code> でオーディオインターフェースからの入力を取得します。<br />
-guitarの部分の名称は任意です。 <code>input: 1</code> はオーディオインターフェースの入力設定になります。今回はmono入力としています。<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup><br /></li>
-<li><code>sleep 0.2</code> の間隔でループ処理が行われ、上記のエフェクトが更新されます。また、次のsleep後に <code>record</code> で録音した入力のreverse再生を行います。<br /></li>
-<li><code>sample buffer[:buff,8], rate: -sampleLength * 3, sustain: 3,  amp: 1.0, beat_stretch: 4, threshold: 90</code><br />
-録音の再生は <code>sample</code> で行い、この際 <code>rate</code> に負数を渡す事でreverse再生となります。sampleLengthを負数で設定します。<br /></li>
+  <span class="o"></span><span class="c1"># reverse</span>
+  <span class="n">sample</span> <span class="n">buffer</span><span class="o">[</span><span class="ss">:buff</span><span class="p">,</span><span class="mi">8</span><span class="o"></span><span class="o">]</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="o">-</span><span class="n">sampleLength</span> <span class="o">*</span> <span class="mi">3</span><span class="o"></span><span class="p">,</span> <span class="ss">sustain</span><span class="p">:</span> <span class="mi">3</span><span class="o"></span><span class="p">,</span>  <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="ss">beat_stretch</span><span class="p">:</span> <span class="mi">4</span><span class="o"></span><span class="p">,</span> <span class="ss">threshold</span><span class="p">:</span> <span class="mi">90</span>
+<span class="o"></span><span class="k">end</span>
+</code></pre></div><ul>
+<li><code>use_real_time</code> で、Sonic Piのデフォルトのレイテンシ設定を無効にしておきます。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li><code>v = sync &quot;/osc/v&quot;</code> で、ORCΛから送られたOSC信号の配列を変数に格納します。<br>
+取得した配列のうち0番目の要素をdelayの間隔と後述するSample再生の長さ、2番目の要素をreverbの深さとして持っておきます。<br>
+また、この際整数そのままだとパラメータとして大きいので小数値に変換しています。<br>
+(変換時、delayTime, sampleLengthで何故か端数が出たのでBigDecimalで切り上げをかませています..)</li>
+<li><code>with_fx</code> の部分でそれぞれのエフェクトのパラメータに変数をセットします。<br>
+ここで同時に、Sample再生に使用する入力の録音を <code>record</code> で行います。</li>
+<li><code>live_audio :guitar, input: 1</code> でオーディオインターフェースからの入力を取得します。<br>
+guitarの部分の名称は任意です。 <code>input: 1</code> はオーディオインターフェースの入力設定になります。今回はmono入力としています。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+<li><code>sleep 0.2</code> の間隔でループ処理が行われ、上記のエフェクトが更新されます。また、次のsleep後に <code>record</code> で録音した入力のreverse再生を行います。</li>
+<li><code>sample buffer[:buff,8], rate: -sampleLength * 3, sustain: 3,  amp: 1.0, beat_stretch: 4, threshold: 90</code><br>
+録音の再生は <code>sample</code> で行い、この際 <code>rate</code> に負数を渡す事でreverse再生となります。sampleLengthを負数で設定します。</li>
 </ul>
-
 <p>このコードを実行する事で、入力音の加工と再生が行われます。</p>
-
-<h3 id="結果">結果</h3>
-
-<p>実際に鳴らした結果がこちらです。<br />
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/644127069&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-やったぜ。</p>
-
-<h3 id="所感">所感</h3>
-
-<p>見えている課題として、delayの間隔が変更されるタイミングでクリップノイズの様な細かいノイズが乗る場合があります..(ダメじゃないか)<br />
-演奏形態がノイズミュージックであったり、他の楽器と合わせたライブ演奏時の出音ではそこまで気にならないかもしれませんが個人録音ではやはり気になるかも。内部で何が起こっているかはSuperColiderの実行ログを当たれば分かる気がしますが、追いかける必要はありそうです。(素直に<a href="https://www.soundhouse.co.jp/products/detail/item/242655/" target="_blank">POSSESSED</a>買うか.. いや&hellip;)<br />
-一方、reverse再生は再生する長さを可変とした場合も綺麗に鳴ってくれました。(主観ですが)一般的なエフェクターだと固定長のreverseであったりloopと合わさる場合が多く、原音を維持したまま動的に長さや録音を変えつつコールアンドレスポンスの様に再生するには頑張りが必要な印象です。今回その点が簡単に出来たことは収穫でした。<br />
+<h3 id="heading-2">結果</h3>
+<p>実際に鳴らした結果がこちらです。</p>
+<!-- raw HTML omitted -->
+<h3 id="heading-3">所感</h3>
+<p>見えている課題として、delayの間隔が変更されるタイミングでクリップノイズの様な細かいノイズが乗る場合があります..(ダメじゃないか)<br>
+演奏形態がノイズミュージックであったり、他の楽器と合わせたライブ演奏時の出音ではそこまで気にならないかもしれませんが個人録音ではやはり気になるかも。内部で何が起こっているかはSuperColiderの実行ログを当たれば分かる気がしますが、追いかける必要はありそうです。(素直に<a href="https://www.soundhouse.co.jp/products/detail/item/242655/">POSSESSED</a>買うか.. いや&hellip;)<br>
+一方、reverse再生は再生する長さを可変とした場合も綺麗に鳴ってくれました。(主観ですが)一般的なエフェクターだと固定長のreverseであったりloopと合わさる場合が多く、原音を維持したまま動的に長さや録音を変えつつコールアンドレスポンスの様に再生するには頑張りが必要な印象です。今回その点が簡単に出来たことは収穫でした。<br>
 また、エフェクトを自分の好きな様にかけられること自体に可能性を感じました。LiveCodingというとIDE上で自前で生成したシンセを使用するミニマル/テクノ系の演奏のイメージが強いですが、楽器演奏者からしても新しい音作りに応用できそうです。</p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:1"><a href="https://sonic-pi.net/tutorial.html#removing-latency" target="_blank">https://sonic-pi.net/tutorial.html#removing-latency</a>
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-<li id="fn:2"><a href="https://sonic-pi.net/tutorial.html#stereo-input" target="_blank">https://sonic-pi.net/tutorial.html#stereo-input</a>
- <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://sonic-pi.net/tutorial.html#removing-latency">https://sonic-pi.net/tutorial.html#removing-latency</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://sonic-pi.net/tutorial.html#stereo-input">https://sonic-pi.net/tutorial.html#stereo-input</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
       
       <div class="related">

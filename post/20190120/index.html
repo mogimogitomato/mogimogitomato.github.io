@@ -44,34 +44,34 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js"></script>
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://mogimogitomato.github.io/">
-          <h1 class="title is-4">ツナ缶同盟</h1>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://mogimogitomato.github.io/">
+          <h1 id="nav-heading" class="title is-4">ツナ缶同盟</h1>
         </a>
       </div>
       <div class="nav-right">
-          <div class="aa-input-container" id="aa-input-desktop-container">
-              <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </div>
-          <script>
-          var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
-          var index = client.initIndex('tuna-can');
-          autocomplete('#aa-search-desktop-input',
-          { hint: true}, {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
-              displayKey: 'name',
-              templates: {
-                  suggestion: function(suggestion) {
-                      return '<span>' + '<a href="' + suggestion.permalink + '">' +
-                      suggestion._highlightResult.title.value + '</a></span>';
-                  },
-                  footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
-              }
-          });
-          </script>
-          <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
+        <div class="aa-input-container" id="aa-input-desktop-container">
+            <input type="search" id="aa-search-desktop-input" class="aa-input-search" placeholder="" name="search" autocomplete="on" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="aa-input-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <script>
+        var client = algoliasearch("ZCGMXWE4XB", "364f6f97ad28a99c1c44d4ea51381b12");
+        var index = client.initIndex('tuna-can');
+        autocomplete('#aa-search-desktop-input',
+        { hint: true}, {
+            source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+            displayKey: 'name',
+            templates: {
+                suggestion: function(suggestion) {
+                    return '<span>' + '<a href="' + suggestion.permalink + '">' +
+                    suggestion._highlightResult.title.value + '</a></span>';
+                },
+                footer: '<div style="border-top: 1px solid rgba(228, 228, 228, 0.6); padding: 12px; display: block; text-align: center; font-size:14px;">Powered by <a href="http://www.algolia.com"><img src="https://www.algolia.com/assets/algolia128x40.png" style="height: 14px; margin: 0 0 -3px 5px;" ></a></div>'
+            }
+        });
+        </script>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/mogimogitomato'
             target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
@@ -143,6 +143,7 @@
     });
     </script>
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
 <section class="section">
   <div class="container">
@@ -159,175 +160,136 @@
     <h1 class="title">私的フィメールフォーク選</h1>
     
     <div class="content">
-      
-
-<p>20代の前半はフリージャズか一部のアニソンを集中的に聴き漁って生きていたんですが、<br />
-20代の後半を迎えた今は女性のギター弾き語り曲をたくさん聴いています。<br />
-猫2匹と暮らし始めたことが自分の中では大きくて、<br />
+      <p>20代の前半はフリージャズか一部のアニソンを集中的に聴き漁って生きていたんですが、<br>
+20代の後半を迎えた今は女性のギター弾き語り曲をたくさん聴いています。<br>
+猫2匹と暮らし始めたことが自分の中では大きくて、<br>
 人には丸くなったと言われつつ穏やかな心持ちになりました。人間はこの様にして変わっていきます。</p>
-
 <p>そんなわけで、普段聴いている曲の紹介記事を書きました。</p>
-
 <h2 id="index">Index</h2>
-
 <ul>
 <li><a href="#joen-baez">Joen Baez</a></li>
 <li><a href="#rachael-dadd">Rachael Dadd</a></li>
 <li><a href="#mmm">mmm</a></li>
-<li><a href="#滝沢朋恵">滝沢朋恵</a></li>
-<li><a href="#小嶋佐和子">小嶋佐和子</a></li>
+<li><a href="#%E6%BB%9D%E6%B2%A2%E6%9C%8B%E6%81%B5">滝沢朋恵</a></li>
+<li><a href="#%E5%B0%8F%E5%B6%8B%E4%BD%90%E5%92%8C%E5%AD%90">小嶋佐和子</a></li>
 <li><a href="#kyooo">kyooo</a></li>
-<li><a href="#柴田聡子">柴田聡子</a></li>
-<li><a href="#イ-ラン">イ・ラン</a></li>
-<li><a href="#柴田聡子とイ-ラン">柴田聡子とイ・ラン</a></li>
+<li><a href="#%E6%9F%B4%E7%94%B0%E8%81%A1%E5%AD%90">柴田聡子</a></li>
+<li><a href="#%E3%82%A4-%E3%83%A9%E3%83%B3">イ・ラン</a></li>
+<li><a href="#%E6%9F%B4%E7%94%B0%E8%81%A1%E5%AD%90%E3%81%A8%E3%82%A4-%E3%83%A9%E3%83%B3">柴田聡子とイ・ラン</a></li>
 </ul>
-
 <h3 id="joen-baez">Joen Baez</h3>
-
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/4RekFGUtexc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/4RekFGUtexc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-工藤冬里の<a href="https://youtu.be/2TmkK1xjdkY?t=311" target="_blank">ドキュメンタリー</a>の中で演奏されているのを見て知りました。<br />
-調べてみるとフォーク史でめちゃくちゃ有名な人なんですね..<br />
+<!-- raw HTML omitted -->
+工藤冬里の<a href="https://youtu.be/2TmkK1xjdkY?t=311">ドキュメンタリー</a>の中で演奏されているのを見て知りました。<br>
+調べてみるとフォーク史でめちゃくちゃ有名な人なんですね..<br>
 上の動画(House Carpenter)では染み入る様な声で、愛情と時間の残酷さについて歌っています。</p>
-
 <h3 id="rachael-dadd">Rachael Dadd</h3>
-
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/QdR-rAr8D9U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/QdR-rAr8D9U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-イギリス、ウィンチェスター出身のSSWで、日本にもちょくちょく来られているみたいです。<br />
-PVもそうですが曲もユーモラスで、日常の暮らしに違った視点を持たせてくれます。<br />
+<!-- raw HTML omitted -->
+イギリス、ウィンチェスター出身のSSWで、日本にもちょくちょく来られているみたいです。<br>
+PVもそうですが曲もユーモラスで、日常の暮らしに違った視点を持たせてくれます。<br>
 PVの中で壁に掛かっているコラージュはアルバム「Bite the mountain」のジャケットにもなってます。</p>
-
 <h3 id="mmm">mmm</h3>
-
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/Kc59MdQ0ITk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/Kc59MdQ0ITk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-<a href="https://cgcgpub.bandcamp.com/album/safe-mode" target="_blank">Safe Mode</a>というアルバムが出た時に色んな人が話題にしていて、ジャケットのイメージから電子音楽系の人なのかな？と思ってました。<br />
-アーティスト名の「mmm」(ミーマイモーと読むらしい)も、Android OSをビルドする際の同名コマンドがあるのでそれ由来かな？と思っていたり(今考えると絶対違うと思いますが..)<br />
-その後Safe Modeのレコードを買って聴いたり、ライブに出掛けたりしてすっかりはまってしまいました。<br />
-人懐っこいメロディは元より英語詞も日本語詞もしなやかで、翳りのある詞であっても常にどこか暖かみがあって。<br />
+<!-- raw HTML omitted -->
+<a href="https://cgcgpub.bandcamp.com/album/safe-mode">Safe Mode</a>というアルバムが出た時に色んな人が話題にしていて、ジャケットのイメージから電子音楽系の人なのかな？と思ってました。<br>
+アーティスト名の「mmm」(ミーマイモーと読むらしい)も、Android OSをビルドする際の同名コマンドがあるのでそれ由来かな？と思っていたり(今考えると絶対違うと思いますが..)<br>
+その後Safe Modeのレコードを買って聴いたり、ライブに出掛けたりしてすっかりはまってしまいました。<br>
+人懐っこいメロディは元より英語詞も日本語詞もしなやかで、翳りのある詞であっても常にどこか暖かみがあって。<br>
 文科系の佇まいと裏腹にパワフルなお人です。新譜のコブラも気になる。</p>
-
-<h3 id="滝沢朋恵">滝沢朋恵</h3>
-
+<h3 id="heading">滝沢朋恵</h3>
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/30A6watN2wA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/30A6watN2wA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-最近HEADZから<a href="http://www.faderbyheadz.com/release/headz234.html" target="_blank">新譜</a>が出てそっちも最高の様です、
-自分は上の動画で初めて知って持っていかれました。<br />
-弾き語り専門の方なのかな..？と思っていると<a href="https://www.youtube.com/watch?v=1QMGh9PjoN4" target="_blank">そうでもなくて、</a>
-ノイズもされるのか..と衝撃を受けたり。<br />
+<!-- raw HTML omitted -->
+最近HEADZから<a href="http://www.faderbyheadz.com/release/headz234.html">新譜</a>が出てそっちも最高の様です、
+自分は上の動画で初めて知って持っていかれました。<br>
+弾き語り専門の方なのかな..？と思っていると<a href="https://www.youtube.com/watch?v=1QMGh9PjoN4">そうでもなくて、</a>
+ノイズもされるのか..と衝撃を受けたり。<br>
 繊細な詩世界が一貫していて、肩の力が抜けていきます。</p>
-
-<h3 id="小嶋佐和子">小嶋佐和子</h3>
-
+<h3 id="heading-1">小嶋佐和子</h3>
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/73V483hk0l0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/73V483hk0l0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-休日の朝にコーヒーを飲みながら猫を膝に載せている時に聴くのが一番好きです。<br />
-この曲自体は久米貴という<a href="https://soundcloud.com/purplefield/14a" target="_blank">ヤバい人</a>が作曲、ひろたえみという方が作詞されている様。<br />
-アルバム「貝のふた」に収録されており、他にもスウィング調やバラードの柔らかい楽曲が多数入っていて<br />
+<!-- raw HTML omitted -->
+休日の朝にコーヒーを飲みながら猫を膝に載せている時に聴くのが一番好きです。<br>
+この曲自体は久米貴という<a href="https://soundcloud.com/purplefield/14a">ヤバい人</a>が作曲、ひろたえみという方が作詞されている様。<br>
+アルバム「貝のふた」に収録されており、他にもスウィング調やバラードの柔らかい楽曲が多数入っていて<br>
 聴くとぐっすり眠れシャキッと起きられます。</p>
-
 <h3 id="kyooo">kyooo</h3>
-
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/oGYTo4Yfo1w" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/oGYTo4Yfo1w" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-自分があれやこれや書くより、<a href="https://booth.pm/ja/items/1009424" target="_blank">雪舟えまさんのレビュー</a>が全てを語っているのでそちらを見てくれ..<br />
-楽曲のバランス感覚や清潔さが傑出していると思います。<br />
+<!-- raw HTML omitted -->
+自分があれやこれや書くより、<a href="https://booth.pm/ja/items/1009424">雪舟えまさんのレビュー</a>が全てを語っているのでそちらを見てくれ..<br>
+楽曲のバランス感覚や清潔さが傑出していると思います。<br>
 最近の発表作もとても素晴らしくて、音源化が楽しみです。</p>
-
-<h3 id="柴田聡子">柴田聡子</h3>
-
+<h3 id="heading-2">柴田聡子</h3>
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/GiVMtuTvO5g" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/GiVMtuTvO5g" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br />
-桜木町で働いていた頃に退勤後自転車に乗って、自宅までの巨大な坂を登りながらこの曲を聴いた時に<br />
-嬉しい様な切ない様なよく分からない感情に襲われ、坂を走り降りてまた最初から登り始めるのを繰り返しました。(は..?)<br />
-すごい有名だと思いますがすごい好きです。以前どこかの記事でレコメンされてた「味でもなんでも浜一番」の中華料理・一番もすごい美味しいです。語彙力。<br />
+<!-- raw HTML omitted -->
+桜木町で働いていた頃に退勤後自転車に乗って、自宅までの巨大な坂を登りながらこの曲を聴いた時に<br>
+嬉しい様な切ない様なよく分からない感情に襲われ、坂を走り降りてまた最初から登り始めるのを繰り返しました。(は..?)<br>
+すごい有名だと思いますがすごい好きです。以前どこかの記事でレコメンされてた「味でもなんでも浜一番」の中華料理・一番もすごい美味しいです。語彙力。<br>
 柴田聡子 in FIRE(バンド編成)も見てみたい。</p>
-
-<h3 id="イ-ラン">イ・ラン</h3>
-
+<h3 id="heading-3">イ・ラン</h3>
 <p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/t6gDp9IsBgw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/t6gDp9IsBgw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<br /></p>
-
+<!-- raw HTML omitted --></p>
 <blockquote>
 <p>神様ごっこ</p>
-
-<p><em>韓国で生まれ暮らすことにどんな意味があるとお考えですか<br />
+<p><em>韓国で生まれ暮らすことにどんな意味があるとお考えですか<br>
 時には砂漠に放り出されたような気分になりますか</em></p>
-
-<p><em>良い物語があっても創られないということ<br />
+<p><em>良い物語があっても創られないということ<br>
 良い物語への信念が崩れる時もやってくるものですか</em></p>
-
-<p><em>この頃も恐ろしい出来事と向かい合っているのですか<br />
+<p><em>この頃も恐ろしい出来事と向かい合っているのですか<br>
 中年になっても絶望と挫折の重さは同じですか</em></p>
-
-<p><em>それでも偶然出会ったような物語が生まれるのを待ち<br />
+<p><em>それでも偶然出会ったような物語が生まれるのを待ち<br>
 今日も彼らの隣の席で食事をしているのですか</em></p>
-
-<p><em>聖杯を探そうとする人と復讐をしようとする人<br />
+<p><em>聖杯を探そうとする人と復讐をしようとする人<br>
 結局みんな家を出発することで始まる　そんな物語</em></p>
-
-<p><em>単純な英雄は人々の代わりに生贄となり死を迎え<br />
+<p><em>単純な英雄は人々の代わりに生贄となり死を迎え<br>
 人々は彼のために涙をこぼして家に帰ります</em></p>
-
 <p><em>相変わらず人々は良い物語が現れるのを待っています</em></p>
-
 <p><em>良い物語は香りをまとい　人々はその匂いを嗅ぎます</em></p>
-
 <p><em>全ての物語は生贄として創られる悲劇</em></p>
-
 <p><em>喜劇は生贄が流す血を受けるための淵の広いお皿</em></p>
-
-<p><em>ひょっとして私は映画を作ることで神様ごっこをしようとしているのかもしれない<br />
+<p><em>ひょっとして私は映画を作ることで神様ごっこをしようとしているのかもしれない<br>
 相変わらず人々は良い物語が現れるのを待っている</em></p>
-
 <p><em>私は良い物語を通じて神様ごっこをしようとしているのかもしれない</em></p>
 </blockquote>
-
-<p><a href="https://soundcloud.com/lang-lee/i-saizeriya-u" target="_blank">I saizeriya U</a>を友人たちとサイゼリヤで聴いてどんな方かも知らないまま大盛り上がりしていたら、物凄い作品が出て完全にやられてしまいました。<br />
+<p><a href="https://soundcloud.com/lang-lee/i-saizeriya-u">I saizeriya U</a>を友人たちとサイゼリヤで聴いてどんな方かも知らないまま大盛り上がりしていたら、物凄い作品が出て完全にやられてしまいました。<br>
 現実と虚構が乖離せず同列で語られていく質感が独特で、醒めた視点の楽曲が多幸感を得ていくのは本当にクールだと思う。今度来日してワンマンツアーが開催されるっぽいです、行きたいなぁ。</p>
-
-<h4 id="柴田聡子とイ-ラン">柴田聡子とイ・ラン</h4>
-
-<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/549784398&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-
-<p><br />
+<h4 id="heading-4">柴田聡子とイ・ラン</h4>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->
 お二人の新譜！！やったーーー！！！</p>
-
-<p><br />
-<br />
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 以上私的フィメールフォーク選でした！！</p>
 
       
