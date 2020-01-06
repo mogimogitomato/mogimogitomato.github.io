@@ -189,7 +189,12 @@ Sonic Pi側で信号を受けてエフェクトのパラメータにセットす
     <img src="/images/20190909/orca_sample.gif"/> 
 </figure>
 
-<!-- raw HTML omitted -->
+</br>
+ORCΛでは大文字の英単語と特定の記号がそれぞれコマンドになっています。  
+`*` はbangと呼ばれる信号の発火を行うコマンドで、 `=` で繋いだ値を送付します。  
+上記では、 `D(delay)` コマンド(左右の引数を元にbangを行うタイミングを制御する)と  
+`R(random)` コマンド(左右の引数の範囲内の値をランダムに下部に出力する)を使用し  
+vと命名した配列にランダム値を格納した状態で1frame毎に信号を飛ばしています。
 <h3 id="sonic-pi">Sonic Pi</h3>
 <p>Sonic Piを立ち上げた状態で、右側Cueの部分にORCΛから送られた信号が確認できます。<br>
 以下でSonic Pi側で送られた信号をエフェクトのパラメータに指定し、オーディオインターフェースからの入力に<br>
@@ -241,7 +246,8 @@ guitarの部分の名称は任意です。 <code>input: 1</code> はオーディ
 <p>このコードを実行する事で、入力音の加工と再生が行われます。</p>
 <h3 id="heading-2">結果</h3>
 <p>実際に鳴らした結果がこちらです。</p>
-<!-- raw HTML omitted -->
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/644127069&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+やったぜ。
 <h3 id="heading-3">所感</h3>
 <p>見えている課題として、delayの間隔が変更されるタイミングでクリップノイズの様な細かいノイズが乗る場合があります..(ダメじゃないか)<br>
 演奏形態がノイズミュージックであったり、他の楽器と合わせたライブ演奏時の出音ではそこまで気にならないかもしれませんが個人録音ではやはり気になるかも。内部で何が起こっているかはSuperColiderの実行ログを当たれば分かる気がしますが、追いかける必要はありそうです。(素直に<a href="https://www.soundhouse.co.jp/products/detail/item/242655/">POSSESSED</a>買うか.. いや&hellip;)<br>
