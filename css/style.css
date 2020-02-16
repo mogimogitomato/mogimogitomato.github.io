@@ -331,10 +331,8 @@ button,
 input,
 select,
 textarea {
-  font-family: YakuHanJP, "メイリオ", "游ゴシック", "ヒラギノ角ゴ Pro",
-  Meiryo, YuGothic, "Hiragino Kaku Gothic Pro", sans-serif;
-  font-feature-settings : "palt";
-  font-display: swap;
+  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro",
+    "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
 }
 
 code,
@@ -2474,6 +2472,11 @@ a.box:active {
   font-weight: 300;
 }
 
+.subtitle a:hover,
+.title a:hover {
+  border-bottom: 1px solid;
+}
+
 .subtitle strong,
 .title strong {
   font-weight: 500;
@@ -2602,6 +2605,7 @@ a.box:active {
   font-size: 14px;
 }
 
+.subtitle.tags,
 .subtitle.date {
   line-height: 1.5em;
 }
@@ -5039,6 +5043,7 @@ a.nav-item.is-tab.is-active {
   background-color: #fff;
   display: flex;
   position: relative;
+  z-index: 2;
 }
 
 .nav-shifted {
@@ -6452,7 +6457,7 @@ html {
 
 .content h1:not(:first-child),
 .content h2:not(:first-child),
-.content h3,
+.content h3:not(:first-child),
 .content h4:not(:first-child),
 .content h5:not(:first-child),
 .content h6:not(:first-child),
@@ -6579,7 +6584,6 @@ code {
 }
 
 .content p>code,
-.content li>code,
 .content>code {
   font-size: 90%;
   padding: 2px 4px;
@@ -6633,9 +6637,9 @@ div.subtitle.tags {
 }
 
 .copy-code-button {
-  color: #2e3440;
+  color: #272822;
   background-color: #FFF;
-  border-color: #2e3440;
+  border-color: #272822;
   border: 2px solid;
   border-radius: 3px 3px 0px 0px;
 
