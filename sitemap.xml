@@ -3,17 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/12/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
+    <loc>https://mogimogitomato.github.io/archives/2020/01/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/archives/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://mogimogitomato.github.io/categories/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/post/20200107/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/post/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/categories/programming/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/tags/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/tags/vim/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/</loc>
+    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/12/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
   </url>
   
@@ -23,37 +58,7 @@
   </url>
   
   <url>
-    <loc>https://mogimogitomato.github.io/post/20200107/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/post/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/categories/programming/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/tags/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/post/20191215/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/tags/vim/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
   </url>
   

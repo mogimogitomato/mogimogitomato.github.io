@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>Nerd FontのFiraCodeは名前がFuraCodeだった話</title>
-      <link>https://mogimogitomato.github.io/post/20200107/</link>
-      <pubDate>Sun, 15 Dec 2019 03:03:29 +0900</pubDate>
-      
-      <guid>https://mogimogitomato.github.io/post/20200107/</guid>
-      <description>vim-deviconsを導入するにあたり、事前にNerd Fontをインストールしようとして 掲題の件で少しハマったのでメモ. 環境 macOS Catalina 10.15.2 Hyper 3.0.2 手</description>
-    </item>
-    
-    <item>
       <title>Taxonomyのリストに件数表示を追加する</title>
       <link>https://mogimogitomato.github.io/post/20191215/</link>
       <pubDate>Sun, 15 Dec 2019 03:03:29 +0900</pubDate>
