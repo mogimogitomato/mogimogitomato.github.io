@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  lang="ja-jp">
 <head>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56274201-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56274201-3');
+</script>
+
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -15,16 +27,19 @@
 
 <link href="https://mogimogitomato.github.io/index.xml" rel="alternate" type="application/rss+xml" title="ツナ缶同盟" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://mogimogitomato.github.io/css/custom.min.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.min.css"/><link rel='stylesheet' href='https://mogimogitomato.github.io/css/custom.min.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="/manifest.json" />
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Inconsolata|Bad+Script">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.0.0/dist/css/yakuhanjp.min.css">
 <link rel="canonical" href="https://mogimogitomato.github.io/404.html">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+
 <section class="hero is-fullheight">
   <div class="hero-body">
     <div class="container has-text-centered">
@@ -44,20 +59,11 @@
     
   </div>
 </section>
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-56274201-3', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
+<script>
+   if('serviceWorker' in navigator) {
+     navigator.serviceWorker.register('/sw.js')
+   }
+ </script>
 
 
 </body>
