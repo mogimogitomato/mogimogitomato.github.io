@@ -331,8 +331,7 @@ button,
 input,
 select,
 textarea {
-  font-family: YakuHanJP, "メイリオ", "游ゴシック", "ヒラギノ角ゴ Pro",
-  Meiryo, YuGothic, "Hiragino Kaku Gothic Pro", sans-serif;
+  font-family: YakuHanJP, "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif; 
   font-feature-settings : "palt";
   font-display: swap;
 }
