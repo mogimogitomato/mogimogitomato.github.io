@@ -3,16 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mogimogitomato.github.io/archives/2020/01/</loc>
-    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/archives/</loc>
-    <lastmod>2020-01-07T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/categories/</loc>
     <lastmod>2020-01-07T03:03:29+09:00</lastmod>
   </url>
@@ -48,11 +38,6 @@
   </url>
   
   <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/12/</loc>
-    <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/tags/hugo/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
   </url>
@@ -60,11 +45,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/post/20191215/</loc>
     <lastmod>2019-12-15T03:03:29+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/9/</loc>
-    <lastmod>2019-09-09T03:25:26+09:00</lastmod>
   </url>
   
   <url>
@@ -88,11 +68,6 @@
   </url>
   
   <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/07/</loc>
-    <lastmod>2019-07-10T10:29:48+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/tags/java/</loc>
     <lastmod>2019-07-10T10:29:48+09:00</lastmod>
   </url>
@@ -100,11 +75,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/post/20190710/</loc>
     <lastmod>2019-07-10T10:29:48+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/05/</loc>
-    <lastmod>2019-05-24T23:11:33+09:00</lastmod>
   </url>
   
   <url>
@@ -128,18 +98,8 @@
   </url>
   
   <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/03/</loc>
-    <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mogimogitomato.github.io/post/20190306/</loc>
     <lastmod>2019-03-06T01:21:36+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/02/</loc>
-    <lastmod>2019-02-14T01:39:16+09:00</lastmod>
   </url>
   
   <url>
@@ -150,11 +110,6 @@
   <url>
     <loc>https://mogimogitomato.github.io/post/20190214/</loc>
     <lastmod>2019-02-14T01:39:16+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mogimogitomato.github.io/archives/2019/01/</loc>
-    <lastmod>2019-01-23T07:51:08+09:00</lastmod>
   </url>
   
   <url>
@@ -205,6 +160,42 @@
   <url>
     <loc>https://mogimogitomato.github.io/post/20190101/</loc>
     <lastmod>2019-01-01T16:31:56+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/01/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/02/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/03/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/05/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/07/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/12/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2019/9/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/2020/01/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mogimogitomato.github.io/archives/</loc>
   </url>
   
 </urlset>

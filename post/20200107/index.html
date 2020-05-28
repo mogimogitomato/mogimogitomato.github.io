@@ -162,16 +162,16 @@
     <div class="content">
       <p>vim-deviconsを導入するにあたり、事前にNerd Fontをインストールしようとして<br>
 掲題の件で少しハマったのでメモ.</p>
-<h3 id="heading">環境</h3>
+<h3 id="環境">環境</h3>
 <p>macOS Catalina 10.15.2<br>
 Hyper 3.0.2</p>
-<h3 id="heading-1">手順</h3>
+<h3 id="手順">手順</h3>
 <p>公式に記載の手順のうち<a href="https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts">Option 4</a>を参照すると<br>
 <a href="https://github.com/Homebrew/homebrew-cask-fonts/tree/master/Casks">homebrew-cask-fonts</a>でNerd Fontがパッチされたフォントをインストールできるよ！という事で、<br>
 FiraCodeを普段使っているので以下をインストール.</p>
 <pre><code>brew tap homebrew/cask-fonts
 brew cask install font-firacode-nerd-font
-</code></pre><h3 id="heading-2">ハマった点</h3>
+</code></pre><h3 id="ハマった点">ハマった点</h3>
 <p>インストール後、.hyper.jsに以下を指定してからvim-deviconsを導入したところフォントが適用されない&hellip;</p>
 <pre><code>fontFamily: '&quot;FiraCode Nerd Font&quot;
 </code></pre><p>caskの定義を見ると<br>
