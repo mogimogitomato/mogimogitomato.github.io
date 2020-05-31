@@ -167,7 +167,7 @@
 <div class="highlight"><pre class="chroma"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">info</span><span class="p">]</span>
 <span class="nx">taxonomiesCount</span> <span class="p">=</span> <span class="kc">true</span> <span class="c"># Add taxonomies count</span>
 </code></pre></div><p>表示が有効の場合、項目の横に対象の分類の件数を表示する処理を加えます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>{{ .Title }}
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}
 {{if .Site.Params.Info.taxonomiesCount}}
 {{ $title := urlize .Title }}
   {{ range $taxonomy_name, $taxonomy := .Site.Taxonomies }}
@@ -181,7 +181,7 @@
     {{ end }}
   {{ end }}
 {{ end }}
-<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div><p>HugoではデフォルトでtagsとcategoriesのTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br>
 <a href="https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules">hugo-layouts-lookup-rules</a>より、section、taxonomyおよびtaxonomyTermタイプの値が<code>.Section</code>で取得できます。このため、<code>.Site.Taxonomies</code> のkeyが<code>.Section</code>と同じかを判定し大分類を特定します。<br>
 次に、分類項目のkeyと表示項目名(それぞれurlizeして形式を揃える)を双方が同じ値か判定し、合致した場合に分類項目が持つ件数を取得しています。</p>
