@@ -16,13 +16,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Categories | ツナ缶同盟</title>
+<title>k8sのcronjobでステータスが実行中の一覧を取得する | ツナ缶同盟</title>
 
-<meta property='og:title' content='Categories - ツナ缶同盟'>
-<meta property='og:description' content=''>
-<meta property='og:url' content='https://mogimogitomato.github.io/categories/'>
+<meta property='og:title' content='k8sのcronjobでステータスが実行中の一覧を取得する - ツナ缶同盟'>
+<meta property='og:description' content='以下で取得できました。 kubectl get cronjob -o json | jq -r &#39;.items[] | select(.status.active) | .metadata.name&#39; cronjobの一覧を一旦jsonで吐き出し、jqでstatusがactiveの物のみ抽出し'>
+<meta property='og:url' content='https://mogimogitomato.github.io/post/20201125/'>
 <meta property='og:site_name' content='ツナ缶同盟'>
-<meta property='og:type' content='website'><meta property='article:section' content='Categories'><meta property='og:updated_time' content='2020-11-25T00:52:05&#43;09:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@freefish22'><meta name='twitter:creator' content='@freefish22'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://mogimogitomato.github.io/images/icons/icon-192x192.png'><meta property='article:published_time' content='2020-11-25T00:52:05&#43;09:00'/><meta property='article:modified_time' content='2020-11-25T00:52:05&#43;09:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@freefish22'><meta name='twitter:creator' content='@freefish22'>
 
 
 <link href="https://mogimogitomato.github.io/index.xml" rel="alternate" type="application/rss+xml" title="ツナ缶同盟" />
@@ -34,7 +34,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Inconsolata|Bad+Script">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.0.0/dist/css/yakuhanjp.min.css">
-<link rel="canonical" href="https://mogimogitomato.github.io/categories/">
+<link rel="canonical" href="https://mogimogitomato.github.io/post/20201125/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
@@ -147,87 +147,93 @@
 </section>
 <section class="section">
   <div class="container">
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6 date">November 25, 2020</h2>
-      <h1 class="title"><a href="https://mogimogitomato.github.io/categories/programming/">Programming
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/k8s">#k8s</a>
 
-  
-    
-  
-    
-      
-        
-        
-      
-        
-        
-          (12)
-        
-      
-    
-  
-    
-  
-</a></h1>
-      <div class="content">
-        
-        
-      </div>
-    </article>
-    
-    <article>
-      <div class="subtitle tags is-6 is-pulled-right">
-        
-      </div>
-      <h2 class="subtitle is-6 date">September 9, 2019</h2>
-      <h1 class="title"><a href="https://mogimogitomato.github.io/categories/music/">Music
 
-  
-    
-  
-    
+
       
-        
-        
-          (5)
-        
-      
-        
-        
-      
+    </div>
+    <h2 class="subtitle is-6">November 25, 2020</h2>
+    <h1 class="title">k8sのcronjobでステータスが実行中の一覧を取得する</h1>
     
-  
-    
-  
-</a></h1>
-      <div class="content">
-        
-        
-      </div>
-    </article>
+    <div class="content">
+      <p>以下で取得できました。</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">kubectl get cronjob -o json  <span class="p">|</span> jq -r <span class="s1">&#39;.items[] | select(.status.active) | .metadata.name&#39;</span>
+</code></pre></div><p>cronjobの一覧を一旦jsonで吐き出し、jqでstatusがactiveの物のみ抽出しています。</p>
+<p>cronjobが走り切っている想定の時間帯で上記を定期実行する事で、
+処理に時間がかかっている/ハングしている<br>
+といった問題のあるcronjobを検知できます。</p>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
     
   </div>
 </section>
-<section class="section">
-  <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-        </div>
+
+<section class="section sns_parent">
+  <p>+----- Share ? -----+</p>
+  <div class="container sns_section">
+      <div class="sns_button twitter">
+        <a class="sns_icon" href="http://twitter.com/intent/tweet?url=https%3a%2f%2fmogimogitomato.github.io%2fpost%2f20201125%2f&text=k8s%e3%81%aecronjob%e3%81%a7%e3%82%b9%e3%83%86%e3%83%bc%e3%82%bf%e3%82%b9%e3%81%8c%e5%ae%9f%e8%a1%8c%e4%b8%ad%e3%81%ae%e4%b8%80%e8%a6%a7%e3%82%92%e5%8f%96%e5%be%97%e3%81%99%e3%82%8b" target="_blank" title="Tweet">
+          <span class="icon">
+            <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg>
+</i>
+          </span>
+        </a>
       </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-        </div>
+      <div class="sns_button hateb">
+        <a class="sns_icon" href="http://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fmogimogitomato.github.io%2fpost%2f20201125%2f&title=k8s%e3%81%aecronjob%e3%81%a7%e3%82%b9%e3%83%86%e3%83%bc%e3%82%bf%e3%82%b9%e3%81%8c%e5%ae%9f%e8%a1%8c%e4%b8%ad%e3%81%ae%e4%b8%80%e8%a6%a7%e3%82%92%e5%8f%96%e5%be%97%e3%81%99%e3%82%8b" target="_blank" title="hatena">
+          <span class="icon">
+            <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+    
+  </svg>
+</i>
+          </span>
+        </a>
       </div>
-    </nav>
+      <div class="sns_button facebook">
+        <a class="sns_icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmogimogitomato.github.io%2fpost%2f20201125%2f&t=k8s%e3%81%aecronjob%e3%81%a7%e3%82%b9%e3%83%86%e3%83%bc%e3%82%bf%e3%82%b9%e3%81%8c%e5%ae%9f%e8%a1%8c%e4%b8%ad%e3%81%ae%e4%b8%80%e8%a6%a7%e3%82%92%e5%8f%96%e5%be%97%e3%81%99%e3%82%8b" target="_blank" title="Facebook">
+          <span class="icon">
+            <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    
+  </svg>
+</i>
+          </span>
+        </a>
+      </div>
+      <div class="sns_button pocket">
+        <a class="sns_icon" href="http://getpocket.com/edit?url=https%3a%2f%2fmogimogitomato.github.io%2fpost%2f20201125%2f&title=k8s%e3%81%aecronjob%e3%81%a7%e3%82%b9%e3%83%86%e3%83%bc%e3%82%bf%e3%82%b9%e3%81%8c%e5%ae%9f%e8%a1%8c%e4%b8%ad%e3%81%ae%e4%b8%80%e8%a6%a7%e3%82%92%e5%8f%96%e5%be%97%e3%81%99%e3%82%8b" target="_blank" title="pocket">
+          <span class="icon">
+            <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 3h16a2 2 0 0 1 2 2v6a10 10 0 0 1-10 10A10 10 0 0 1 2 11V5a2 2 0 0 1 2-2z"/>
+    <polyline points="8 10 12 14 16 10"/>
+    
+  </svg>
+</i>
+          </span>
+        </a>
+      </div>
   </div>
 </section>
+
+
+
+    <script src="/js/copycode.js"></script>
 
 <section class="section">
   <div class="container has-text-centered">
