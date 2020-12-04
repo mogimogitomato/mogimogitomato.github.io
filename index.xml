@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 25 Nov 2020 00:52:05 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 04 Dec 2020 15:20:06 +0900</lastBuildDate>
     
 	<atom:link href="https://mogimogitomato.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>基本的なgit操作を楽にする為の私的覚え書き</title>
+      <link>https://mogimogitomato.github.io/post/20201204/</link>
+      <pubDate>Fri, 04 Dec 2020 15:20:06 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20201204/</guid>
+      <description>小ネタです。 普段の開発で使う基本的なgitの操作をシンプルにする為にしている事をまとめます。 「git」にエイリアスを切る .bashrc, zshrcなどにエ</description>
+    </item>
     
     <item>
       <title>k8sのcronjobでステータスが実行中の一覧を取得する</title>
