@@ -164,21 +164,24 @@
       <p>掲題についての小ネタです。</p>
 <h3 id="gitにエイリアスを切る">「git」にエイリアスを切る</h3>
 <p>.bashrc, zshrcなどにエイリアスを切っておくと、gの入力のみでgitコマンドを扱えるので便利です。<br>
-<code>alias g='git'</code><br>
-※abbrev-aliasをインストールして以下の様にエイリアスを切っておくと<br>
-　エイリアス入力→スペースキー押下でエイリアスに切った内容が展開されます。<br>
-　gitに限らずですが、実行内容が視認できるのでエイリアスを多用する場合非常に便利です。<br>
-　https://github.com/momo-lab/zsh-abbrev-alias<br>
-　https://github.com/momo-lab/bash-abbrev-alias<br>
-　<code>abbrev-alias -g g='git'</code></p>
+<code>alias g='git'</code></p>
+<ul>
+<li>abbrev-aliasをインストールして以下の様にエイリアスを切っておくと<br>
+エイリアス入力→スペースキー押下でエイリアスに切った内容が展開されます。<br>
+gitに限らずですが、実行内容が視認できるのでエイリアスを多用する場合非常に便利です。<br>
+<a href="https://github.com/momo-lab/zsh-abbrev-alias">https://github.com/momo-lab/zsh-abbrev-alias</a><br>
+<a href="https://github.com/momo-lab/bash-abbrev-alias">https://github.com/momo-lab/bash-abbrev-alias</a><br>
+<code>abbrev-alias -g g='git'</code></li>
+</ul>
 <h3 id="ブランチ検索switch--git-brを導入">ブランチ検索、switch ⇨ git-brを導入</h3>
 <p>ローカル・リモートのブランチ一覧をfzyで曖昧検索しつつ、該当ブランチにそのままswitchできる便利コマンドです。<br>
 <a href="https://github.com/b4b4r07/git-br">https://github.com/b4b4r07/git-br</a><br>
-zplugでのインストール手順が書かれていますが、シンプルなshellなので<br>
-任意の場所にclone＋パスを通す＋fzyをインストール でも使える筈。<br>
-※余談：<code>git br</code>で実行できるのは何故だろうと思っていましたが<br>
-　gitのsubcommandという仕組みでハイフンをつけなくても実行できている様。<br>
-　https://qiita.com/b4b4r07/items/6b76a5f969231e5e9748</p>
+zplugでのインストール手順が書かれていますが、シンプルなshellなので、<br>
+任意の場所にclone＋パスを通す＋fzyをインストール でも使える筈。</p>
+<ul>
+<li>余談：<code>git br</code>で実行できるのは何故だろうと思っていましたが<br>
+<a href="https://qiita.com/b4b4r07/items/6b76a5f969231e5e9748">gitのsubcommand</a>という仕組みでハイフンをつけなくても実行できている様。</li>
+</ul>
 <h3 id="diff-status-add-commit-push">diff, status, add, commit, push</h3>
 <p>.gitconfigに以下の様にエイリアスを切っておくと、それぞれの入力を簡略化できます。</p>
 <pre><code>[alias]
