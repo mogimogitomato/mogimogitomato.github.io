@@ -18,7 +18,7 @@
       <pubDate>Fri, 04 Dec 2020 16:10:03 +0900</pubDate>
       
       <guid>https://mogimogitomato.github.io/post/20201204/</guid>
-      <description>小ネタです。 普段の開発で使う基本的なgitの操作をシンプルにする為にしている事をまとめます。 「git」にエイリアスを切る .bashrc, zshrcなどにエ</description>
+      <description>掲題についての小ネタです。 「git」にエイリアスを切る .bashrc, zshrcなどにエイリアスを切っておくと、gの入力のみでgitコマンドを扱えるので便</description>
     </item>
     
     <item>

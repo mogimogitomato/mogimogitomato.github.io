@@ -19,7 +19,7 @@
 <title>基本的なgit操作を楽にする為の私的覚え書き | ツナ缶同盟</title>
 
 <meta property='og:title' content='基本的なgit操作を楽にする為の私的覚え書き - ツナ缶同盟'>
-<meta property='og:description' content='小ネタです。 普段の開発で使う基本的なgitの操作をシンプルにする為にしている事をまとめます。 「git」にエイリアスを切る .bashrc, zshrcなどにエ'>
+<meta property='og:description' content='掲題についての小ネタです。 「git」にエイリアスを切る .bashrc, zshrcなどにエイリアスを切っておくと、gの入力のみでgitコマンドを扱えるので便'>
 <meta property='og:url' content='https://mogimogitomato.github.io/post/20201204/'>
 <meta property='og:site_name' content='ツナ缶同盟'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://mogimogitomato.github.io/images/icons/icon-192x192.png'><meta property='article:published_time' content='2020-12-04T16:10:03&#43;09:00'/><meta property='article:modified_time' content='2020-12-04T16:10:03&#43;09:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@freefish22'><meta name='twitter:creator' content='@freefish22'>
@@ -161,32 +161,34 @@
     <h1 class="title">基本的なgit操作を楽にする為の私的覚え書き</h1>
     
     <div class="content">
-      <p>小ネタです。<br>
-普段の開発で使う基本的なgitの操作をシンプルにする為にしている事をまとめます。</p>
+      <p>掲題についての小ネタです。</p>
 <h3 id="gitにエイリアスを切る">「git」にエイリアスを切る</h3>
 <p>.bashrc, zshrcなどにエイリアスを切っておくと、gの入力のみでgitコマンドを扱えるので便利です。<br>
 <code>alias g='git'</code><br>
-※カレントシェルがzshの場合、zsh-abbrev-aliasをインストールして以下の様にエイリアスを切っておくと<br>
-　スペースキーでエイリアスに切った内容が展開されます。<br>
+※abbrev-aliasをインストールして以下の様にエイリアスを切っておくと<br>
+　エイリアス入力→スペースキー押下でエイリアスに切った内容が展開されます。<br>
 　gitに限らずですが、実行内容が視認できるのでエイリアスを多用する場合非常に便利です。<br>
-<a href="https://github.com/momo-lab/zsh-abbrev-alias">https://github.com/momo-lab/zsh-abbrev-alias</a><br>
-<code>abbrev-alias -g g='git'</code></p>
+　https://github.com/momo-lab/zsh-abbrev-alias<br>
+　https://github.com/momo-lab/bash-abbrev-alias<br>
+　<code>abbrev-alias -g g='git'</code></p>
 <h3 id="ブランチ検索switch--git-brを導入">ブランチ検索、switch ⇨ git-brを導入</h3>
 <p>ローカル・リモートのブランチ一覧をfzyで曖昧検索しつつ、該当ブランチにそのままswitchできる便利コマンドです。<br>
 <a href="https://github.com/b4b4r07/git-br">https://github.com/b4b4r07/git-br</a><br>
 zplugでのインストール手順が書かれていますが、シンプルなshellなので<br>
-任意の場所にclone＋パスを通す＋fzyをインストール でも使える筈。</p>
+任意の場所にclone＋パスを通す＋fzyをインストール でも使える筈。<br>
+※余談：<code>git br</code>で実行できるのは何故だろうと思っていましたが<br>
+　gitのsubcommandという仕組みでハイフンをつけなくても実行できている様。<br>
+　https://qiita.com/b4b4r07/items/6b76a5f969231e5e9748</p>
 <h3 id="diff-status-add-commit-push">diff, status, add, commit, push</h3>
 <p>.gitconfigに以下の様にエイリアスを切っておくと、それぞれの入力を簡略化できます。</p>
 <pre><code>[alias]
-    alias  = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t =&gt; \\2/' | sort
     d = diff
     dc = diff --cached
     s = status
     a = add
     cim = commit -m
     p = push origin HEAD
-</code></pre><p>実際の実行例が以下です。</p>
+</code></pre><p>一連の実行例が以下です。</p>
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/juKIRVh" data-context="false" >
   <a href="//imgur.com/a/juKIRVh"></a>
 </blockquote>
