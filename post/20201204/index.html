@@ -174,10 +174,19 @@ gitに限らずですが、実行内容が視認できるのでエイリアス�
 <code>abbrev-alias -g g='git'</code></li>
 </ul>
 <h3 id="ブランチ検索switch--git-brを導入">ブランチ検索、switch ⇨ git-brを導入</h3>
-<p>ローカル・リモートのブランチ一覧をfzyで曖昧検索しつつ、該当ブランチにそのままswitchできる便利コマンドです。<br>
+<p>ローカル・リモートのブランチ一覧をfzyで曖昧検索しつつ、該当ブランチにそのままswitchできたりする<br>
+便利コマンドです。他にも、<code>git br -d</code>でoption指定するとカレントブランチにマージ済の<br>
+ローカルブランチを全消しできたりします。<br>
 <a href="https://github.com/b4b4r07/git-br">https://github.com/b4b4r07/git-br</a><br>
 zplugでのインストール手順が書かれていますが、シンプルなshellなので、<br>
-任意の場所にclone＋パスを通す＋fzyをインストール でも使える筈。</p>
+任意の場所にclone＋パスを通す＋fzyをインストール でも使える筈。<br>
+私はforkして自分好みに以下の点を変更した物を使っています。<br>
+<a href="https://github.com/mogimogitomato/git-br">https://github.com/mogimogitomato/git-br</a></p>
+<ol>
+<li>リモートなどから新規でブランチを切る際に、名称にfeature/XXX等スラッシュを含む場合<br>
+切り替え後のブランチ名称がXXXとなりスラッシュの手前を切り捨てる挙動の為、切り捨てない様変更</li>
+<li>ブランチ切り替え後、切り替え前の作業ブランチを削除するオプションを追加</li>
+</ol>
 <ul>
 <li>余談：<code>git br</code>で実行できるのは何故だろうと思っていましたが<br>
 <a href="https://qiita.com/b4b4r07/items/6b76a5f969231e5e9748">gitのsubcommand</a>という仕組みでハイフンをつけなくても実行できている様。</li>
@@ -274,7 +283,7 @@ zplugでのインストール手順が書かれていますが、シンプルな
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2020</p>
+    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2021</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
