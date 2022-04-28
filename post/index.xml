@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 04 Dec 2020 16:10:03 +0900</lastBuildDate><atom:link href="https://mogimogitomato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 13:52:30 +0900</lastBuildDate><atom:link href="https://mogimogitomato.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>scss用の私的lint設定</title>
+      <link>https://mogimogitomato.github.io/post/20220428/</link>
+      <pubDate>Thu, 28 Apr 2022 13:52:30 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/post/20220428/</guid>
+      <description>アプリのscssを組む際のlint設定を考える機会があったので、備忘として導入手順と設定をまとめます。 インストール 静的解析ツールとしてsty</description>
+    </item>
+    
     <item>
       <title>基本的なgit操作を楽にする為の私的覚え書き</title>
       <link>https://mogimogitomato.github.io/post/20201204/</link>
