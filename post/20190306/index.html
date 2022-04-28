@@ -174,186 +174,186 @@
 <p>やってみましょう。</p>
 <h3 id="やる">やる</h3>
 <p>Sonic Piで以下を実行します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="c1">##|  _   _                  _</span>
-<span class="c1">##| | | | | ___ _   _      | | ___   ___</span>
-<span class="c1">##| | |_| |/ _ \ | | |  _  | |/ _ \ / _ \</span>
-<span class="c1">##| |  _  |  __/ |_| | | |_| | (_) |  __/</span>
-<span class="c1">##| |_| |_|\___|\__, |  \___/ \___/ \___|</span>
-<span class="c1">##|             |___/</span>
-
-<span class="n">use_bpm</span> <span class="mi">105</span>
-
-<span class="o"></span><span class="c1"># 17/16の1拍分の音価</span>
-<span class="no">BASELINE_NOTE</span> <span class="o">=</span> <span class="mi">4</span><span class="o"></span><span class="o">.</span><span class="mi">25</span> <span class="o">/</span> <span class="mi">17</span>
-<span class="o"></span><span class="c1"># 4/4の1拍分の音価</span>
-<span class="no">LEADLINE_NOTE</span> <span class="o">=</span> <span class="mi">4</span><span class="o"></span><span class="o">.</span><span class="mi">25</span> <span class="o">/</span> <span class="mi">16</span>
-<span class="o"></span><span class="c1"># 4/4の1/2拍分の音価</span>
-<span class="no">HALF_LEADLINE_NOTE</span> <span class="o">=</span> <span class="mi">4</span><span class="o"></span><span class="o">.</span><span class="mi">25</span> <span class="o">/</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">2</span>
-
-<span class="o"></span><span class="n">define</span> <span class="ss">:baseSleep</span> <span class="k">do</span> <span class="o">|</span><span class="n">note</span><span class="o">|</span>
-  <span class="n">note</span> <span class="o">=</span> <span class="n">note</span> <span class="o">+=</span> <span class="mi">1</span>
-  <span class="o"></span><span class="n">rest</span> <span class="o">=</span> <span class="no">BASELINE_NOTE</span> <span class="o">*</span> <span class="n">note</span>
-  <span class="nb">sleep</span> <span class="n">rest</span>
-<span class="k">end</span>
-
-<span class="n">define</span> <span class="ss">:leadSleep</span> <span class="k">do</span> <span class="o">|</span><span class="n">note</span><span class="o">|</span>
-  <span class="n">note</span> <span class="o">=</span> <span class="n">note</span> <span class="o">+=</span> <span class="mi">1</span>
-  <span class="o"></span><span class="n">rest</span> <span class="o">=</span> <span class="no">LEADLINE_NOTE</span> <span class="o">*</span> <span class="n">note</span>
-  <span class="nb">sleep</span> <span class="n">rest</span>
-<span class="k">end</span>
-
-<span class="c1"># ベースライン</span>
-<span class="n">live_loop</span> <span class="ss">:baseLine</span> <span class="k">do</span>
-  <span class="n">use_synth</span> <span class="ss">:saw</span>
-  <span class="mi">4</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
-    <span class="c1"># 5 * 3 + 2 = 17</span>
-    <span class="mi">5</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
-      <span class="n">play</span> <span class="mi">62</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="n">baseSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-      <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="n">baseSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-    <span class="k">end</span>
-    <span class="n">play</span> <span class="mi">62</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">baseSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">59</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">baseSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># 主旋律</span>
-<span class="n">live_loop</span> <span class="ss">:leadLine</span> <span class="k">do</span>
-  <span class="n">use_synth</span> <span class="ss">:dsaw</span>
-  <span class="nb">sleep</span> <span class="mi">4</span><span class="o"></span><span class="o">.</span><span class="mi">25</span> <span class="o"></span><span class="o">*</span> <span class="mi">4</span>
-  <span class="o"></span><span class="c1"># 4 * 4</span>
-  <span class="mi">4</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
-    <span class="n">leadFirstMeasure</span><span class="p">(</span><span class="p">)</span>
-    <span class="n">leadSecondMeasure</span><span class="p">(</span><span class="p">)</span>
-    <span class="n">leadThirdMeasure</span><span class="p">(</span><span class="p">)</span>
-    <span class="n">leadFourthMeasure</span><span class="p">(</span><span class="n">cycle</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># 主旋律 1小節目</span>
-<span class="n">define</span> <span class="ss">:leadFirstMeasure</span> <span class="k">do</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="mi">2</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
-    <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="k">end</span>
-  <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="c1"># 主旋律 2小節目</span>
-<span class="n">define</span> <span class="ss">:leadSecondMeasure</span> <span class="k">do</span>
-  <span class="n">play</span> <span class="mi">62</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">74</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="c1"># 主旋律 3小節目</span>
-<span class="n">define</span> <span class="ss">:leadThirdMeasure</span> <span class="k">do</span>
-  <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">76</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">70</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">70</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="c1"># 主旋律 4小節目</span>
-<span class="n">define</span> <span class="ss">:leadFourthMeasure</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
-  <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-  <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-  <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">cycle</span> <span class="o">%</span> <span class="mi">2</span> <span class="o"></span><span class="o">==</span> <span class="mi">0</span> <span class="o"></span><span class="k">then</span>
-    <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">74</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">71</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-    <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">4</span><span class="o"></span><span class="p">)</span>
-  <span class="k">elsif</span> <span class="n">cycle</span> <span class="o">%</span> <span class="mi">2</span> <span class="o"></span><span class="o">==</span> <span class="mi">1</span> <span class="o"></span><span class="k">then</span>
-    <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="p">)</span>
-    <span class="mi">2</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
-      <span class="n">play</span> <span class="mi">70</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
-      <span class="n">play</span> <span class="mi">69</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
-      <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
-      <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
-      <span class="n">play</span> <span class="mi">67</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-      <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-    <span class="k">end</span>
-    <span class="n">play</span> <span class="mi">64</span><span class="o"></span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o"></span><span class="o">.</span><span class="mi">0</span>
-    <span class="o"></span><span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="o"></span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div><h3 id="結果">結果</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rb" data-lang="rb"><span class="line"><span class="cl"><span class="c1">##|  _   _                  _</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##| | | | | ___ _   _      | | ___   ___</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##| | |_| |/ _ \ | | |  _  | |/ _ \ / _ \</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##| |  _  |  __/ |_| | | |_| | (_) |  __/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##| |_| |_|\___|\__, |  \___/ \___/ \___|</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##|             |___/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">use_bpm</span> <span class="mi">105</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 17/16の1拍分の音価</span>
+</span></span><span class="line"><span class="cl"><span class="no">BASELINE_NOTE</span> <span class="o">=</span> <span class="mi">4</span><span class="o">.</span><span class="mi">25</span> <span class="o">/</span> <span class="mi">17</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 4/4の1拍分の音価</span>
+</span></span><span class="line"><span class="cl"><span class="no">LEADLINE_NOTE</span> <span class="o">=</span> <span class="mi">4</span><span class="o">.</span><span class="mi">25</span> <span class="o">/</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 4/4の1/2拍分の音価</span>
+</span></span><span class="line"><span class="cl"><span class="no">HALF_LEADLINE_NOTE</span> <span class="o">=</span> <span class="mi">4</span><span class="o">.</span><span class="mi">25</span> <span class="o">/</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">define</span> <span class="ss">:baseSleep</span> <span class="k">do</span> <span class="o">|</span><span class="n">note</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">  <span class="n">note</span> <span class="o">=</span> <span class="n">note</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rest</span> <span class="o">=</span> <span class="no">BASELINE_NOTE</span> <span class="o">*</span> <span class="n">note</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">sleep</span> <span class="n">rest</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">define</span> <span class="ss">:leadSleep</span> <span class="k">do</span> <span class="o">|</span><span class="n">note</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">  <span class="n">note</span> <span class="o">=</span> <span class="n">note</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rest</span> <span class="o">=</span> <span class="no">LEADLINE_NOTE</span> <span class="o">*</span> <span class="n">note</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">sleep</span> <span class="n">rest</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ベースライン</span>
+</span></span><span class="line"><span class="cl"><span class="n">live_loop</span> <span class="ss">:baseLine</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">use_synth</span> <span class="ss">:saw</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">4</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 5 * 3 + 2 = 17</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">62</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="n">baseSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="n">baseSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">62</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">baseSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">59</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">baseSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 主旋律</span>
+</span></span><span class="line"><span class="cl"><span class="n">live_loop</span> <span class="ss">:leadLine</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">use_synth</span> <span class="ss">:dsaw</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">sleep</span> <span class="mi">4</span><span class="o">.</span><span class="mi">25</span> <span class="o">*</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 4 * 4</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">4</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadFirstMeasure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSecondMeasure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadThirdMeasure</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadFourthMeasure</span><span class="p">(</span><span class="n">cycle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 主旋律 1小節目</span>
+</span></span><span class="line"><span class="cl"><span class="n">define</span> <span class="ss">:leadFirstMeasure</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">2</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 主旋律 2小節目</span>
+</span></span><span class="line"><span class="cl"><span class="n">define</span> <span class="ss">:leadSecondMeasure</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">62</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">74</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 主旋律 3小節目</span>
+</span></span><span class="line"><span class="cl"><span class="n">define</span> <span class="ss">:leadThirdMeasure</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">76</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">70</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">70</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 主旋律 4小節目</span>
+</span></span><span class="line"><span class="cl"><span class="n">define</span> <span class="ss">:leadFourthMeasure</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">cycle</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">74</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">71</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">elsif</span> <span class="n">cycle</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">70</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">69</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">sleep</span> <span class="no">HALF_LEADLINE_NOTE</span>
+</span></span><span class="line"><span class="cl">      <span class="n">play</span> <span class="mi">67</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">      <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="n">play</span> <span class="mi">64</span><span class="p">,</span> <span class="ss">amp</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leadSleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><h3 id="結果">結果</h3>
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/585341472&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 <p>リフと主旋律のみですが、無事17/16と4/4が同居していることが確認できました。<br>
 尊い。<br>
@@ -439,7 +439,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2021</p>
+    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2022</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     

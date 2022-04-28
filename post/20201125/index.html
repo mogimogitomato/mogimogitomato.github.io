@@ -162,8 +162,8 @@
     
     <div class="content">
       <p>以下で取得できました。</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">kubectl get cronjob -o json  <span class="p">|</span> jq -r <span class="s1">&#39;.items[] | select(.status.active) | .metadata.name&#39;</span>
-</code></pre></div><p>cronjobの一覧を一旦jsonで吐き出し、jqでstatusがactiveの物のみ抽出しています。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl get cronjob -o json  <span class="p">|</span> jq -r <span class="s1">&#39;.items[] | select(.status.active) | .metadata.name&#39;</span>
+</span></span></code></pre></div><p>cronjobの一覧を一旦jsonで吐き出し、jqでstatusがactiveの物のみ抽出しています。</p>
 <p>cronjobが走り切っている想定の時間帯で上記を定期実行する事で、
 処理に時間がかかっている/ハングしている<br>
 といった問題のあるcronjobを検知できます。</p>
@@ -238,7 +238,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2021</p>
+    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2022</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     

@@ -165,25 +165,25 @@
 分類ごとの記事件数もカウントして表示したい！と思った時に、その機能が本ブログで使っているthemeに<br>
 無かったので自作しました。</p>
 <p>config.tomlに表示切替のフラグを追加し、</p>
-<div class="highlight"><pre class="chroma"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">info</span><span class="p">]</span>
-<span class="nx">taxonomiesCount</span> <span class="p">=</span> <span class="kc">true</span> <span class="c"># Add taxonomies count</span>
-</code></pre></div><p>表示が有効の場合、項目の横に対象の分類の件数を表示する処理を加えます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}
-{{if .Site.Params.Info.taxonomiesCount}}
-{{ $title := urlize .Title }}
-  {{ range $taxonomy_name, $taxonomy := .Site.Taxonomies }}
-    {{ if eq $.Section $taxonomy_name}}
-      {{ range $key, $value := $taxonomy }}
-        {{ $term := urlize $key }}
-        {{ if eq $title $term }}
-          ({{ $value.Count }})
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
-</code></pre></div><p>HugoではデフォルトでtagsとcategoriesのTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml:config.toml" data-lang="toml:config.toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">info</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">taxonomiesCount</span> <span class="p">=</span> <span class="kc">true</span> <span class="c"># Add taxonomies count</span>
+</span></span></code></pre></div><p>表示が有効の場合、項目の横に対象の分類の件数を表示する処理を加えます。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p">&gt;</span>{{ .Title }}
+</span></span><span class="line"><span class="cl">{{if .Site.Params.Info.taxonomiesCount}}
+</span></span><span class="line"><span class="cl">{{ $title := urlize .Title }}
+</span></span><span class="line"><span class="cl">  {{ range $taxonomy_name, $taxonomy := .Site.Taxonomies }}
+</span></span><span class="line"><span class="cl">    {{ if eq $.Section $taxonomy_name}}
+</span></span><span class="line"><span class="cl">      {{ range $key, $value := $taxonomy }}
+</span></span><span class="line"><span class="cl">        {{ $term := urlize $key }}
+</span></span><span class="line"><span class="cl">        {{ if eq $title $term }}
+</span></span><span class="line"><span class="cl">          ({{ $value.Count }})
+</span></span><span class="line"><span class="cl">        {{ end }}
+</span></span><span class="line"><span class="cl">      {{ end }}
+</span></span><span class="line"><span class="cl">    {{ end }}
+</span></span><span class="line"><span class="cl">  {{ end }}
+</span></span><span class="line"><span class="cl">{{ end }}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>HugoではデフォルトでtagsとcategoriesのTaxonomyが定義されていて、<code>.Site.Taxonomies.tags</code>の様に種別を決め打ちで指定し件数を取得する手法は割と見受けられますが、Taxonomyは独自定義を簡単に追加できるので件数取得も汎用的に行いたいと思い上記の構成にしています。<br>
 <a href="https://gohugo.io/templates/lookup-order/#hugo-layouts-lookup-rules">hugo-layouts-lookup-rules</a>より、section、taxonomyおよびtaxonomyTermタイプの値が<code>.Section</code>で取得できます。このため、<code>.Site.Taxonomies</code> のkeyが<code>.Section</code>と同じかを判定し大分類を特定します。<br>
 次に、分類項目のkeyと表示項目名(それぞれurlizeして形式を揃える)を双方が同じ値か判定し、合致した場合に分類項目が持つ件数を取得しています。</p>
 
@@ -266,7 +266,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2021</p>
+    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2022</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     

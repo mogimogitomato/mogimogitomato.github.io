@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 04 Dec 2020 16:10:03 +0900</lastBuildDate>
-    
-	<atom:link href="https://mogimogitomato.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 04 Dec 2020 16:10:03 +0900</lastBuildDate><atom:link href="https://mogimogitomato.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基本的なgit操作を楽にする為の私的覚え書き</title>
       <link>https://mogimogitomato.github.io/post/20201204/</link>
@@ -54,7 +50,7 @@
       <pubDate>Wed, 10 Jul 2019 10:29:48 +0900</pubDate>
       
       <guid>https://mogimogitomato.github.io/post/20190710/</guid>
-      <description>jhatコマンドを叩いたところ、そんなもの無いと言われた $ jhat Unable to locate an executable at &amp;quot;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin/jhat&amp;quot; (-1) 無い.. $ ls -l &amp;quot;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin&amp;quot; .rwxr-xr-x@ 22k user 2 4 17:23 jaotc .rwxr-xr-x@ 18k user 2 4 17:23 jar .rwxr-xr-x@ 18k user 2 4 17:23 jarsigner .rwxr-xr-x@ 18k user</description>
+      <description>jhatコマンドを叩いたところ、そんなもの無いと言われた $ jhat Unable to locate an executable at &amp;#34;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin/jhat&amp;#34; (-1) 無い.. $ ls -l &amp;#34;/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home/bin&amp;#34; .rwxr-xr-x@ 22k user 2 4 17:23 jaotc .rwxr-xr-x@ 18k user 2 4 17:23 jar .rwxr-xr-x@ 18k user 2 4 17:23 jarsigner .rwxr-xr-x@ 18k user</description>
     </item>
     
     <item>

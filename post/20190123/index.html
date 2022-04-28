@@ -177,34 +177,34 @@ perc_snapは要素を先頭から順に繰り返し=通常の三本締めパタ�
 perc_snap2は8周するごとに次の要素を先頭にします。<br>
 この動作を配列の要素数 + 1回繰り返し、最後は慣例に倣って<br>
 拍手で終了します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-rb" data-lang="rb"><span class="n">use_bpm</span> <span class="mi">400</span>
-
-<span class="o"></span><span class="n">load_sample</span> <span class="ss">:perc_snap</span>
-<span class="n">load_sample</span> <span class="ss">:perc_snap2</span>
-
-<span class="n">clap_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">1</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="p">,</span> <span class="mi">0</span><span class="o"></span><span class="o">]</span>
-<span class="n">length</span> <span class="o">=</span> <span class="n">clap_array</span><span class="o">.</span><span class="n">length</span>
-
-<span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="p">)</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
-  <span class="mi">8</span><span class="o"></span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">reps</span><span class="o">|</span>
-    <span class="n">length</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">beat</span><span class="o">|</span>
-      <span class="n">sample</span> <span class="ss">:perc_snap</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span> <span class="o">-</span><span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">5</span> <span class="o"></span><span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="n">beat</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
-      <span class="o"></span><span class="n">sample</span> <span class="ss">:perc_snap2</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span>  <span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">5</span> <span class="o"></span><span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="p">(</span><span class="n">cycle</span> <span class="o">+</span> <span class="n">beat</span><span class="p">)</span> <span class="o">%</span> <span class="n">length</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
-      <span class="o"></span><span class="nb">puts</span> <span class="s2">&#34;</span><span class="s2">Cycle: </span><span class="si">#{</span><span class="n">cycle</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="si">}</span><span class="s2"> Reps: </span><span class="si">#{</span><span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="si">}</span><span class="s2"> Beat: </span><span class="si">#{</span><span class="n">beat</span> <span class="o">+</span> <span class="mi">1</span><span class="o"></span><span class="si">}</span><span class="s2">&#34;</span>
-      <span class="nb">sleep</span> <span class="mi">1</span>
-    <span class="o"></span><span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="nb">sleep</span> <span class="mi">1</span>
-
-<span class="o"></span><span class="k">for</span> <span class="n">num</span> <span class="k">in</span> <span class="mi">1</span><span class="o"></span><span class="o">..</span><span class="mi">50</span> <span class="o"></span><span class="k">do</span>
-  <span class="n">sample</span> <span class="ss">:perc_snap</span>
-  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="o">..</span><span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">4</span><span class="o"></span><span class="p">)</span>
-  <span class="n">sample</span> <span class="ss">:perc_snap2</span>
-  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o"></span><span class="o">..</span><span class="mi">0</span><span class="o"></span><span class="o">.</span><span class="mi">4</span><span class="o"></span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div><p>SoundCloudに実行結果を上げました。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rb" data-lang="rb"><span class="line"><span class="cl"><span class="n">use_bpm</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">load_sample</span> <span class="ss">:perc_snap</span>
+</span></span><span class="line"><span class="cl"><span class="n">load_sample</span> <span class="ss">:perc_snap2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">clap_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">length</span> <span class="o">=</span> <span class="n">clap_array</span><span class="o">.</span><span class="n">length</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">cycle</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">8</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">reps</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">    <span class="n">length</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">beat</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sample</span> <span class="ss">:perc_snap</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span> <span class="o">-</span><span class="mi">0</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="n">beat</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sample</span> <span class="ss">:perc_snap2</span><span class="p">,</span> <span class="ss">pan</span><span class="p">:</span>  <span class="mi">0</span><span class="o">.</span><span class="mi">5</span> <span class="k">if</span> <span class="n">clap_array</span><span class="o">[</span><span class="p">(</span><span class="n">cycle</span> <span class="o">+</span> <span class="n">beat</span><span class="p">)</span> <span class="o">%</span> <span class="n">length</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">puts</span> <span class="s2">&#34;Cycle: </span><span class="si">#{</span><span class="n">cycle</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> Reps: </span><span class="si">#{</span><span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> Beat: </span><span class="si">#{</span><span class="n">beat</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">sleep</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">sleep</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">num</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">50</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sample</span> <span class="ss">:perc_snap</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sample</span> <span class="ss">:perc_snap2</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">sleep</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><p>SoundCloudに実行結果を上げました。</p>
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/563430843&color=%239cc4a4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 <p>今から練習して新学期に差をつけよう！！！</p>
 
@@ -278,7 +278,7 @@ perc_snap2は8周するごとに次の要素を先頭にします。<br>
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2021</p>
+    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2022</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     

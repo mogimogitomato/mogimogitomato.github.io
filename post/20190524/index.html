@@ -163,39 +163,39 @@
     <div class="content">
       <p>PHPでの開発中に製造工程の追加行数、削除行数を一覧化する必要が出たので、<br>
 以下の要領でファイル単位での各行数とその合計数を出力しました。</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="c1">## ライブラリやFW、テストコードは除外し、phpファイルの一覧をフルパスで取得</span>
-<span class="nv">file_list</span><span class="o">=</span><span class="sb">`</span>find . -type d <span class="se">\(</span> -name <span class="s1">&#39;vendor&#39;</span> -o -name <span class="s1">&#39;tests&#39;</span> -o -name <span class="s1">&#39;system&#39;</span> <span class="se">\)</span> <span class="se">\
-</span><span class="se"></span>           -prune -o -type f -name <span class="s1">&#39;*.php&#39;</span><span class="sb">`</span>
-<span class="c1">## phpファイル単位でgit logを出力</span>
-<span class="k">for</span> file in <span class="nv">$file_list</span><span class="p">;</span> <span class="k">do</span>
-  <span class="nv">result</span><span class="o">=</span><span class="sb">`</span>git log --numstat --pretty<span class="o">=</span><span class="s2">&#34;%H&#34;</span> --no-merges <span class="nv">$file</span> <span class="p">|</span> <span class="se">\
-</span><span class="se"></span>          awk <span class="s1">&#39;NF==3 {plus+=$1; minus+=$2} \
-</span><span class="s1">               END {printf(&#34;%d (+%d, -%d)\n&#34;, plus+minus, plus, minus)}&#39;</span><span class="sb">`</span>
-  <span class="nb">echo</span> <span class="nv">$file</span><span class="s1">&#39; :&#39;</span><span class="nv">$result</span>
-<span class="k">done</span>
-</code></pre></div><p>けれど、途中コードフォーマットの修正を何回か行っており、それらのコミットについては<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">## ライブラリやFW、テストコードは除外し、phpファイルの一覧をフルパスで取得</span>
+</span></span><span class="line"><span class="cl"><span class="nv">file_list</span><span class="o">=</span><span class="sb">`</span>find . -type d <span class="se">\(</span> -name <span class="s1">&#39;vendor&#39;</span> -o -name <span class="s1">&#39;tests&#39;</span> -o -name <span class="s1">&#39;system&#39;</span> <span class="se">\)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>           -prune -o -type f -name <span class="s1">&#39;*.php&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## phpファイル単位でgit logを出力</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> file in <span class="nv">$file_list</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">result</span><span class="o">=</span><span class="sb">`</span>git log --numstat --pretty<span class="o">=</span><span class="s2">&#34;%H&#34;</span> --no-merges <span class="nv">$file</span> <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>          awk <span class="s1">&#39;NF==3 {plus+=$1; minus+=$2} \
+</span></span></span><span class="line"><span class="cl"><span class="s1">               END {printf(&#34;%d (+%d, -%d)\n&#34;, plus+minus, plus, minus)}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="nv">$file</span><span class="s1">&#39; :&#39;</span><span class="nv">$result</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div><p>けれど、途中コードフォーマットの修正を何回か行っており、それらのコミットについては<br>
 カウント対象から除外したかったので思案。</p>
 <p>gitの公式リファレンスを見ると、<code>git log</code>のオプションで<code>--invert-grep</code>というのが指定できる様。<br>
 <a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep">https://git-scm.com/docs/git-log#Documentation/git-log.txt---invert-grep</a></p>
 <p><code>--grep=&lt;pattern&gt;</code>オプションで指定したパターンにlogメッセージが一致しないコミットに出力を制限する、との事。<br>
 コミット時のメッセージに対応タスクのIDを含むルールとしていたので、以下で取り直し無事特定コミットを<br>
 行数カウントから除外する事ができました。</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="c1">## ライブラリやFW、テストコードは除外し、phpファイルの一覧をフルパスで取得</span>
-<span class="nv">file_list</span><span class="o">=</span><span class="sb">`</span>find . -type d <span class="se">\(</span> -name <span class="s1">&#39;vendor&#39;</span> -o -name <span class="s1">&#39;tests&#39;</span> -o -name <span class="s1">&#39;system&#39;</span> <span class="se">\)</span> <span class="se">\
-</span><span class="se"></span>           -prune -o -type f -name <span class="s1">&#39;*.php&#39;</span><span class="sb">`</span>
-<span class="c1">## phpファイル単位でgit logを出力</span>
-<span class="k">for</span> file in <span class="nv">$file_list</span><span class="p">;</span> <span class="k">do</span>
-  <span class="nv">result</span><span class="o">=</span><span class="sb">`</span>git log --invert-grep --grep<span class="o">=</span><span class="s2">&#34;タスクID&#34;</span> <span class="se">\
-</span><span class="se"></span>                  --numstat --pretty<span class="o">=</span><span class="s2">&#34;%H&#34;</span> --no-merges <span class="nv">$file</span> <span class="p">|</span> <span class="se">\
-</span><span class="se"></span>          awk <span class="s1">&#39;NF==3 {plus+=$1; minus+=$2} \
-</span><span class="s1">               END {printf(&#34;%d (+%d, -%d)\n&#34;, plus+minus, plus, minus)}&#39;</span><span class="sb">`</span>
-  <span class="nb">echo</span> <span class="nv">$file</span><span class="s1">&#39; :&#39;</span><span class="nv">$result</span>
-<span class="k">done</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">## ライブラリやFW、テストコードは除外し、phpファイルの一覧をフルパスで取得</span>
+</span></span><span class="line"><span class="cl"><span class="nv">file_list</span><span class="o">=</span><span class="sb">`</span>find . -type d <span class="se">\(</span> -name <span class="s1">&#39;vendor&#39;</span> -o -name <span class="s1">&#39;tests&#39;</span> -o -name <span class="s1">&#39;system&#39;</span> <span class="se">\)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>           -prune -o -type f -name <span class="s1">&#39;*.php&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## phpファイル単位でgit logを出力</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> file in <span class="nv">$file_list</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">result</span><span class="o">=</span><span class="sb">`</span>git log --invert-grep --grep<span class="o">=</span><span class="s2">&#34;タスクID&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --numstat --pretty<span class="o">=</span><span class="s2">&#34;%H&#34;</span> --no-merges <span class="nv">$file</span> <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>          awk <span class="s1">&#39;NF==3 {plus+=$1; minus+=$2} \
+</span></span></span><span class="line"><span class="cl"><span class="s1">               END {printf(&#34;%d (+%d, -%d)\n&#34;, plus+minus, plus, minus)}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="nv">$file</span><span class="s1">&#39; :&#39;</span><span class="nv">$result</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div>
       
       <div class="related">
 </div>
@@ -266,7 +266,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2021</p>
+    <p>&copy; <a href="https://github.com/mogimogitomato">YK</a> 2022</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
