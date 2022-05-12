@@ -152,5 +152,18 @@
       <description>経緯 アウトプットちゃんとしたいが、プログラミングネタなら Qiitaに書けばいいと思うしそれ以外ならはてなブログがある。 けれどどちらも更新でき</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://mogimogitomato.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/contact/</guid>
+      <description>ご連絡は以下のフォームよりお願い致します。
+内容によっては返信をご遠慮させて頂く場合や、
+諸事情により返信に時間がかかる場合があります。
+恐れ入りますが予めご了承下さい。
+お名前:   E-Mail:   件名:   内容:   送信   </description>
+    </item>
+    
   </channel>
 </rss>
