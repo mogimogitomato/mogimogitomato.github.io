@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/mogimogitomato&#34;&gt;YK&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 28 Apr 2022 13:52:30 +0900</lastBuildDate><atom:link href="https://mogimogitomato.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Nov 2022 20:26:07 +0900</lastBuildDate><atom:link href="https://mogimogitomato.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s</title>
+      <link>https://mogimogitomato.github.io/tags/k8s/</link>
+      <pubDate>Mon, 14 Nov 2022 20:26:07 +0900</pubDate>
+      
+      <guid>https://mogimogitomato.github.io/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>CSS</title>
       <link>https://mogimogitomato.github.io/tags/css/</link>
@@ -32,15 +41,6 @@
       <pubDate>Fri, 04 Dec 2020 16:10:03 +0900</pubDate>
       
       <guid>https://mogimogitomato.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>k8s</title>
-      <link>https://mogimogitomato.github.io/tags/k8s/</link>
-      <pubDate>Wed, 25 Nov 2020 00:52:05 +0900</pubDate>
-      
-      <guid>https://mogimogitomato.github.io/tags/k8s/</guid>
       <description></description>
     </item>
     
